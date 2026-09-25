@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Nunito Sans', sans-serif;
+    color: #1A1A1A;
+    background-color: #FFFFFF;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Nunito', sans-serif;
+  }
+}
+
+/* Custom scrollbar and smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom shadow utilities from Figma */
+.shadow-figma-header {
+  box-shadow: 0px 0px 10.7px 0px rgba(0, 0, 0, 0.14);
+}
+
+.shadow-figma-card {
+  box-shadow: 0px 0px 10.8px 0px rgba(0, 0, 0, 0.17);
+}
+
+/* Glassmorphism & border accents */
+.border-brand-red {
+  border-color: #CC444B;
+}
+
+.bg-brand-red {
+  background-color: #CC444B;
+}
+
+.text-brand-red {
+  color: #CC444B;
+}
