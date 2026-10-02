@@ -41,35 +41,3 @@ html {
 .text-brand-red {
   color: #CC444B;
 }
-
-/* Hero Carousel Left-to-Right Transitions */
-@keyframes heroSlideFromLeft {
-  0% {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes heroSlideFromRight {
-  0% {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.animate-hero-slide {
-  animation: heroSlideFromLeft 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-.animate-hero-slide-reverse {
-  animation: heroSlideFromRight 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
