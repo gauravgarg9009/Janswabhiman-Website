@@ -3,7 +3,7 @@ import { Play } from 'lucide-react';
 
 export default function HeroSection({ onOpenDonate, onOpenGlimpses }) {
   return (
-    <section id="home" className="w-full bg-white pt-2 pb-8 md:pb-12 px-0 md:px-6 lg:px-0 overflow-hidden">
+    <section id="home" className="w-full bg-white pt-6 md:pt-8 pb-8 md:pb-12 px-0 md:px-6 lg:px-0 overflow-hidden">
       
       {/* ========================================================================= */}
       {/* DESKTOP HERO: Exact Figma node 141:9525 with Group 3263 (node 158:1851)   */}
