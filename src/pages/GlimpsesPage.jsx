@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ArrowUpRight, Share2, Heart, ArrowLeft, ChevronLeft, ChevronRight, Eye, X } from 'lucide-react';
+import allGalleryPhotos from '../data/galleryPhotos.json';
 
 export default function GlimpsesPage({ onOpenDonate, onNavigateHome }) {
   const [activeCategory, setActiveCategory] = useState('ALL');
@@ -8,86 +9,28 @@ export default function GlimpsesPage({ onOpenDonate, onNavigateHome }) {
 
   const categories = [
     { id: 'ALL', label: 'ALL' },
-    { id: 'SARASWATI-FREE EDUCATION', label: 'SARASWATI-FREE EDUCATION' },
-    { id: 'WOMEN EMPOWERMENT', label: 'WOMEN EMPOWERMENT' },
-    { id: 'GAUSHALA', label: 'GAUSHALA' },
-    { id: 'PAK HINDU REFUGEES REHABILITATION', label: 'PAK HINDU REFUGEES REHABILITATION' },
-    { id: 'TRIBAL WELFARE', label: 'TRIBAL WELFARE' },
-    { id: 'RELIEF WORK', label: 'RELIEF WORK' },
-    { id: 'GAUSEVA & ANIMAL WELFARE', label: 'GAUSEVA & ANIMAL WELFARE' }
+    { id: 'Saraswati-Free Education for Slum Children', label: 'SARASWATI-FREE EDUCATION' },
+    { id: 'Women Empowerment', label: 'WOMEN EMPOWERMENT' },
+    { id: 'Gaushala', label: 'GAUSHALA' },
+    { id: 'Pak Hindu Refugees Rehabilitation', label: 'PAK HINDU REFUGEES' },
+    { id: 'Tribal Welfare', label: 'TRIBAL WELFARE' },
+    { id: 'Relief Work', label: 'RELIEF WORK' },
+    { id: 'Gauseva & Animal Welfare', label: 'GAUSEVA & ANIMAL WELFARE' }
   ];
 
-  const photos = [
-    {
-      id: 1,
-      image: '/assets/image_9_238_650.png',
-      title: 'Disaster Relief Boats during Gujarat Floods',
-      category: 'RELIEF WORK',
-      location: 'Khambaliya, Gujarat'
-    },
-    {
-      id: 2,
-      image: '/assets/image_10_238_652.png',
-      title: 'Ration, Uniform & Ration Kit Distribution',
-      category: 'TRIBAL WELFARE',
-      location: 'Vansda Tribal Belt'
-    },
-    {
-      id: 3,
-      image: '/assets/image_11_238_654.png',
-      title: 'Saraswati Free Education Centre for Slum Children',
-      category: 'SARASWATI-FREE EDUCATION',
-      location: 'Delhi NCR'
-    },
-    {
-      id: 4,
-      image: '/assets/image_12_238_656.png',
-      title: 'Emergency Medical & Health Checkup Camps',
-      category: 'RELIEF WORK',
-      location: 'Rural Belt, UP'
-    },
-    {
-      id: 5,
-      image: '/assets/frame_61_141_10114.png',
-      title: 'Kanya Poojan & Tribal Women Samuhik Vivah',
-      category: 'WOMEN EMPOWERMENT',
-      location: 'Rajasthan'
-    },
-    {
-      id: 6,
-      image: '/assets/frame_61_141_10184.png',
-      title: 'Solar & Waterproof Shelters for Pak Hindu Refugees',
-      category: 'PAK HINDU REFUGEES REHABILITATION',
-      location: 'Adarsh Nagar Camp, Delhi'
-    },
-    {
-      id: 7,
-      image: '/assets/image_141_9677.png',
-      title: 'Gaushala Sanctuary & Dedicated Medical Fodder',
-      category: 'GAUSHALA',
-      location: 'Braj Region'
-    },
-    {
-      id: 8,
-      image: '/assets/frame_61_141_10091.png',
-      title: 'Street Gauseva Rescue & Veterinary First Aid Ambulance',
-      category: 'GAUSEVA & ANIMAL WELFARE',
-      location: 'Delhi & Haryana'
-    },
-    {
-      id: 9,
-      image: '/assets/subtract_141_9678.png',
-      title: 'Daily Classrooms of Hope in Slum Clusters',
-      category: 'SARASWATI-FREE EDUCATION',
-      location: 'Yamuna Khadar, Delhi'
-    }
-  ];
+  const photos = allGalleryPhotos.map((p, idx) => ({
+    id: idx + 1,
+    image: p.src,
+    title: p.title,
+    category: p.category,
+    location: 'Bharat Ground Mission'
+  }));
 
   const filteredPhotos = activeCategory === 'ALL' 
     ? photos 
-    : photos.filter(p => p.category === activeCategory);
+    : photos.filter(p => p.category === activeCategory || p.category.toLowerCase().includes(activeCategory.toLowerCase()));
 
-  const photosPerPage = 6;
+  const photosPerPage = 12;
   const totalPages = Math.ceil(filteredPhotos.length / photosPerPage) || 1;
   const displayedPhotos = filteredPhotos.slice((currentPage - 1) * photosPerPage, currentPage * photosPerPage);
 

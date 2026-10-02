@@ -1,0 +1,99 @@
+{
+  "organization": "Jan Swabhiman Welfare Society",
+  "tagline": "\u0936\u094d\u0930\u0926\u094d\u0927\u092f\u093e \u0926\u093e\u0928\u0902, \u0938\u094d\u0935\u093e\u092d\u093f\u092e\u093e\u0928\u093e\u092f \u091c\u0940\u0935\u0928\u092e\u094d",
+  "motto": "\u0938\u0947\u0935\u093e \u2022 \u0938\u0902\u0938\u094d\u0915\u093e\u0930 \u2022 \u0936\u093f\u0915\u094d\u0937\u093e \u2022 \u0938\u094d\u0935\u093e\u092d\u093f\u092e\u093e\u0928",
+  "taxExemption": "80G & 12A Certified \u2022 Tax exemptions available on request",
+  "customAmountLink": "https://razorpay.me/@janswabhimanwelfaresociety",
+  "tiers": [
+    {
+      "amount": 2100,
+      "label": "\u20b92,100",
+      "once": "https://rzp.io/rzp/QFQ0ajtq",
+      "monthly": "https://rzp.io/rzp/NhPWn6e",
+      "impact": "Sponsor Ration Kit / Gau Antim Sanskaar"
+    },
+    {
+      "amount": 5100,
+      "label": "\u20b95,100",
+      "once": "https://rzp.io/rzp/u1GDxgY2",
+      "monthly": "https://rzp.io/rzp/XkfosMn",
+      "impact": "1 Child Education for a Year / Gaugraas for 1 Gaumata for 1 Month"
+    },
+    {
+      "amount": 11000,
+      "label": "\u20b911,000",
+      "once": "https://rzp.io/rzp/qoQDQ3pc",
+      "monthly": "https://rzp.io/rzp/FCGFqsBj",
+      "impact": "2 Children Education for a Year"
+    },
+    {
+      "amount": 21000,
+      "label": "\u20b921,000",
+      "once": "https://rzp.io/rzp/spoWSnV4",
+      "monthly": "https://rzp.io/rzp/bz95WBx2",
+      "impact": "Sponsor a Refugee Hut / Gau Feed for 100+ Gaumatas for 1 Day"
+    },
+    {
+      "amount": 25000,
+      "label": "\u20b925,000",
+      "once": "https://rzp.io/rzp/DG0MnvLH",
+      "monthly": "https://rzp.io/rzp/TNIML4oS",
+      "impact": "Education for 5 Children for a Year"
+    },
+    {
+      "amount": 51000,
+      "label": "\u20b951,000",
+      "once": "https://rzp.io/rzp/gNYigYWj",
+      "monthly": "https://rzp.io/rzp/852BkuQ",
+      "impact": "Adopt a Center for a Month / Kanyadaan of Tribal Daughter"
+    },
+    {
+      "amount": 100000,
+      "label": "\u20b91,00,000",
+      "once": "https://rzp.io/rzp/QBgmjqol",
+      "monthly": "https://rzp.io/rzp/34h8Z4Sq",
+      "impact": "Village-level Punarjagran / Medicines & Rescue Ambulance Support for Month"
+    },
+    {
+      "amount": 100001,
+      "label": "\u20b91,00,001",
+      "once": "https://rzp.io/rzp/pG9nMWl",
+      "monthly": "https://rzp.io/rzp/36CbrLT",
+      "impact": "Purna Seva Sankalp"
+    }
+  ],
+  "causes": [
+    {
+      "name": "Saraswati-Free Education for Slum Children",
+      "link": "/saraswati"
+    },
+    {
+      "name": "Women Empowerment",
+      "link": "/women-empowerment"
+    },
+    {
+      "name": "Pak Hindu Refugees Rehabilitation",
+      "link": "/pak-hindu-refugees-rehabilitation"
+    },
+    {
+      "name": "Gauseva & Animal Welfare",
+      "link": "/gauseva-gaushala-animal-welfare"
+    },
+    {
+      "name": "Gaushala (Noida)",
+      "link": "/gaushala"
+    },
+    {
+      "name": "Tribal Welfare",
+      "link": "/tribal-welfare"
+    },
+    {
+      "name": "Relief Work",
+      "link": "/relief-work"
+    },
+    {
+      "name": "General Fund (Wherever Needed Most)",
+      "link": "/donate"
+    }
+  ]
+}

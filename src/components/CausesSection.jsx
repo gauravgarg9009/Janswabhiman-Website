@@ -1,35 +1,36 @@
 import React, { useState } from 'react';
 import { ArrowUpRight, ChevronLeft, ChevronRight, Eye } from 'lucide-react';
+import storiesData from '../data/stories.json';
 
-export default function CausesSection({ onSelectStory }) {
+export default function CausesSection({ onSelectStory, onNavigateToBlog }) {
   const [currentCauseIndex, setCurrentCauseIndex] = useState(0);
 
-  const featuredCause = {
+  const featuredCause = storiesData.find(s => s.slug === 'classrooms-of-hope') || {
     title: "Janswabhiman's Classrooms of Hope",
     category: "FEATURED CAUSE",
     subCategory: "Education",
-    image: "/assets/image_141_9820.png",
+    image: "/images/blog/classrooms-of-hope/hero.webp",
     desc: "The blackboard may be small, but the dreams of the children it holds are infinite. At Janswabhiman Welfare Society's Shiksha Centres, education is not just a privilege — it is a rebirth, a re-awakening of self-worth, dignity and hope."
   };
 
-  const cause1 = {
+  const cause1 = storiesData.find(s => s.slug === 'kanya-poojan-tribal') || {
     title: "Kanya Poojan",
     category: "Women & Children",
-    image: "/assets/frame_61_141_10114.png",
-    desc: "On Navratris, tribal girls are honoured as embodiments of Shakti — dignity uplifted, myths of exclusion shattered.-"
+    image: "/images/blog/kanya-poojan-tribal/hero.webp",
+    desc: "On Navratris, tribal girls are honoured as embodiments of Shakti — dignity uplifted, myths of exclusion shattered."
   };
 
-  const cause2 = {
+  const cause2 = storiesData.find(s => s.slug === 'khambaliya-vansda-floods-2026') || {
     title: "July 2026 Floods",
     category: "Disaster Relief",
-    image: "/assets/frame_61_141_10184.png",
+    image: "/images/blog/khambaliya-vansda-floods-2026/hero.webp",
     desc: "Rescue, cooked meals and medical aid when flash floods devastated Khambaliya village in Vansda, Gujarat."
   };
 
-  const cause3 = {
+  const cause3 = storiesData.find(s => s.slug === 'when-illness-silences-the-innocent') || {
     title: "When Illness Silences the Innocent",
-    category: "Health",
-    image: "/assets/frame_61_141_10091.png",
+    category: "Health & Animal Care",
+    image: "/images/blog/when-illness-silences-the-innocent/hero.webp",
     desc: "No visible wound — only fever, weakness and silent agony — until Gausevaks arrive with relief."
   };
 
@@ -252,12 +253,12 @@ export default function CausesSection({ onSelectStory }) {
         {/* Desktop View All Causes CTA */}
         <div className="hidden lg:flex items-center justify-center pt-4">
           <button
-            onClick={() => onSelectStory(featuredCause)}
-            className="bg-[#CC444B] hover:bg-red-700 text-white font-heading font-bold text-base px-8 py-3.5 rounded-full shadow-lg flex items-center gap-3 transition-all cursor-pointer"
+            onClick={() => onNavigateToBlog ? onNavigateToBlog() : onSelectStory(featuredCause)}
+            className="bg-[#CC444B] hover:bg-red-700 text-white font-heading font-bold text-base px-8 py-3.5 rounded-full shadow-lg flex items-center gap-3 transition-all cursor-pointer group"
           >
-            <span>View all causes</span>
-            <div className="w-6 h-6 rounded-full bg-white text-[#CC444B] flex items-center justify-center">
-              <Eye className="w-3.5 h-3.5 stroke-[2.5]" />
+            <span>Explore All 29 Ground Stories</span>
+            <div className="w-7 h-7 rounded-full bg-white text-[#CC444B] flex items-center justify-center group-hover:translate-x-0.5 transition-transform">
+              <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
             </div>
           </button>
         </div>
@@ -334,13 +335,13 @@ export default function CausesSection({ onSelectStory }) {
             </button>
           </div>
 
-          {/* Mobile CTA: Frame 170:303 View all causes Pill Button */}
+          {/* Mobile CTA: View all causes Pill Button */}
           <div className="pt-2 flex justify-center">
             <button
-              onClick={() => onSelectStory(mobileCauses[currentCauseIndex])}
+              onClick={() => onNavigateToBlog ? onNavigateToBlog() : onSelectStory(mobileCauses[currentCauseIndex])}
               className="bg-[#CC444B] hover:bg-red-700 text-white font-heading font-bold text-sm px-7 py-3 rounded-full shadow-md flex items-center gap-2.5 transition-all cursor-pointer"
             >
-              <span>View all causes</span>
+              <span>Explore All 29 Stories</span>
               <div className="w-5 h-5 rounded-full bg-white text-[#CC444B] flex items-center justify-center">
                 <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
               </div>

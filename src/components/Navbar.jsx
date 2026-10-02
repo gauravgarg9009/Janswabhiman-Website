@@ -28,8 +28,9 @@ export default function Navbar({
     { id: 'projects', page: 'home', anchor: 'projects', label: 'What We Do' },
     { id: 'impact', page: 'impact', label: 'Our Impact' },
     { id: 'glimpses', page: 'glimpses', label: 'Glimpses of Seva' },
-    { id: 'causes', page: 'home', anchor: 'causes', label: 'Causes' },
-    { id: 'getinvolved', page: 'home', anchor: 'getinvolved', label: 'CSR' },
+    { id: 'stories', page: 'stories', label: 'Our Stories' },
+    { id: 'csr', page: 'csr', label: 'CSR' },
+    { id: 'contact', page: 'contact', label: 'Contact Us' },
   ];
 
   const handleItemClick = (item) => {
@@ -48,6 +49,10 @@ export default function Navbar({
     if (currentPage === 'why-us') return item.page === 'why-us';
     if (currentPage === 'impact') return item.page === 'impact';
     if (currentPage === 'glimpses') return item.page === 'glimpses';
+    if (currentPage === 'stories' || currentPage.startsWith('story-')) return item.page === 'stories';
+    if (currentPage === 'csr') return item.page === 'csr';
+    if (currentPage === 'contact') return item.page === 'contact';
+    if (currentPage.startsWith('program-')) return item.id === 'projects';
     if (currentPage === 'home') {
       if (item.anchor) return activeTab === item.anchor;
       return item.id === 'home' && (!activeTab || activeTab === 'home');

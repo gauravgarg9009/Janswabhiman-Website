@@ -1,0 +1,67 @@
+{
+  "title": "CSR Partnerships \u00b7 Janswabhiman Welfare Society",
+  "subtitle": "Fulfil your CSR mandate with work you can see, verify, and stand behind.",
+  "intro": "Janswabhiman Welfare Society runs education, tribal welfare, women empowerment, animal welfare, refugee rehabilitation, and disaster relief programs across 8 states. Partner with us to direct your CSR budget toward measurable, on-ground impact \u2014 with full documentation for your compliance team.",
+  "credentials": [
+    "80G Tax Exemption",
+    "12A Registration",
+    "CSR-1 Filed (Ministry of Corporate Affairs)",
+    "Registered Trust/Society since 2006",
+    "Audited Annual Financials"
+  ],
+  "highlights": [
+    {
+      "title": "Compliant by design",
+      "desc": "Fully registered with 80G and 12A status and CSR-1 filing in place, so your contribution is straightforward to document and report."
+    },
+    {
+      "title": "On-ground, not outsourced",
+      "desc": "Our own teams run centers, gaushalas, and relief camps directly across 8 states \u2014 your funds reach the program, not subcontractors."
+    },
+    {
+      "title": "Transparent reporting",
+      "desc": "Every partnership comes with photo documentation, utilization reports, and site visit access for internal sign-off and disclosure."
+    },
+    {
+      "title": "Schedule VII Aligned",
+      "desc": "From education to disaster relief, our programs map directly to Schedule VII categories."
+    }
+  ],
+  "scheduleVII": [
+    {
+      "program": "Saraswati (Free Education for Slum Children)",
+      "activity": "Free learning centers for children from underserved and slum communities, including refugee children",
+      "category": "Item (ii): Promoting education"
+    },
+    {
+      "program": "Women Empowerment",
+      "activity": "Kanyadaan / Samuhik Vivah for poor/tribal daughters, skill training, vocational self-employment",
+      "category": "Item (iii): Promoting gender equality, empowering women"
+    },
+    {
+      "program": "Pak Hindu Refugees Rehabilitation",
+      "activity": "Waterproof huts, shelters, livelihood assistance, and schooling for refugee families",
+      "category": "Item (i) & (ii): Eradicating poverty & education"
+    },
+    {
+      "program": "Gauseva & Animal Welfare",
+      "activity": "Street animal rescue, veterinary medical treatment, feeding drives",
+      "category": "Item (iv): Animal welfare & environmental sustainability"
+    },
+    {
+      "program": "Gaushala (Noida)",
+      "activity": "Sanctuary care and sustainable fodder for 100+ rescued abandoned and injured cows",
+      "category": "Item (iv): Animal welfare"
+    },
+    {
+      "program": "Tribal Welfare",
+      "activity": "Self-employment, cultural preservation, food distribution, sports tournaments in SC/ST belts",
+      "category": "Item (i) & (v): Socio-economic development & national heritage"
+    },
+    {
+      "program": "Relief Work",
+      "activity": "Emergency relief kits, food, shelter during floods, droughts, and Covid waves",
+      "category": "Item (xii): Disaster management, including relief and rehabilitation"
+    }
+  ]
+}

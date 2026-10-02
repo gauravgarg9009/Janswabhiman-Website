@@ -7,28 +7,38 @@ export default function TopHeader({ onToggleMobileMenu, mobileMenuOpen }) {
         
         {/* Left: Social Media Icons (Figma Frame 3 / 158:1421) */}
         <div className="flex items-center gap-3">
-          <img 
-            src="/assets/frame_3_141_10008.svg" 
-            alt="JSWS Social Links" 
-            className="h-8 sm:h-9 object-contain cursor-pointer hover:opacity-90 transition-opacity" 
-          />
+          <a 
+            href="https://x.com/JanSwabh" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            title="Follow Jan Swabhiman Welfare Society on X"
+          >
+            <img 
+              src="/assets/frame_3_141_10008.svg" 
+              alt="JSWS Social Links" 
+              className="h-8 sm:h-9 object-contain cursor-pointer hover:opacity-90 transition-opacity" 
+            />
+          </a>
         </div>
 
-        {/* Desktop Right: Location, Number, Time (Figma Frame 9) */}
+        {/* Desktop Right: Location, Email, Motto */}
         <div className="hidden md:flex items-center gap-6 text-xs md:text-sm font-semibold text-[#CC444B]">
-          <div className="flex items-center gap-1.5 cursor-pointer hover:underline">
-            <span>Location</span>
+          <div className="flex items-center gap-1.5 text-gray-700">
+            <span>Noida / Delhi NCR</span>
             <img src="/assets/frame_141_10031.svg" alt="Location" className="w-3.5 h-3.5" />
           </div>
 
-          <div className="flex items-center gap-1.5 cursor-pointer hover:underline">
-            <span>Number</span>
-            <img src="/assets/frame_141_10036.svg" alt="Phone" className="w-3.5 h-3.5" />
-          </div>
+          <a 
+            href="mailto:mailus@janswabhiman.org" 
+            className="flex items-center gap-1.5 hover:underline text-[#CC444B]"
+          >
+            <span>mailus@janswabhiman.org</span>
+            <img src="/assets/frame_141_10036.svg" alt="Email" className="w-3.5 h-3.5" />
+          </a>
 
-          <div className="flex items-center gap-1.5 cursor-pointer hover:underline">
-            <span>Time</span>
-            <img src="/assets/frame_141_10041.svg" alt="Time" className="w-3.5 h-3.5" />
+          <div className="flex items-center gap-1.5 text-gray-700">
+            <span>80G Certified Non-Profit</span>
+            <img src="/assets/frame_141_10041.svg" alt="Trust" className="w-3.5 h-3.5" />
           </div>
         </div>
 
