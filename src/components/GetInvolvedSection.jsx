@@ -194,81 +194,88 @@ export default function GetInvolvedSection({ onOpenVolunteer, onOpenDonate }) {
       </div>
 
       {/* ========================================================================= */}
-      {/* MOBILE / TABLET VIEW: Responsive Grid Layout                              */}
+      {/* MOBILE / TABLET VIEW: Exact Figma Frame 4083 (Node 170:320) Vertical Tree */}
       {/* ========================================================================= */}
-      <div className="block xl:hidden py-14 px-4 sm:px-6 relative z-10 max-w-5xl mx-auto">
+      <div className="block xl:hidden py-14 px-4 relative z-10 max-w-lg mx-auto">
         
-        {/* Header */}
-        <div className="text-center space-y-3 mb-10">
+        {/* Header (Figma 170:323, 170:325, 170:321) */}
+        <div className="text-center space-y-3 mb-12">
+          {/* Subtitle with Red Accent Lines */}
           <div className="flex items-center justify-center gap-3">
             <div className="h-[1.5px] w-12 bg-[#CC444B]" />
-            <span className="font-heading font-medium text-[#CC444B] text-base">
+            <span className="font-heading font-medium text-[#CC444B] text-[18px] leading-[29px]">
               Be part of the change
             </span>
             <div className="h-[1.5px] w-12 bg-[#CC444B]" />
           </div>
 
-          <h2 className="font-heading font-black text-3xl sm:text-4xl text-black leading-tight">
-            There’s more than one <span className="text-[#CC444B]">way to serve.</span>
+          {/* Heading */}
+          <h2 className="font-heading font-black text-[38px] leading-[42px] text-black tracking-tight">
+            There’s more than one <br />
+            <span className="text-[#CC444B]">way to serve.</span>
           </h2>
 
-          <p className="font-sans text-gray-700 text-sm sm:text-base max-w-xl mx-auto">
+          {/* Subtitle text */}
+          <p className="font-sans font-normal text-[12px] leading-[17px] text-gray-700 max-w-[291px] mx-auto text-center px-2">
             Whether you give your time, skills, or support, every contribution helps create meaningful change.
           </p>
         </div>
 
-        {/* Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 justify-items-center">
-          {cards.map((card) => (
-            <div
-              key={`mob-${card.id}`}
-              className="w-full max-w-[320px] rounded-[20px] bg-white shadow-xl overflow-hidden flex flex-col hover:-translate-y-1 transition-transform"
-            >
-              {/* Red Top Box */}
-              <div className="w-full h-48 bg-[#CC444B] flex items-center justify-center p-6">
-                <img 
-                  src={card.topIcon} 
-                  alt={card.title} 
-                  className="w-24 h-24 object-contain"
-                />
-              </div>
-
-              {/* White Bottom Box */}
-              <div className="p-5 flex items-center justify-between gap-2">
-                <h3 className="font-heading font-extrabold text-lg text-black whitespace-pre-line text-left">
-                  {card.title}
-                </h3>
-
-                <button
-                  onClick={card.action}
-                  className="bg-[#CC444B] hover:bg-red-700 text-white rounded-[8px] px-3.5 py-2 flex items-center gap-1.5 shadow transition-all cursor-pointer shrink-0"
-                >
-                  <span className="font-heading font-bold text-xs">
-                    Apply here
-                  </span>
-                  <div className="w-4 h-4 rounded-full bg-white text-[#CC444B] flex items-center justify-center">
-                    <ArrowUpRight className="w-2.5 h-2.5 stroke-[3]" />
-                  </div>
-                </button>
-              </div>
-
-              {/* Tag beneath card on mobile */}
-              <div className="px-5 pb-4 text-center">
-                <span className="font-handwriting font-bold text-lg text-[#2D231E]">
-                  “{card.tagLine1} {card.tagLine2}”
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Tree accent illustration at bottom for mobile */}
-        <div className="mt-12 flex justify-center opacity-80 pointer-events-none">
-          <img 
-            src="/assets/untitled_design_1_141_9517.png" 
-            alt="Seva Tree" 
-            className="w-full max-w-lg object-contain"
+        {/* Tree & Stacked Cards Container */}
+        <div className="relative w-full max-w-[360px] mx-auto pb-16">
+          
+          {/* Vertical Seva Tree Asset: Untitled design 2 (Node 172:422) */}
+          <div 
+            className="absolute left-1/2 -translate-x-1/2 top-[120px] w-[390px] h-[1550px] pointer-events-none z-0"
+            style={{
+              backgroundImage: "url(/assets/untitled_design_2_172_422.png)",
+              backgroundSize: "contain",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center top"
+            }}
           />
+
+          {/* 4 Cards Stacked with Exact 58px Gap */}
+          <div className="relative z-10 flex flex-col items-center gap-[58px]">
+            {cards.map((card) => (
+              <div
+                key={`mob-${card.id}`}
+                className="w-[292px] h-[324px] rounded-[19px] bg-white shadow-[0px_9.5px_23.9px_rgba(37,42,52,0.12)] overflow-hidden flex flex-col justify-between hover:shadow-2xl transition-all"
+              >
+                {/* Red Top Half with Centered White Icon (Figma 170:330) */}
+                <div className="w-full h-[245px] bg-[#CC444B] flex items-center justify-center p-6">
+                  <img 
+                    src={card.topIcon} 
+                    alt={card.title} 
+                    className="w-[105px] h-[105px] object-contain"
+                  />
+                </div>
+
+                {/* White Bottom Half with Title & Apply Here Pill Button (Figma 170:338) */}
+                <div className="w-full h-[79px] px-4 bg-white flex items-center justify-between gap-2">
+                  <h3 className="font-heading font-extrabold text-[16px] leading-[20px] text-black whitespace-pre-line text-left">
+                    {card.title}
+                  </h3>
+
+                  <button
+                    onClick={card.action}
+                    className="bg-[#CC444B] hover:bg-red-700 text-white rounded-[8px] px-3.5 py-2 flex items-center gap-1.5 shadow-[0px_4px_4px_-4px_rgba(12,12,13,0.05),0px_16px_16px_-8px_rgba(12,12,13,0.1)] hover:shadow-md transition-all cursor-pointer shrink-0"
+                  >
+                    <span className="font-heading font-bold text-[12px] text-white">
+                      Apply here
+                    </span>
+                    <div className="w-[18px] h-[18px] rounded-full bg-white text-[#CC444B] flex items-center justify-center shrink-0">
+                      <ArrowUpRight className="w-3 h-3 stroke-[3]" />
+                    </div>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Root spacing buffer so roots are fully displayed below 4th card */}
+          <div className="h-20" />
+
         </div>
 
       </div>

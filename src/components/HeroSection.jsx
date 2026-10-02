@@ -91,53 +91,56 @@ export default function HeroSection({ onOpenDonate, onOpenGlimpses }) {
       {/* ========================================================================= */}
       {/* MOBILE / TABLET HERO: Exact Figma node 158:417 with Group 3263            */}
       {/* ========================================================================= */}
+      {/* ========================================================================= */}
+      {/* MOBILE / TABLET HERO: Exact Figma node 158:417 / Frame 4078 (158:1794)    */}
+      {/* ========================================================================= */}
       <div className="block lg:hidden px-4 sm:px-6">
-        <div className="w-full bg-[#CC444B] rounded-[32px] p-6 sm:p-8 text-white text-center space-y-6 shadow-2xl relative overflow-hidden">
+        <div className="w-full max-w-[360px] mx-auto bg-[#CC444B] rounded-[28px] py-7 px-5 text-white text-center space-y-5 shadow-2xl relative overflow-hidden">
           
-          {/* Title */}
-          <h1 className="font-heading font-bold text-3xl sm:text-4xl text-white leading-tight tracking-tight whitespace-pre-line">
+          {/* Title (Figma 158:1818): Nunito 24px/26px, 800 bold, line-height 30px */}
+          <h1 className="font-heading font-extrabold text-[25px] leading-[31px] text-white tracking-tight whitespace-pre-line">
             Building Dignity.{"\n"}Creating Opportunity.{"\n"}Empowering Lives.
           </h1>
 
-          {/* Description */}
-          <p className="font-sans font-normal text-sm sm:text-base text-white/95 leading-relaxed max-w-md mx-auto">
+          {/* Description (Figma 141:9542): Nunito Sans 12px, line-height 19px */}
+          <p className="font-sans font-normal text-[12px] leading-[19px] text-white/95 max-w-[291px] mx-auto">
             We work alongside underserved communities to create access to education, livelihoods, rehabilitation, and essential support—helping people build more secure and self-reliant futures.
           </p>
 
-          {/* Buttons Row */}
-          <div className="flex flex-wrap items-center justify-center gap-4 pt-1">
+          {/* Buttons Row (Figma 158:1841 & 158:1846) */}
+          <div className="flex items-center justify-center gap-3 pt-1">
             
-            {/* Donate Now Button */}
+            {/* Donate Now Button (131px x 37px, bg #FFFFFF, rounded 7px) */}
             <button
               onClick={onOpenDonate}
-              className="h-[44px] bg-white text-[#243C4B] rounded-[8px] flex items-center gap-3 px-4 shadow-md hover:bg-gray-50 transition-colors"
+              className="w-[131px] h-[37px] bg-white text-[#243C4B] rounded-[7px] flex items-center justify-between px-3 shadow-[0px_16px_16px_-8px_rgba(12,12,13,0.05)] hover:bg-gray-50 transition-all cursor-pointer"
             >
-              <span className="font-sans font-black text-xs uppercase tracking-wider">
+              <span className="font-sans font-black text-[11px] uppercase tracking-wider text-[#243C4B]">
                 Donate Now
               </span>
               <img 
                 src="/assets/frame_9_141_9547.svg" 
                 alt="Heart" 
-                className="w-7 h-7 object-contain" 
+                className="w-5 h-5 object-contain" 
               />
             </button>
 
-            {/* Glimpses of Seva Button */}
+            {/* Glimpses of Seva Button (139px x 32px) */}
             <button
               onClick={onOpenGlimpses}
-              className="flex items-center gap-2.5 text-white font-heading font-semibold text-sm hover:text-white/80 transition-colors"
+              className="h-[37px] flex items-center gap-2 text-white font-heading font-semibold text-[13px] hover:text-white/80 transition-colors cursor-pointer"
             >
-              <div className="w-8 h-8 rounded-full bg-white text-[#243C4B] flex items-center justify-center shadow">
-                <Play className="w-3.5 h-3.5 fill-[#243C4B] translate-x-0.5" />
+              <div className="w-7 h-7 rounded-full bg-white text-[#243C4B] flex items-center justify-center shadow">
+                <Play className="w-3 h-3 fill-[#243C4B] translate-x-0.5" />
               </div>
-              <span>Glimpses of Seva</span>
+              <span className="underline-offset-2 hover:underline">Glimpses of Seva</span>
             </button>
 
           </div>
 
-          {/* Circular Collage Image */}
-          <div className="pt-4 flex justify-center">
-            <div className="relative w-64 h-64 sm:w-72 sm:h-72 rounded-full overflow-hidden shadow-[0px_0px_15px_rgba(0,0,0,0.5)]">
+          {/* Circular Collage Image (Figma Ellipse 11 / 158:1809: 316px x 316px) */}
+          <div className="pt-2 flex justify-center">
+            <div className="relative w-[280px] h-[280px] rounded-full overflow-hidden shadow-[0px_0px_8px_rgba(0,0,0,0.52)] border-2 border-white/20">
               <img 
                 src="/assets/ellipse_11_141_9539.png" 
                 alt="JSWS Seva Collage" 
@@ -146,20 +149,20 @@ export default function HeroSection({ onOpenDonate, onOpenGlimpses }) {
             </div>
           </div>
 
-          {/* Donors Counter Bottom Center with Group 3263 */}
-          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
-            <div className="w-[180px] h-[72px] shrink-0">
+          {/* Donors Counter Bottom (Figma Group 3266 / 158:1979) */}
+          <div className="pt-2 flex items-center justify-center gap-3">
+            <div className="w-[125px] h-[52px] shrink-0">
               <img 
                 src="/assets/group_3263_158_1851.svg" 
                 alt="Donors Avatars" 
                 className="w-full h-full object-contain" 
               />
             </div>
-            <div className="text-center sm:text-left">
-              <span className="font-heading font-extrabold italic text-white text-sm block leading-tight">
+            <div className="text-left">
+              <span className="font-heading font-black italic text-white text-[15px] block leading-tight">
                 500+ Donors
               </span>
-              <span className="text-white/85 text-xs block leading-tight">
+              <span className="text-white/85 text-[11px] block leading-tight font-sans">
                 supporting seva that creates impact
               </span>
             </div>

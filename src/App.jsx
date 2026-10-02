@@ -21,10 +21,15 @@ export default function App() {
   const [isGlimpsesOpen, setIsGlimpsesOpen] = useState(false);
   const [selectedStory, setSelectedStory] = useState(null);
 
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-white text-gray-900 flex flex-col font-sans selection:bg-[#CC444B] selection:text-white">
-      {/* 1. Top Header (Social Links + Location, Phone, Time) */}
-      <TopHeader />
+      {/* 1. Top Header (Social Links + Location, Phone, Time + Mobile Hamburger) */}
+      <TopHeader 
+        mobileMenuOpen={mobileMenuOpen}
+        onToggleMobileMenu={() => setMobileMenuOpen(!mobileMenuOpen)}
+      />
 
       {/* 2. Main Header (Logo, JSWS Title, Donate Now & Volunteer buttons) */}
       <MainHeader 
@@ -32,11 +37,13 @@ export default function App() {
         onOpenVolunteer={() => setIsVolunteerOpen(true)} 
       />
 
-      {/* 3. Sticky Navbar (Home, Who We Are, What We Do, Our impact, CSR) */}
+      {/* 3. Sticky Navbar (Home, Who We Are, What We Do, Our impact, CSR + Mobile Drawer) */}
       <Navbar 
         activeTab={activeTab} 
         setActiveTab={setActiveTab} 
-        onOpenDonate={() => setIsDonateOpen(true)} 
+        onOpenDonate={() => setIsDonateOpen(true)}
+        mobileMenuOpen={mobileMenuOpen}
+        setMobileMenuOpen={setMobileMenuOpen}
       />
 
       {/* 4. Main Content Sections matching Figma */}
