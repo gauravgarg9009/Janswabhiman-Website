@@ -8,6 +8,8 @@ import ImpactCounterGrid from './components/ImpactCounterGrid';
 import OurProjectsSection from './components/OurProjectsSection';
 import CausesSection from './components/CausesSection';
 import GetInvolvedSection from './components/GetInvolvedSection';
+import GlimpsesSection from './components/GlimpsesSection';
+import SitewideCtaSection from './components/SitewideCtaSection';
 import Footer from './components/Footer';
 
 // Modals
@@ -309,10 +311,20 @@ export default function App() {
               onNavigateToBlog={() => navigateTo('stories')}
             />
 
+            {/* Glimpses of Seva / Photo Preview Grid */}
+            <GlimpsesSection 
+              onNavigateToGallery={() => navigateTo('glimpses')}
+            />
+
             {/* Be part of the change / Get Involved */}
             <GetInvolvedSection 
               onOpenDonate={() => setIsDonateOpen(true)}
               onOpenVolunteer={() => navigateTo('volunteer')}
+            />
+
+            {/* Sitewide Seva CTA Banner */}
+            <SitewideCtaSection 
+              onOpenDonate={() => setIsDonateOpen(true)}
             />
           </>
         )}
