@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function MainHeader({ onOpenDonate, onOpenVolunteer }) {
+export default function MainHeader({ onOpenDonate, onOpenVolunteer, onNavigateHome }) {
   return (
     <div className="w-full bg-white border-y border-[#CC444B] shadow-figma-card py-3 sm:py-4 px-4 sm:px-6 md:px-16">
       <div className="max-w-[1440px] mx-auto flex justify-between items-center">
@@ -8,7 +8,10 @@ export default function MainHeader({ onOpenDonate, onOpenVolunteer }) {
         {/* Left: Logo & Organization Title (Group 3259 on Desktop / Group 3260 on Mobile) */}
         <div 
           className="flex items-center gap-2.5 sm:gap-4 cursor-pointer"
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          onClick={() => {
+            if (onNavigateHome) onNavigateHome();
+            else window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
         >
           <img 
             src="/assets/jsws_logo_v2_1_141_10045.png" 

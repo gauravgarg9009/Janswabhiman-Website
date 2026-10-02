@@ -1,6 +1,7 @@
 import React from 'react';
+import { ArrowRight } from 'lucide-react';
 
-export default function ImpactCounterGrid() {
+export default function ImpactCounterGrid({ onOpenImpactPage }) {
   const metrics = [
     {
       number: "2,000+",
@@ -110,6 +111,18 @@ export default function ImpactCounterGrid() {
             </div>
           ))}
         </div>
+
+        {onOpenImpactPage && (
+          <div className="pt-4 flex justify-center">
+            <button
+              onClick={onOpenImpactPage}
+              className="inline-flex items-center gap-2.5 bg-[#CC444B] hover:bg-red-700 text-white font-heading font-bold text-sm sm:text-base px-6 py-3 rounded-full shadow-md hover:shadow-lg transition-all cursor-pointer group"
+            >
+              <span>View Full Impact Report & Stories</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </button>
+          </div>
+        )}
 
       </div>
     </section>

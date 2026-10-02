@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function Footer({ onOpenDonate, onOpenVolunteer, setActiveTab }) {
+export default function Footer({ onOpenDonate, onOpenVolunteer, setActiveTab, navigateTo }) {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
@@ -13,11 +13,15 @@ export default function Footer({ onOpenDonate, onOpenVolunteer, setActiveTab }) 
     }
   };
 
-  const handleNav = (id) => {
-    setActiveTab(id);
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+  const handleNav = (target, anchor) => {
+    if (navigateTo) {
+      navigateTo(target, anchor);
+    } else {
+      if (setActiveTab) setActiveTab(target);
+      const element = document.getElementById(anchor || target);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
@@ -55,33 +59,38 @@ export default function Footer({ onOpenDonate, onOpenVolunteer, setActiveTab }) 
             </h4>
             <ul className="space-y-2 text-sm text-gray-300 font-sans">
               <li>
-                <button onClick={() => handleNav('home')} className="hover:text-white transition-colors">
+                <button onClick={() => handleNav('home')} className="hover:text-white transition-colors cursor-pointer">
                   Home
                 </button>
               </li>
               <li>
-                <button onClick={() => handleNav('whoweare')} className="hover:text-white transition-colors">
+                <button onClick={() => handleNav('about')} className="hover:text-white transition-colors cursor-pointer">
                   About Us
                 </button>
               </li>
               <li>
-                <button onClick={() => handleNav('projects')} className="hover:text-white transition-colors">
+                <button onClick={() => handleNav('why-us')} className="hover:text-white transition-colors cursor-pointer">
+                  Why Us
+                </button>
+              </li>
+              <li>
+                <button onClick={() => handleNav('home', 'projects')} className="hover:text-white transition-colors cursor-pointer">
                   What We Do
                 </button>
               </li>
               <li>
-                <button onClick={() => handleNav('impact')} className="hover:text-white transition-colors">
+                <button onClick={() => handleNav('impact')} className="hover:text-white transition-colors cursor-pointer">
                   Our Impact
                 </button>
               </li>
               <li>
-                <button onClick={() => handleNav('causes')} className="hover:text-white transition-colors">
-                  Our Stories
+                <button onClick={() => handleNav('glimpses')} className="hover:text-white transition-colors cursor-pointer">
+                  Glimpses of Seva
                 </button>
               </li>
               <li>
-                <button onClick={() => handleNav('home')} className="hover:text-white transition-colors">
-                  Glimpses of Seva
+                <button onClick={() => handleNav('home', 'causes')} className="hover:text-white transition-colors cursor-pointer">
+                  Our Stories
                 </button>
               </li>
             </ul>
