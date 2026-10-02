@@ -7,107 +7,135 @@ export default function HeroSection({ onOpenDonate, onOpenGlimpses }) {
       id: 'saraswati',
       tag: "Saraswati-Free Education for Slum Children",
       title: "Knowledge With Dignity.\nLearning With Purpose.",
-      desc: "Free, holistic education for children in slum communities and Pak Hindu refugee camps across Jodhpur, Jaisalmer, and Delhi NCR.",
+      desc: "Bringing quality education, values and opportunity to children in underserved communities across Bharat.",
       image: "/images/home/slider/saraswati-children.jpg",
-      sanskrit: "अविद्यातिमिरभेदिनी विद्या"
+      sanskrit: "अविद्यातिमिरभेदिनी विद्या",
+      href: "/saraswati"
     },
     {
       id: 'women-empowerment',
       tag: "Women Empowerment",
-      title: "Dignity As Birthright.\nStrength In Sisterhood.",
-      desc: "Empowering daughters through Samuhik Vivah, Kanya Poojan, vocational self-reliance, and honoring Shakti across Bharat.",
+      title: "Together We Empower.\nTogether We Transform.",
+      desc: "Creating opportunities for women and daughters through Samuhik Vivah, Kanya Poojan, vocational self-reliance, and honoring Shakti.",
       image: "/images/home/slider/women-empowerment.webp",
-      sanskrit: "न उद्धार्या — स्वयमेव शक्तिः"
+      sanskrit: "न उद्धार्या — स्वयमेव शक्तिः",
+      href: "/women-empowerment"
     },
     {
-      id: 'pak-hindu',
+      id: 'pak-hindu-rehabilitation',
       tag: "Pak Hindu Refugees Rehabilitation",
-      title: "From Persecution To Shelter.\nFrom Despair To Dignity.",
-      desc: "Providing waterproof shelters, education, and livelihood support to refugee families rebuilding their lives with honor in Bharat.",
+      title: "A Home Of Hope.\nA Life Of Respect.",
+      desc: "Helping Pak Hindu refugee families rebuild with shelter, education, and lasting dignity across Jodhpur, Jaisalmer, and Delhi NCR.",
       image: "/images/home/slider/pak-hindu-rehabilitation-hero.webp",
-      sanskrit: "शरणं प्रपन्नानां रक्षणम्"
+      sanskrit: "शरणं प्रपन्नानां रक्षणम्",
+      href: "/pak-hindu-refugees-rehabilitation"
     },
     {
       id: 'gauseva',
       tag: "Gauseva & Animal Welfare",
-      title: "Compassion For Every Jeev.\nHealing On The Streets.",
-      desc: "Dedicated ambulance rescues, 24/7 emergency medical treatment, and compassionate care for injured Gaumatas and animals.",
+      title: "Compassion In Action.\nCare For Every Life.",
+      desc: "Rescuing, healing, and protecting cows with 24/7 dedicated ambulance rescues and emergency medical treatment.",
       image: "/images/home/slider/gauseva.png",
-      sanskrit: "गावो विश्वस्य मातरः"
+      sanskrit: "गावो विश्वस्य मातरः",
+      href: "/gauseva-gaushala-animal-welfare"
     },
     {
       id: 'gaushala',
       tag: "Gaushala Sanctuary",
-      title: "Sacred Haven of Care.\nWhere Dharma Stands Guard.",
-      desc: "Sanctuary shelter, nutritious fodder, and lifelong loving care for over 100 rescued and abandoned cows in Noida.",
+      title: "Safe Shelter.\nLifelong Care.",
+      desc: "Building and sustaining sacred havens where over 100 rescued and abandoned cattle receive food, shelter, and lifelong medical care.",
       image: "/images/home/slider/gaushala-hero.webp",
-      sanskrit: "सुरभिसेवा परमो धर्मः"
+      sanskrit: "सुरभिसेवा परमो धर्मः",
+      href: "/gaushala"
     },
     {
       id: 'tribal-welfare',
       tag: "Tribal Welfare & Heritage",
-      title: "Restoring Cultural Pride.\nUplifting Ancient Roots.",
-      desc: "Community langars, clothes distribution, sports tournaments, and Sanatan sanskars across remote tribal villages.",
+      title: "Honouring Roots.\nRestoring Dignity.",
+      desc: "Supporting tribal families through culture, care, community langars, clothes distribution, and Sanatan sanskars.",
       image: "/images/home/slider/tribal-welfare.webp",
-      sanskrit: "जनजाति गौरवम् राष्ट्रस्य आधारः"
+      sanskrit: "जनजाति गौरवम् राष्ट्रस्य आधारः",
+      href: "/tribal-welfare"
     },
     {
       id: 'relief-work',
       tag: "Emergency & Disaster Relief",
-      title: "When Crisis Strikes,\nDharma Walks In.",
-      desc: "Immediate flood response, warm blanket drives, dry ration kits, and medical relief for families in sudden distress.",
+      title: "When Crisis Strikes.\nWe Stand Ready.",
+      desc: "Delivering timely relief — warm blankets, flood response, dry rations, and medical care — when communities need it most.",
       image: "/images/home/slider/relief-work.webp",
-      sanskrit: "आपत्काले सेवा परमो धर्मः"
+      sanskrit: "आपत्काले सेवा परमो धर्मः",
+      href: "/relief-work"
     }
   ];
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const [slideDirection, setSlideDirection] = useState('next');
-  const [isAnimating, setIsAnimating] = useState(false);
-  const autoPlayRef = useRef(null);
+  const [isPaused, setIsPaused] = useState(false);
+  const touchStartRef = useRef(null);
 
-  // Auto-play slider moving left to right every 5 seconds
+  // Auto-play interval: 3500ms matching test2.janswabhiman.org
   useEffect(() => {
-    autoPlayRef.current = setInterval(() => {
-      handleNext();
-    }, 5000);
+    if (isPaused) return;
 
-    return () => {
-      if (autoPlayRef.current) clearInterval(autoPlayRef.current);
-    };
-  }, [currentSlide]);
+    const timer = setInterval(() => {
+      setSlideDirection('next');
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 3500);
 
-  const resetTimer = () => {
-    if (autoPlayRef.current) {
-      clearInterval(autoPlayRef.current);
-      autoPlayRef.current = setInterval(() => {
-        handleNext();
-      }, 5000);
-    }
-  };
+    return () => clearInterval(timer);
+  }, [isPaused, currentSlide, slides.length]);
 
   const handleNext = () => {
-    if (isAnimating) return;
-    setIsAnimating(true);
     setSlideDirection('next');
     setCurrentSlide((prev) => (prev + 1) % slides.length);
-    setTimeout(() => setIsAnimating(false), 600);
-    resetTimer();
   };
 
   const handlePrev = () => {
-    if (isAnimating) return;
-    setIsAnimating(true);
     setSlideDirection('prev');
     setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
-    setTimeout(() => setIsAnimating(false), 600);
-    resetTimer();
+  };
+
+  // Touch handlers for mobile swipe
+  const handleTouchStart = (e) => {
+    const touch = e.touches[0];
+    if (touch) {
+      touchStartRef.current = { x: touch.clientX, y: touch.clientY };
+      setIsPaused(true);
+    }
+  };
+
+  const handleTouchEnd = (e) => {
+    const start = touchStartRef.current;
+    touchStartRef.current = null;
+    setIsPaused(false);
+    if (!start) return;
+
+    const touch = e.changedTouches[0];
+    if (!touch) return;
+
+    const dx = touch.clientX - start.x;
+    const dy = touch.clientY - start.y;
+    // Horizontal swipe threshold: 40px
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+      if (dx < 0) {
+        handleNext();
+      } else {
+        handlePrev();
+      }
+    }
   };
 
   const active = slides[currentSlide];
 
   return (
-    <section id="home" className="w-full bg-white pt-6 md:pt-8 pb-8 md:pb-12 px-0 md:px-6 lg:px-0 overflow-hidden select-none">
+    <section 
+      id="home" 
+      className="w-full bg-white pt-4 md:pt-6 pb-6 md:pb-10 px-0 md:px-4 lg:px-0 overflow-hidden select-none"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
       
       {/* ========================================================================= */}
       {/* DESKTOP HERO: Auto-Moving Left-to-Right Slider with Exact Figma Container */}
@@ -123,41 +151,39 @@ export default function HeroSection({ onOpenDonate, onOpenGlimpses }) {
           />
         </div>
 
-        {/* Dynamic Background Image inside the right circular/oval area of the hero */}
-        <div className="absolute right-[115px] top-[32px] w-[540px] h-[480px] z-10 overflow-hidden rounded-[32px] pointer-events-none opacity-85">
-          <div className="relative w-full h-full">
-            {slides.map((s, idx) => (
-              <img
-                key={s.id}
-                src={s.image}
-                alt={s.tag}
-                className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out transform ${
-                  idx === currentSlide 
-                    ? 'opacity-100 scale-100 translate-x-0' 
-                    : idx < currentSlide 
-                    ? 'opacity-0 scale-105 -translate-x-full' 
-                    : 'opacity-0 scale-105 translate-x-full'
-                }`}
-              />
+        {/* Dynamic Image Slider inside Figma Ellipse 11 (node 141:9539: left 811px, top 49px, 552x552) */}
+        <div className="absolute left-[811px] top-[49px] w-[552px] h-[552px] rounded-full overflow-hidden shadow-[0px_0px_15.2px_0px_rgba(0,0,0,0.52)] z-10 pointer-events-none bg-black/10">
+          <div 
+            className="flex w-full h-full transition-transform duration-700 ease-in-out"
+            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+          >
+            {slides.map((s) => (
+              <div key={s.id} className="w-full h-full shrink-0 relative">
+                <img
+                  src={s.image}
+                  alt={s.tag}
+                  className="w-full h-full object-cover object-center"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#CC444B]/35 via-transparent to-black/20" />
+              </div>
             ))}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#CC444B] via-[#CC444B]/20 to-transparent" />
           </div>
         </div>
 
         {/* Interactive Overlay: slider-content (Figma node 141:9540) */}
-        <div className="absolute left-[99px] top-[34px] w-[700px] h-[420px] flex flex-col justify-between items-start text-left z-20">
+        <div className="absolute left-[99px] top-[34px] w-[700px] h-[425px] flex flex-col justify-between items-start text-left z-20">
           
           {/* Sanskrit & Category Tag with transition */}
           <div className="space-y-1.5 overflow-hidden">
             <div 
               key={`tag-${currentSlide}`}
-              className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/30 animate-in fade-in slide-in-from-left-4 duration-500"
+              className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/30 animate-hero-slide"
             >
               <span className="font-heading font-extrabold text-[11px] uppercase tracking-widest text-amber-200">
                 {active.tag}
               </span>
               {active.sanskrit && (
-                <span className="text-white/80 text-[11px] font-sans italic border-l border-white/30 pl-2">
+                <span className="text-white/90 text-[11px] font-sans italic border-l border-white/30 pl-2">
                   "{active.sanskrit}"
                 </span>
               )}
@@ -166,7 +192,7 @@ export default function HeroSection({ onOpenDonate, onOpenGlimpses }) {
             {/* Title with smooth sliding animation */}
             <h1 
               key={`title-${currentSlide}`}
-              className="font-heading font-black text-[52px] leading-[62px] text-white tracking-tight whitespace-pre-line animate-in fade-in slide-in-from-left-6 duration-600 drop-shadow-md"
+              className="font-heading font-black text-[50px] leading-[60px] text-white tracking-tight whitespace-pre-line drop-shadow-md animate-hero-slide"
             >
               {active.title}
             </h1>
@@ -175,7 +201,7 @@ export default function HeroSection({ onOpenDonate, onOpenGlimpses }) {
           {/* Description */}
           <p 
             key={`desc-${currentSlide}`}
-            className="font-sans font-normal text-[17px] leading-[28px] text-white/95 max-w-[580px] animate-in fade-in slide-in-from-left-4 duration-500"
+            className="font-sans font-normal text-[17px] leading-[28px] text-white/95 max-w-[580px] animate-hero-slide"
           >
             {active.desc}
           </p>
@@ -219,20 +245,19 @@ export default function HeroSection({ onOpenDonate, onOpenGlimpses }) {
           <div className="flex items-center gap-4 pt-2">
             
             {/* Pill indicators for all 7 slides */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2" role="tablist" aria-label="Slide indicators">
               {slides.map((s, idx) => (
                 <button
                   key={s.id}
-                  onClick={() => {
-                    setCurrentSlide(idx);
-                    resetTimer();
-                  }}
+                  role="tab"
+                  aria-selected={currentSlide === idx}
+                  onClick={() => setCurrentSlide(idx)}
                   className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
                     currentSlide === idx 
-                      ? 'w-8 bg-white shadow-sm' 
+                      ? 'w-8 bg-[#D6EEF7] shadow-sm' 
                       : 'w-2 bg-white/40 hover:bg-white/70'
                   }`}
-                  aria-label={`Go to slide ${idx + 1}`}
+                  aria-label={`Show ${s.tag}`}
                   title={s.tag}
                 />
               ))}
@@ -241,16 +266,18 @@ export default function HeroSection({ onOpenDonate, onOpenGlimpses }) {
             {/* Left / Right Arrow Buttons */}
             <div className="flex items-center gap-1.5 ml-3">
               <button
+                type="button"
                 onClick={handlePrev}
-                className="w-7 h-7 rounded-full bg-black/25 hover:bg-black/50 text-white flex items-center justify-center transition-all cursor-pointer"
-                aria-label="Previous Slide"
+                className="w-8 h-8 rounded-full bg-black/30 hover:bg-black/60 text-white flex items-center justify-center transition-all cursor-pointer backdrop-blur-xs border border-white/20"
+                aria-label="Previous slide"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
               <button
+                type="button"
                 onClick={handleNext}
-                className="w-7 h-7 rounded-full bg-black/25 hover:bg-black/50 text-white flex items-center justify-center transition-all cursor-pointer"
-                aria-label="Next Slide"
+                className="w-8 h-8 rounded-full bg-black/30 hover:bg-black/60 text-white flex items-center justify-center transition-all cursor-pointer backdrop-blur-xs border border-white/20"
+                aria-label="Next slide"
               >
                 <ChevronRight className="w-4 h-4" />
               </button>
@@ -280,31 +307,49 @@ export default function HeroSection({ onOpenDonate, onOpenGlimpses }) {
       <div className="block lg:hidden px-3 sm:px-6">
         <div className="relative w-full max-w-[360px] mx-auto space-y-3">
           
-          {/* Main Mobile Card with Sliding Background */}
+          {/* Main Mobile Card with Horizontal Sliding Background */}
           <div className="relative w-full rounded-[28px] overflow-hidden bg-[#CC444B] text-white p-5 shadow-xl text-left space-y-3">
             
             {/* Tag */}
-            <div className="inline-block bg-white/20 backdrop-blur-xs px-2.5 py-1 rounded-full text-[10px] font-heading font-extrabold uppercase tracking-wider text-amber-200">
+            <div 
+              key={`mob-tag-${currentSlide}`}
+              className="inline-block bg-white/20 backdrop-blur-xs px-2.5 py-1 rounded-full text-[10px] font-heading font-extrabold uppercase tracking-wider text-amber-200 animate-hero-slide"
+            >
               {active.tag}
             </div>
 
             {/* Title */}
-            <h1 className="font-heading font-black text-2xl leading-tight text-white whitespace-pre-line drop-shadow-sm min-h-[60px]">
+            <h1 
+              key={`mob-title-${currentSlide}`}
+              className="font-heading font-black text-2xl leading-tight text-white whitespace-pre-line drop-shadow-sm min-h-[60px] animate-hero-slide"
+            >
               {active.title}
             </h1>
 
-            {/* Background Photo Window */}
-            <div className="w-full h-40 rounded-2xl overflow-hidden shadow-inner relative bg-black/10">
-              <img 
-                src={active.image} 
-                alt={active.tag} 
-                className="w-full h-full object-cover animate-in fade-in duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+            {/* Horizontal Sliding Photo Window */}
+            <div className="w-full h-44 rounded-2xl overflow-hidden shadow-inner relative bg-black/10">
+              <div 
+                className="flex w-full h-full transition-transform duration-700 ease-in-out"
+                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+              >
+                {slides.map((s) => (
+                  <div key={s.id} className="w-full h-full shrink-0 relative">
+                    <img 
+                      src={s.image} 
+                      alt={s.tag} 
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* Description */}
-            <p className="font-sans text-xs text-white/95 leading-relaxed line-clamp-3">
+            <p 
+              key={`mob-desc-${currentSlide}`}
+              className="font-sans text-xs text-white/95 leading-relaxed line-clamp-3 animate-hero-slide"
+            >
               {active.desc}
             </p>
 
@@ -312,7 +357,7 @@ export default function HeroSection({ onOpenDonate, onOpenGlimpses }) {
             <div className="pt-2 flex items-center justify-between gap-3">
               <button
                 onClick={onOpenDonate}
-                className="flex-1 bg-white hover:bg-gray-100 text-[#243C4B] font-heading font-bold text-xs py-2.5 px-4 rounded-xl shadow-md flex items-center justify-center gap-1.5 transition-all"
+                className="flex-1 bg-white hover:bg-gray-100 text-[#243C4B] font-heading font-bold text-xs py-2.5 px-4 rounded-xl shadow-md flex items-center justify-center gap-1.5 transition-all cursor-pointer"
               >
                 <span>Donate Now</span>
                 <Heart className="w-3.5 h-3.5 text-[#CC444B] fill-[#CC444B]" />
@@ -320,7 +365,7 @@ export default function HeroSection({ onOpenDonate, onOpenGlimpses }) {
 
               <button
                 onClick={onOpenGlimpses}
-                className="flex-1 bg-white/20 hover:bg-white/30 text-white font-heading font-bold text-xs py-2.5 px-3 rounded-xl flex items-center justify-center gap-1.5 transition-all"
+                className="flex-1 bg-white/20 hover:bg-white/30 text-white font-heading font-bold text-xs py-2.5 px-3 rounded-xl flex items-center justify-center gap-1.5 transition-all cursor-pointer"
               >
                 <Play className="w-3 h-3 fill-white" />
                 <span>Glimpses</span>
@@ -329,13 +374,15 @@ export default function HeroSection({ onOpenDonate, onOpenGlimpses }) {
 
             {/* Mobile Slider Indicators & Arrows */}
             <div className="pt-2 flex items-center justify-between">
-              <div className="flex items-center gap-1.5">
+              <div className="flex items-center gap-1.5" role="tablist" aria-label="Slide indicators">
                 {slides.map((s, idx) => (
                   <button
                     key={s.id}
+                    role="tab"
+                    aria-selected={currentSlide === idx}
                     onClick={() => setCurrentSlide(idx)}
-                    className={`h-1.5 rounded-full transition-all ${
-                      currentSlide === idx ? 'w-5 bg-white' : 'w-1.5 bg-white/40'
+                    className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                      currentSlide === idx ? 'w-5 bg-[#D6EEF7]' : 'w-1.5 bg-white/40'
                     }`}
                     aria-label={`Slide ${idx + 1}`}
                   />
@@ -344,16 +391,18 @@ export default function HeroSection({ onOpenDonate, onOpenGlimpses }) {
 
               <div className="flex items-center gap-1">
                 <button
+                  type="button"
                   onClick={handlePrev}
-                  className="w-6 h-6 rounded-full bg-black/20 text-white flex items-center justify-center"
-                  aria-label="Previous"
+                  className="w-7 h-7 rounded-full bg-black/25 hover:bg-black/50 text-white flex items-center justify-center transition-all cursor-pointer"
+                  aria-label="Previous slide"
                 >
                   <ChevronLeft className="w-3.5 h-3.5" />
                 </button>
                 <button
+                  type="button"
                   onClick={handleNext}
-                  className="w-6 h-6 rounded-full bg-black/20 text-white flex items-center justify-center"
-                  aria-label="Next"
+                  className="w-7 h-7 rounded-full bg-black/25 hover:bg-black/50 text-white flex items-center justify-center transition-all cursor-pointer"
+                  aria-label="Next slide"
                 >
                   <ChevronRight className="w-3.5 h-3.5" />
                 </button>
