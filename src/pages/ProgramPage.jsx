@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowLeft, ArrowUpRight, Heart, Share2, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, Heart, Share2, CheckCircle2, Building, ShieldCheck, Mail } from 'lucide-react';
 import programsData from '../data/programs.json';
 
 export default function ProgramPage({ slug, onOpenDonate, onNavigateHome, onNavigateTo }) {
@@ -77,7 +77,7 @@ export default function ProgramPage({ slug, onOpenDonate, onNavigateHome, onNavi
               </button>
 
               <button
-                onClick={() => onNavigateTo('csr')}
+                onClick={() => onNavigateTo ? onNavigateTo('csr') : null}
                 className="bg-white/10 hover:bg-white/20 text-white border border-white/30 font-heading font-bold text-sm sm:text-base px-6 py-3.5 rounded-full transition-all cursor-pointer"
               >
                 <span>CSR Partnership</span>
@@ -87,7 +87,7 @@ export default function ProgramPage({ slug, onOpenDonate, onNavigateHome, onNavi
 
           {/* Background Illustration / Photo */}
           {program.heroImage && (
-            <div className="absolute right-0 top-0 w-full lg:w-1/2 h-full opacity-20 lg:opacity-35 pointer-events-none">
+            <div className="absolute right-0 top-0 w-full lg:w-1/2 h-full opacity-25 lg:opacity-40 pointer-events-none">
               <img 
                 src={program.heroImage} 
                 alt={program.title} 
@@ -103,7 +103,7 @@ export default function ProgramPage({ slug, onOpenDonate, onNavigateHome, onNavi
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
           {/* Left Column: Full Content */}
-          <div className="lg:col-span-8 space-y-8 text-left">
+          <div className="lg:col-span-8 space-y-10 text-left">
             
             {/* Story Paragraphs */}
             <div className="space-y-6 text-gray-800 font-sans text-base sm:text-lg leading-[32px]">
@@ -139,6 +139,68 @@ export default function ProgramPage({ slug, onOpenDonate, onNavigateHome, onNavi
               </div>
             )}
 
+            {/* Mentors Section (For Saraswati & programs with mentors) */}
+            {program.mentors && program.mentors.length > 0 && (
+              <div className="pt-10 border-t border-gray-100 space-y-6">
+                <div>
+                  <span className="text-xs font-heading font-bold uppercase tracking-widest text-[#CC444B]">
+                    Guiding Wisdom
+                  </span>
+                  <h3 className="font-heading font-black text-2xl sm:text-3xl text-gray-900 mt-1">
+                    Our Mentors & Patrons
+                  </h3>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {program.mentors.map((m, idx) => (
+                    <div key={idx} className="bg-white rounded-2xl border border-gray-200 p-5 shadow-sm hover:shadow-md transition-all flex flex-col items-center text-center space-y-3">
+                      <div className="w-24 h-24 rounded-full overflow-hidden shadow-md border-2 border-[#CC444B]/20">
+                        <img src={m.image} alt={m.name} className="w-full h-full object-cover object-top" />
+                      </div>
+                      <div>
+                        <h4 className="font-heading font-black text-lg text-gray-900 leading-snug">{m.name}</h4>
+                        <span className="text-xs font-semibold text-[#CC444B] block mt-0.5">{m.role}</span>
+                      </div>
+                      <p className="font-sans text-xs text-gray-600 leading-relaxed">
+                        {m.bio}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Direct Bank Transfer Support Box */}
+            <div className="p-8 bg-gradient-to-br from-slate-900 to-slate-800 text-white rounded-3xl shadow-xl space-y-4">
+              <div className="flex items-center gap-3">
+                <Building className="w-6 h-6 text-amber-400" />
+                <h3 className="font-heading font-black text-2xl text-white">
+                  Direct Bank Transfer Details
+                </h3>
+              </div>
+              <p className="text-sm text-slate-300">
+                You can also transfer directly via NEFT / RTGS / IMPS to our official registered society account:
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2 text-sm font-sans">
+                <div className="p-4 bg-white/10 rounded-xl">
+                  <span className="text-xs text-slate-400 block">Beneficiary Name</span>
+                  <strong className="text-white text-base">Jan Swabhiman Welfare Society</strong>
+                </div>
+                <div className="p-4 bg-white/10 rounded-xl">
+                  <span className="text-xs text-slate-400 block">Account Number & Bank</span>
+                  <strong className="text-white text-base">IDFC FIRST Bank, Barakhamba Rd</strong>
+                </div>
+                <div className="p-4 bg-white/10 rounded-xl">
+                  <span className="text-xs text-slate-400 block">IFSC Code</span>
+                  <strong className="text-amber-300 font-mono text-base">IDFB0020101</strong>
+                </div>
+              </div>
+              <p className="text-xs text-slate-400 pt-2 flex items-center gap-2">
+                <Mail className="w-4 h-4 text-amber-400" />
+                Kindly email transaction details and PAN to <strong>mailus@janswabhiman.org</strong> for 80G tax exemption receipt.
+              </p>
+            </div>
+
             {/* Photo Gallery Grid for this Program */}
             {program.images && program.images.length > 0 && (
               <div className="pt-8 border-t border-gray-100 space-y-6">
@@ -146,7 +208,7 @@ export default function ProgramPage({ slug, onOpenDonate, onNavigateHome, onNavi
                   Glimpses from the Ground
                 </h3>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                  {program.images.slice(0, 6).map((img, idx) => (
+                  {program.images.slice(0, 9).map((img, idx) => (
                     <div key={idx} className="rounded-2xl overflow-hidden shadow-sm aspect-video bg-gray-100">
                       <img 
                         src={img} 
@@ -199,7 +261,7 @@ export default function ProgramPage({ slug, onOpenDonate, onNavigateHome, onNavi
                 {programsData.filter(p => p.slug !== slug).map((other) => (
                   <li key={other.slug}>
                     <button
-                      onClick={() => onNavigateTo(`program-${other.slug}`)}
+                      onClick={() => onNavigateTo ? onNavigateTo(`program-${other.slug}`) : null}
                       className="w-full text-left text-sm font-sans font-semibold text-gray-700 hover:text-[#CC444B] flex items-center justify-between py-1 transition-colors cursor-pointer"
                     >
                       <span className="line-clamp-1">{other.title}</span>

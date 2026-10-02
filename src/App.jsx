@@ -188,6 +188,7 @@ export default function App() {
           <AboutUsPage 
             onOpenDonate={() => setIsDonateOpen(true)}
             onNavigateHome={() => navigateTo('home')}
+            onNavigateTo={navigateTo}
           />
         )}
 
@@ -195,6 +196,7 @@ export default function App() {
           <WhyUsPage 
             onOpenDonate={() => setIsDonateOpen(true)}
             onNavigateHome={() => navigateTo('home')}
+            onNavigateTo={navigateTo}
           />
         )}
 
@@ -209,6 +211,7 @@ export default function App() {
           <OurImpactPage 
             onOpenDonate={() => setIsDonateOpen(true)}
             onNavigateHome={() => navigateTo('home')}
+            onNavigateTo={navigateTo}
             onSelectStory={(story) => setSelectedStory(story)}
           />
         )}
