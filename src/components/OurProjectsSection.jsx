@@ -87,23 +87,22 @@ export default function OurProjectsSection({ onSelectStory, onNavigateToProgram 
             <div
               key={project.slug}
               onClick={() => handleProjectClick(project)}
-              className="relative rounded-[24px] overflow-hidden p-6 text-white shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 text-left flex flex-col justify-between cursor-pointer border border-white/20 group min-h-[350px]"
+              className="relative rounded-[26px] overflow-hidden p-4 text-white shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 text-left flex flex-col justify-between cursor-pointer border border-white/20 group min-h-[380px]"
             >
-              {/* Background Image across Whole Box */}
+              {/* Full-bleed Background Image */}
               <div className="absolute inset-0 z-0 overflow-hidden">
                 <img
                   src={project.cardImage || project.heroImage}
                   alt={project.title}
-                  className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-700 ease-out"
+                  className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-out"
                 />
-                {/* Contrast gradient overlays */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/30 group-hover:via-black/50 transition-colors duration-300" />
-                <div className="absolute inset-0 bg-gradient-to-b from-[#8B1E24]/60 via-transparent to-black/85" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/30 group-hover:via-black/25 transition-colors duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-b from-[#8B1E24]/50 via-transparent to-black/80" />
               </div>
 
-              {/* Top: Authentic Icon Badge */}
-              <div className="relative z-10">
-                <div className="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center p-3 shadow-lg group-hover:scale-110 group-hover:bg-[#CC444B] transition-all duration-300">
+              {/* Floating Top Authentic Icon Badge */}
+              <div className="relative z-10 self-start">
+                <div className="w-13 h-13 rounded-2xl bg-white/20 backdrop-blur-md border border-white/35 flex items-center justify-center p-3 shadow-lg group-hover:scale-110 group-hover:bg-[#CC444B] transition-all duration-300">
                   <img
                     src={project.icon}
                     alt={project.title}
@@ -112,18 +111,16 @@ export default function OurProjectsSection({ onSelectStory, onNavigateToProgram 
                 </div>
               </div>
 
-              {/* Middle: Big, Catchy Mission Title in the Centre */}
-              <div className="relative z-10 my-auto py-4 w-full flex items-center justify-center text-center">
-                <h3 className="font-heading font-black text-2xl lg:text-[25px] text-white text-center leading-tight tracking-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.85)] group-hover:text-red-100 transition-colors">
+              {/* Semi-transparent Frosted Glass Panel */}
+              <div className="relative z-10 bg-black/45 backdrop-blur-xl border border-white/25 rounded-[20px] p-5 shadow-2xl space-y-4 group-hover:border-[#CC444B]/60 group-hover:bg-black/55 transition-all duration-300">
+                <h3 className="font-heading font-black text-xl lg:text-[22px] text-white text-center leading-snug tracking-tight drop-shadow-md group-hover:text-red-100 transition-colors min-h-[52px] flex items-center justify-center">
                   {project.title}
                 </h3>
-              </div>
 
-              {/* Explore Programme Pill Button */}
-              <div className="relative z-10 pt-4">
-                <div className="w-full bg-white text-[#1F2937] group-hover:bg-[#CC444B] group-hover:text-white font-heading font-bold text-xs sm:text-sm px-5 py-3 rounded-full shadow-lg transition-all flex items-center justify-between border border-white/30">
+                {/* Crimson Accent CTA */}
+                <div className="w-full bg-[#CC444B] group-hover:bg-red-600 text-white font-heading font-bold text-xs sm:text-sm px-4 py-2.5 rounded-full shadow-md flex items-center justify-between transition-all group-hover:shadow-lg">
                   <span>Explore Programme</span>
-                  <div className="w-6 h-6 rounded-full bg-[#CC444B] group-hover:bg-white text-white group-hover:text-[#CC444B] flex items-center justify-center transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shadow-xs shrink-0">
+                  <div className="w-6 h-6 rounded-full bg-white text-[#CC444B] flex items-center justify-center shadow-xs shrink-0 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">
                     <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
                   </div>
                 </div>
@@ -166,10 +163,10 @@ export default function OurProjectsSection({ onSelectStory, onNavigateToProgram 
           From education and empowerment to rehabilitation, animal welfare, and emergency relief, explore all seven domains of ground seva.
         </p>
 
-        {/* Mobile Project Card with Full Background Image */}
+        {/* Mobile Project Card with Frosted Glass Overlay */}
         <div
           onClick={() => handleProjectClick(currentMobileProject)}
-          className="relative rounded-[24px] overflow-hidden p-6 text-white shadow-xl flex flex-col justify-between cursor-pointer min-h-[350px] border border-white/20 group"
+          className="relative rounded-[26px] overflow-hidden p-4 text-white shadow-xl flex flex-col justify-between cursor-pointer min-h-[380px] border border-white/20 group"
         >
           {/* Background image across whole mobile box */}
           <div className="absolute inset-0 z-0">
@@ -178,13 +175,13 @@ export default function OurProjectsSection({ onSelectStory, onNavigateToProgram 
               alt={currentMobileProject.title}
               className="w-full h-full object-cover object-center"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/30" />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#8B1E24]/60 via-transparent to-black/85" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/30" />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#8B1E24]/50 via-transparent to-black/80" />
           </div>
 
-          {/* Top: Icon */}
-          <div className="relative z-10">
-            <div className="w-13 h-13 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center p-3 shadow-md">
+          {/* Floating Top Authentic Icon Badge */}
+          <div className="relative z-10 self-start">
+            <div className="w-13 h-13 rounded-2xl bg-white/20 backdrop-blur-md border border-white/35 flex items-center justify-center p-3 shadow-md">
               <img
                 src={currentMobileProject.icon}
                 alt={currentMobileProject.title}
@@ -193,17 +190,16 @@ export default function OurProjectsSection({ onSelectStory, onNavigateToProgram 
             </div>
           </div>
 
-          {/* Middle: Big, Catchy Mission Title in the Centre */}
-          <div className="relative z-10 my-auto py-4 w-full flex items-center justify-center text-center">
-            <h3 className="font-heading font-black text-2xl text-white text-center leading-tight tracking-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.85)]">
+          {/* Semi-transparent Frosted Glass Panel */}
+          <div className="relative z-10 bg-black/45 backdrop-blur-xl border border-white/25 rounded-[20px] p-5 shadow-2xl space-y-4">
+            <h3 className="font-heading font-black text-xl text-white text-center leading-snug tracking-tight drop-shadow-md min-h-[50px] flex items-center justify-center">
               {currentMobileProject.title}
             </h3>
-          </div>
 
-          <div className="relative z-10 pt-4">
-            <div className="w-full bg-white text-[#1F2937] font-heading font-bold text-xs px-5 py-3 rounded-full shadow-lg flex items-center justify-between border border-white/30">
+            {/* Crimson Accent CTA */}
+            <div className="w-full bg-[#CC444B] text-white font-heading font-bold text-xs px-4 py-2.5 rounded-full shadow-md flex items-center justify-between">
               <span>Explore Programme</span>
-              <div className="w-6 h-6 rounded-full bg-[#CC444B] text-white flex items-center justify-center shadow-xs shrink-0">
+              <div className="w-6 h-6 rounded-full bg-white text-[#CC444B] flex items-center justify-center shadow-xs shrink-0">
                 <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
               </div>
             </div>
