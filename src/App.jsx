@@ -273,6 +273,7 @@ export default function App() {
             onOpenDonate={() => setIsDonateOpen(true)}
             onNavigateBack={() => navigateTo('stories')}
             onSelectStory={(story) => navigateTo('story-detail', story.slug)}
+            onNavigateTo={navigateTo}
           />
         )}
 

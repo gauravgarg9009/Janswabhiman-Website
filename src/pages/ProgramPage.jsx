@@ -4,33 +4,38 @@ import {
   ShieldCheck, Mail, Copy, Check, Sparkles, Laptop, BookOpen, 
   HeartPulse, Activity, Users, Briefcase, Flame, GraduationCap, 
   Home, ShoppingBag, FileCheck, Truck, Utensils, HeartHandshake, 
-  LifeBuoy, X, ChevronRight, Award, Compass
+  LifeBuoy, X, ChevronRight, Award, Compass, Wheat, Shield, 
+  Smile, Trophy, Stethoscope, Droplets, Soup, ShieldAlert,
+  Search, ExternalLink, ChevronLeft, ZoomIn
 } from 'lucide-react';
 import programsData from '../data/programs.json';
+import storiesData from '../data/stories.json';
 
 const iconMap = {
   BookOpen, Laptop, Sparkles, HeartPulse, Activity, Users,
   Briefcase, Flame, GraduationCap, ShieldCheck, Home, ShoppingBag,
   FileCheck, Truck, Utensils, Heart, HeartHandshake, LifeBuoy,
-  Award, Compass
+  Award, Compass, Wheat, Shield, Smile, Trophy, Stethoscope,
+  Droplets, Soup, ShieldAlert
 };
 
 export default function ProgramPage({ slug, onOpenDonate, onNavigateHome, onNavigateTo }) {
   const program = programsData.find(p => p.slug === slug) || programsData[0];
   const [copiedField, setCopiedField] = useState(null);
-  const [activeTab, setActiveTab] = useState('overview');
   const [lightboxImage, setLightboxImage] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const handleShare = () => {
     if (navigator.share) {
       navigator.share({
-        title: `${program.title} - Jan Swabhiman Welfare Society`,
-        text: program.subtitle || program.description || program.sanskrit,
+        title: `${program.title} · Jan Swabhiman Welfare Society`,
+        text: program.leadText || program.sanskritTitle,
         url: window.location.href,
       }).catch(() => {});
     } else {
       navigator.clipboard?.writeText(window.location.href);
-      alert('Link copied to clipboard!');
+      setCopiedField('share-link');
+      setTimeout(() => setCopiedField(null), 2000);
     }
   };
 
@@ -40,582 +45,690 @@ export default function ProgramPage({ slug, onOpenDonate, onNavigateHome, onNavi
     setTimeout(() => setCopiedField(null), 2000);
   };
 
-  const scrollToSection = (sectionId) => {
-    setActiveTab(sectionId);
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
+  // Other initiatives for sidebar/bottom
+  const otherPrograms = programsData.filter(p => p.slug !== program.slug);
+
+  // Search filtered stories for sidebar
+  const searchResults = searchQuery.trim() 
+    ? storiesData.filter(s => s.title.toLowerCase().includes(searchQuery.toLowerCase())).slice(0, 4)
+    : [];
 
   return (
-    <div className="w-full bg-[#FCFDFE] text-gray-900 min-h-screen">
+    <div className="w-full bg-[#FAFAFA] text-slate-900 min-h-screen">
       
-      {/* 1. Breadcrumb & Navigation Bar */}
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-16 pt-5 pb-3 flex items-center justify-between border-b border-gray-100">
-        <div className="flex items-center gap-2 text-xs sm:text-sm font-heading font-bold">
-          <button 
-            onClick={onNavigateHome}
-            className="inline-flex items-center gap-1.5 text-gray-500 hover:text-[#CC444B] transition-colors cursor-pointer"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span>Home</span>
-          </button>
-          <span className="text-gray-300">/</span>
-          <span className="text-gray-400">Initiatives</span>
-          <span className="text-gray-300">/</span>
-          <span className="text-[#CC444B] truncate max-w-[180px] sm:max-w-xs">{program.title}</span>
-        </div>
-
-        <button
-          onClick={handleShare}
-          className="inline-flex items-center gap-2 text-xs font-bold text-gray-600 hover:text-black transition-colors px-3 py-1.5 rounded-lg bg-gray-100 hover:bg-gray-200 cursor-pointer"
-        >
-          <Share2 className="w-3.5 h-3.5" />
-          <span className="hidden sm:inline">Share</span>
-        </button>
-      </div>
-
-      {/* 2. Hero Banner */}
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-16 py-6">
-        <div className="relative rounded-[28px] sm:rounded-[36px] overflow-hidden bg-gradient-to-r from-red-950 via-[#CC444B] to-red-900 text-white p-6 sm:p-10 lg:p-14 shadow-2xl">
+      {/* 1. Header Breadcrumbs & Action Bar */}
+      <div className="border-b border-slate-200 bg-white sticky top-[72px] z-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap items-center justify-between gap-3">
           
-          <div className="relative z-10 max-w-3xl space-y-4 sm:space-y-6 text-left">
-            {/* Sanskrit Motto Badge */}
-            {program.sanskrit && (
-              <div className="inline-flex flex-col sm:flex-row items-start sm:items-center gap-2 bg-white/15 backdrop-blur-md px-4 py-2 rounded-xl border border-white/20">
-                <span className="font-heading font-extrabold text-amber-200 text-base sm:text-lg">
-                  "{program.sanskrit}"
-                </span>
-                {program.meaning && (
-                  <span className="text-white/85 text-xs sm:text-sm font-sans italic">
-                    — {program.meaning}
-                  </span>
-                )}
-              </div>
-            )}
-
-            <h1 className="font-heading font-black text-3xl sm:text-5xl lg:text-5xl text-white tracking-tight leading-tight">
-              {program.title}
-            </h1>
-
-            <p className="font-sans text-sm sm:text-lg text-white/95 leading-relaxed max-w-2xl">
-              {program.subtitle || program.description || "Committed to creating lasting ground change through seva, dignity, and empowerment."}
-            </p>
-
-            <div className="pt-2 flex flex-wrap items-center gap-4">
-              <button
-                onClick={onOpenDonate}
-                className="bg-white hover:bg-gray-100 text-[#243C4B] font-heading font-bold text-sm sm:text-base px-7 py-3.5 rounded-full shadow-lg flex items-center gap-2.5 transition-all hover:scale-105 active:scale-95 cursor-pointer"
-              >
-                <span>Support This Seva</span>
-                <Heart className="w-5 h-5 text-[#CC444B] fill-[#CC444B]" />
-              </button>
-
-              <button
-                onClick={() => onNavigateTo ? onNavigateTo('csr') : null}
-                className="bg-white/10 hover:bg-white/20 text-white border border-white/30 font-heading font-bold text-sm sm:text-base px-6 py-3.5 rounded-full transition-all cursor-pointer"
-              >
-                <span>CSR Partnership</span>
-              </button>
-            </div>
-          </div>
-
-          {/* Background Illustration / Photo */}
-          {program.heroImage && (
-            <div className="absolute right-0 top-0 w-full lg:w-1/2 h-full opacity-20 lg:opacity-35 pointer-events-none">
-              <img 
-                src={program.heroImage} 
-                alt={program.title} 
-                className="w-full h-full object-cover object-center"
-              />
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* 3. Impact Stats Bar (Live Numbers) */}
-      {program.stats && program.stats.length > 0 && (
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-16 pb-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100">
-            {program.stats.map((stat, idx) => (
-              <div key={idx} className="text-left border-l-4 border-[#CC444B] pl-4 space-y-1">
-                <span className="font-heading font-black text-2xl sm:text-4xl text-[#CC444B] block tracking-tight">
-                  {stat.value}
-                </span>
-                <span className="font-sans text-xs sm:text-sm font-semibold text-gray-700 block leading-tight">
-                  {stat.label}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* 4. Interactive Section Navigation Pills */}
-      <div className="sticky top-20 z-30 bg-white/95 backdrop-blur-md border-y border-gray-200 shadow-xs">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-16 flex items-center gap-2 overflow-x-auto py-3 no-scrollbar">
-          {[
-            { id: 'overview', label: 'Overview & Story' },
-            { id: 'pillars', label: 'Core Pillars' },
-            { id: 'sponsorship', label: 'Ways to Sponsor (80G)' },
-            ...(program.mentors?.length ? [{ id: 'mentors', label: 'Mentors' }] : []),
-            ...(program.images?.length ? [{ id: 'gallery', label: 'Photo Gallery' }] : []),
-            { id: 'bank', label: 'Bank Transfer' }
-          ].map(tab => (
-            <button
-              key={tab.id}
-              onClick={() => scrollToSection(tab.id)}
-              className={`px-4 py-2 rounded-full font-heading font-bold text-xs sm:text-sm whitespace-nowrap transition-all cursor-pointer ${
-                activeTab === tab.id
-                  ? 'bg-[#CC444B] text-white shadow-sm'
-                  : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
-              }`}
+          <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-slate-600 font-medium overflow-x-auto">
+            <button 
+              onClick={onNavigateHome}
+              className="text-slate-700 hover:text-[#CC444B] transition-colors whitespace-nowrap cursor-pointer"
             >
-              {tab.label}
+              Home
             </button>
-          ))}
+            <ChevronRight className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+            <span className="text-slate-400 whitespace-nowrap">What We Do</span>
+            <ChevronRight className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+            <span className="text-slate-900 font-bold truncate max-w-[200px] sm:max-w-xs">
+              {program.navLabel || program.title}
+            </span>
+          </nav>
+
+          <div className="flex items-center gap-2">
+            <button
+              onClick={handleShare}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 transition cursor-pointer"
+            >
+              <Share2 className="w-3.5 h-3.5 text-slate-600" />
+              <span>{copiedField === 'share-link' ? 'Link Copied!' : 'Share'}</span>
+            </button>
+
+            <button
+              onClick={onOpenDonate}
+              className="inline-flex items-center gap-1 px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#CC444B] hover:bg-red-700 text-white transition shadow-sm cursor-pointer"
+            >
+              <Heart className="w-3.5 h-3.5 fill-white" />
+              <span>Donate</span>
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* 5. Main Content Area */}
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-16 py-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-          
-          {/* Left Column (8 cols): Rich Structured Content */}
-          <div className="lg:col-span-8 space-y-12 text-left">
+      {/* 2. Top Hero Section: Split 2-Column Banner */}
+      <section className="bg-white border-b border-slate-200 py-8 sm:py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
-            {/* SECTION A: Sacred Mantra / Dharmic Inspiration Callout */}
-            {program.mantraBox && (
-              <div className="bg-gradient-to-r from-orange-50 via-amber-50 to-red-50 rounded-3xl p-6 sm:p-8 border border-amber-200/80 shadow-xs relative overflow-hidden">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-amber-200/60 text-[#CC444B] flex items-center justify-center shrink-0">
-                    <Sparkles className="w-6 h-6 fill-[#CC444B]" />
-                  </div>
-                  <div className="space-y-2">
-                    <span className="font-heading font-bold text-xs uppercase tracking-widest text-[#CC444B]">
-                      Dharmic Guiding Shloka · {program.mantraBox.source}
-                    </span>
-                    <h3 className="font-heading font-bold text-xl sm:text-2xl text-gray-900 leading-snug">
-                      "{program.mantraBox.devnagari}"
-                    </h3>
-                    <p className="font-sans text-sm sm:text-base text-gray-700 leading-relaxed italic">
-                      {program.mantraBox.english}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* SECTION B: Overview & Ground Reality Story */}
-            <div id="overview" className="space-y-6 pt-4">
-              <div className="space-y-2">
-                <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#CC444B]" />
-                  <span className="text-xs font-heading font-bold uppercase tracking-widest text-[#CC444B]">
-                    The Ground Reality
-                  </span>
-                </div>
-                <h2 className="font-heading font-black text-3xl sm:text-4xl text-gray-900 tracking-tight">
-                  Why This Mission Exists
-                </h2>
-              </div>
-
-              {program.story ? (
-                <div className="space-y-4">
-                  <div className="bg-white rounded-3xl p-6 sm:p-8 border border-gray-100 shadow-sm space-y-3">
-                    <h3 className="font-heading font-black text-xl text-gray-900 flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-red-400" />
-                      The Deep-Rooted Challenge
-                    </h3>
-                    <p className="font-sans text-base sm:text-lg text-gray-700 leading-relaxed">
-                      {program.story.challenge}
-                    </p>
-                  </div>
-
-                  <div className="bg-red-50/50 rounded-3xl p-6 sm:p-8 border border-red-100 shadow-sm space-y-3">
-                    <h3 className="font-heading font-black text-xl text-[#CC444B] flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-[#CC444B]" />
-                      Our Direct Ground Action
-                    </h3>
-                    <p className="font-sans text-base sm:text-lg text-gray-800 leading-relaxed">
-                      {program.story.action}
-                    </p>
-                  </div>
-
-                  <div className="bg-emerald-50/50 rounded-3xl p-6 sm:p-8 border border-emerald-100 shadow-sm space-y-3">
-                    <h3 className="font-heading font-black text-xl text-emerald-800 flex items-center gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-emerald-600" />
-                      The Transformative Outcome
-                    </h3>
-                    <p className="font-sans text-base sm:text-lg text-gray-800 leading-relaxed">
-                      {program.story.impact}
-                    </p>
-                  </div>
-                </div>
-              ) : (
-                <div className="space-y-4 font-sans text-base sm:text-lg text-gray-800 leading-relaxed">
-                  <p>{program.description}</p>
+            {/* Left Column: Sanskrit Badge, Title, Lead, Stats, and Donation Buttons */}
+            <div className="lg:col-span-7 space-y-6 text-left">
+              
+              {/* Sanskrit Devnagari Badge */}
+              {program.sanskritTitle && (
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-50 border border-orange-200/60 text-[#D95D39] text-xs sm:text-sm font-semibold tracking-wide" lang="sa">
+                  <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+                  <span>{program.sanskritTitle}</span>
                 </div>
               )}
+
+              {/* Main Heading */}
+              <h1 className="font-heading font-black text-3xl sm:text-4xl lg:text-[2.65rem] text-slate-900 tracking-tight leading-[1.18]">
+                {program.title}
+              </h1>
+
+              {/* Lead Text */}
+              <p className="text-base sm:text-lg text-slate-700 font-sans leading-relaxed">
+                {program.leadText}
+              </p>
+
+              {/* Numerical Impact Metrics Bar */}
+              {program.stats && program.stats.length > 0 && (
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 py-2 border-y border-slate-100">
+                  {program.stats.map((st, i) => (
+                    <div key={i} className="text-left space-y-0.5">
+                      <span className="font-heading font-black text-xl sm:text-2xl text-[#CC444B] block tracking-tight">
+                        {st.value}
+                      </span>
+                      <span className="text-[11px] sm:text-xs font-semibold text-slate-600 block leading-tight">
+                        {st.label}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Direct Razorpay Sponsorship Buttons (High-Visibility) */}
+              <div className="space-y-3 pt-2">
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block">
+                  Quick 80G Tax-Exempt Sponsorship Options
+                </span>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  {program.sponsorshipTiers && program.sponsorshipTiers.map((tier, idx) => (
+                    <a
+                      key={idx}
+                      href={tier.rzpUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-between p-3 rounded-xl bg-[#D95D39] hover:bg-[#c24f2d] text-white font-heading font-bold text-xs uppercase tracking-wide transition shadow-sm hover:shadow hover:-translate-y-0.5 group cursor-pointer"
+                    >
+                      <span className="truncate pr-2">{tier.title} – {tier.amountLabel}</span>
+                      <ArrowUpRight className="w-4 h-4 shrink-0 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition" />
+                    </a>
+                  ))}
+                </div>
+
+                {/* Secondary Actions */}
+                <div className="flex flex-wrap items-center gap-2.5 pt-1">
+                  <button
+                    onClick={onOpenDonate}
+                    className="px-4 py-2 rounded-xl border border-slate-300 hover:border-slate-400 bg-white hover:bg-slate-50 text-slate-800 font-heading font-bold text-xs uppercase tracking-wide transition cursor-pointer"
+                  >
+                    Choose Any Custom Amount
+                  </button>
+
+                  <button
+                    onClick={() => onNavigateTo ? onNavigateTo('csr') : window.location.href = '/csr-partnerships'}
+                    className="px-4 py-2 rounded-xl bg-sky-50 hover:bg-sky-100 text-sky-800 border border-sky-200 font-heading font-bold text-xs uppercase tracking-wide transition cursor-pointer"
+                  >
+                    CSR – Partner With Us In A Big Way
+                  </button>
+                </div>
+              </div>
+
             </div>
 
-            {/* SECTION C: Core Operational Pillars */}
-            {program.pillars && program.pillars.length > 0 && (
-              <div id="pillars" className="space-y-6 pt-6">
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#CC444B]" />
-                    <span className="text-xs font-heading font-bold uppercase tracking-widest text-[#CC444B]">
-                      Operational Strategy
-                    </span>
+            {/* Right Column: Hero Cover Photo */}
+            <div className="lg:col-span-5">
+              <div 
+                className="relative rounded-3xl overflow-hidden border border-slate-200 shadow-xl aspect-[4/3] bg-slate-100 cursor-zoom-in group"
+                onClick={() => setLightboxImage(program.heroImage)}
+              >
+                <img 
+                  src={program.heroImage} 
+                  alt={program.title} 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  onError={(e) => {
+                    e.target.src = "/images/janswabhiman-hero.png";
+                  }}
+                />
+                <div className="absolute bottom-3 right-3 bg-black/60 text-white text-xs px-3 py-1.5 rounded-full flex items-center gap-1.5 backdrop-blur-sm pointer-events-none">
+                  <ZoomIn className="w-3.5 h-3.5" />
+                  <span>Enlarge Photo</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 3. Main Body Container with 2-Column Editorial Grid */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          
+          {/* Main Editorial Articles (8 cols) */}
+          <main className="lg:col-span-8 space-y-12 text-left">
+            
+            {/* Sacred Shloka & Inspiration Card */}
+            {program.mantraBox && (
+              <section className="p-6 sm:p-8 rounded-3xl border border-amber-200/70 bg-gradient-to-br from-[#FFFDF8] to-[#FFF9EE] shadow-sm space-y-4">
+                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-800">
+                  <Sparkles className="w-4 h-4 text-amber-600" />
+                  <span>Dharmic Inspiration · {program.mantraBox.source}</span>
+                </div>
+
+                <p className="font-heading font-bold text-lg sm:text-2xl text-slate-900 tracking-tight leading-snug" lang="sa">
+                  "{program.mantraBox.shloka}"
+                </p>
+
+                <p className="font-sans italic text-slate-700 text-sm sm:text-base leading-relaxed border-l-2 border-amber-400 pl-4">
+                  {program.mantraBox.translation}
+                </p>
+
+                {program.introParas && (
+                  <div className="space-y-3 pt-3 text-slate-700 font-sans text-sm sm:text-base leading-relaxed border-t border-amber-100">
+                    {program.introParas.map((p, i) => (
+                      <p key={i}>{p}</p>
+                    ))}
                   </div>
-                  <h2 className="font-heading font-black text-3xl sm:text-4xl text-gray-900 tracking-tight">
-                    Core Initiatives & Pillars
+                )}
+              </section>
+            )}
+
+            {/* Why This Initiative Is Unique */}
+            {program.whyUnique && (
+              <section className="space-y-5">
+                <h2 className="font-heading font-black text-2xl sm:text-3xl text-slate-900 tracking-tight">
+                  {program.whyUnique.title}
+                </h2>
+                
+                <p className="text-base sm:text-lg text-slate-700 leading-relaxed font-sans">
+                  {program.whyUnique.text}
+                </p>
+
+                {program.secondaryImage && (
+                  <div 
+                    className="rounded-2xl overflow-hidden border border-slate-200 shadow-md aspect-[16/9] bg-slate-100 cursor-zoom-in group"
+                    onClick={() => setLightboxImage(program.secondaryImage)}
+                  >
+                    <img 
+                      src={program.secondaryImage} 
+                      alt={program.whyUnique.title} 
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      onError={(e) => {
+                        e.target.src = "/images/janswabhiman-hero.png";
+                      }}
+                    />
+                  </div>
+                )}
+              </section>
+            )}
+
+            {/* Key Pillars / Core Operational Focus Cards */}
+            {program.pillars && program.pillars.length > 0 && (
+              <section className="space-y-6">
+                <div>
+                  <h2 className="font-heading font-black text-2xl sm:text-3xl text-slate-900 tracking-tight">
+                    Our Comprehensive Approach: Nurturing Minds, Body & Soul
                   </h2>
-                  <p className="font-sans text-sm sm:text-base text-gray-600">
-                    How our teams structure and execute daily ground operations for maximum sustainable impact.
+                  <p className="text-sm sm:text-base text-slate-600 mt-1">
+                    Delivering structured, holistic, and transparent ground operations six days a week.
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 pt-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {program.pillars.map((pillar, idx) => {
-                    const IconComp = iconMap[pillar.icon] || CheckCircle2;
+                    const IconComp = iconMap[pillar.icon] || Sparkles;
                     return (
                       <div 
                         key={idx}
-                        className="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all space-y-3 flex flex-col justify-between"
+                        className="p-5 rounded-2xl border border-slate-200 bg-white shadow-sm hover:shadow-md transition space-y-2.5 text-left"
                       >
-                        <div className="space-y-3">
-                          <div className="w-12 h-12 rounded-2xl bg-red-50 text-[#CC444B] flex items-center justify-center">
-                            <IconComp className="w-6 h-6 stroke-[2.2]" />
-                          </div>
-                          <h3 className="font-heading font-extrabold text-xl text-gray-900 leading-snug">
-                            {pillar.title}
-                          </h3>
-                          <p className="font-sans text-sm text-gray-600 leading-relaxed">
-                            {pillar.desc}
-                          </p>
+                        <div className="w-10 h-10 rounded-xl bg-orange-50 border border-orange-100 text-[#D95D39] flex items-center justify-center">
+                          <IconComp className="w-5 h-5" />
                         </div>
+                        <h3 className="font-heading font-bold text-base text-slate-900">
+                          {pillar.title}
+                        </h3>
+                        <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans">
+                          {pillar.desc}
+                        </p>
                       </div>
                     );
                   })}
                 </div>
-              </div>
+              </section>
             )}
 
-            {/* SECTION D: Sponsorship Tiers (Clear 80G Options) */}
-            {program.sponsorshipTiers && program.sponsorshipTiers.length > 0 && (
-              <div id="sponsorship" className="space-y-6 pt-6">
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#CC444B]" />
-                    <span className="text-xs font-heading font-bold uppercase tracking-widest text-[#CC444B]">
-                      Direct Support Options
-                    </span>
-                  </div>
-                  <h2 className="font-heading font-black text-3xl sm:text-4xl text-gray-900 tracking-tight">
-                    Sponsor This Seva (80G Tax-Exempted)
-                  </h2>
-                  <p className="font-sans text-sm sm:text-base text-gray-600">
-                    Choose an exact contribution tier. Every single rupee is backed by local verification and an instant online 80G certificate.
-                  </p>
-                </div>
+            {/* Transformation / Before & After Reality */}
+            {program.transformation && (
+              <section className="space-y-6 p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-sm">
+                <h2 className="font-heading font-black text-2xl sm:text-3xl text-slate-900 tracking-tight">
+                  {program.transformation.title}
+                </h2>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-2">
-                  {program.sponsorshipTiers.map((tier, idx) => (
-                    <div 
-                      key={idx}
-                      className={`rounded-3xl p-6 sm:p-7 text-left flex flex-col justify-between transition-all relative ${
-                        tier.popular
-                          ? 'bg-gradient-to-br from-red-950 via-[#CC444B] to-red-900 text-white shadow-xl ring-4 ring-red-100'
-                          : 'bg-white text-gray-900 border border-gray-200 shadow-sm hover:shadow-md'
-                      }`}
-                    >
-                      {tier.popular && (
-                        <div className="absolute top-4 right-4 bg-amber-400 text-gray-950 text-[10px] font-heading font-extrabold uppercase px-2.5 py-1 rounded-full shadow-xs">
-                          Most Impactful
-                        </div>
-                      )}
-
-                      <div className="space-y-3">
-                        <span className={`text-xs font-heading font-bold uppercase tracking-wider block ${tier.popular ? 'text-amber-200' : 'text-[#CC444B]'}`}>
-                          {tier.period}
-                        </span>
-                        
-                        <div className="flex items-baseline gap-1">
-                          <span className="font-heading font-black text-3xl sm:text-4xl">
-                            ₹{tier.amount.toLocaleString('en-IN')}
-                          </span>
-                        </div>
-
-                        <h3 className="font-heading font-bold text-lg leading-snug">
-                          {tier.title}
-                        </h3>
-
-                        <p className={`font-sans text-xs sm:text-sm leading-relaxed ${tier.popular ? 'text-white/90' : 'text-gray-600'}`}>
-                          {tier.desc}
-                        </p>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  {program.transformation.points && program.transformation.points.map((pt, i) => (
+                    <div key={i} className="p-4 rounded-xl bg-slate-50 border border-slate-100 space-y-1.5">
+                      <div className="w-8 h-8 rounded-lg bg-[#CC444B]/10 text-[#CC444B] flex items-center justify-center font-bold text-xs font-heading">
+                        0{i + 1}
                       </div>
-
-                      <div className="pt-6">
-                        <button
-                          onClick={onOpenDonate}
-                          className={`w-full py-3 px-5 rounded-xl font-heading font-extrabold text-sm flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm ${
-                            tier.popular
-                              ? 'bg-white hover:bg-gray-100 text-[#243C4B]'
-                              : 'bg-[#CC444B] hover:bg-red-700 text-white'
-                          }`}
-                        >
-                          <span>Sponsor This Tier</span>
-                          <Heart className="w-4 h-4 fill-current" />
-                        </button>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* SECTION E: Mentors (Where Applicable) */}
-            {program.mentors && program.mentors.length > 0 && (
-              <div id="mentors" className="space-y-6 pt-6">
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#CC444B]" />
-                    <span className="text-xs font-heading font-bold uppercase tracking-widest text-[#CC444B]">
-                      Leadership & Mentorship
-                    </span>
-                  </div>
-                  <h2 className="font-heading font-black text-3xl sm:text-4xl text-gray-900 tracking-tight">
-                    Our Guiding Mentors & Patrons
-                  </h2>
-                  <p className="font-sans text-sm sm:text-base text-gray-600">
-                    Experienced educationists, scientists, and social leaders who steer our curriculum and ground seva.
-                  </p>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                  {program.mentors.map((m, idx) => (
-                    <div 
-                      key={idx} 
-                      className="bg-white rounded-3xl border border-gray-100 p-6 shadow-sm hover:shadow-md transition-all flex flex-col items-center text-center space-y-3"
-                    >
-                      <div className="w-24 h-24 rounded-full overflow-hidden shadow-md border-3 border-red-100">
-                        <img src={m.image} alt={m.name} className="w-full h-full object-cover object-top" />
-                      </div>
-                      <div className="space-y-0.5">
-                        <h4 className="font-heading font-black text-lg text-gray-900 leading-snug">{m.name}</h4>
-                        <span className="text-xs font-semibold text-[#CC444B] block">{m.role}</span>
-                      </div>
-                      <p className="font-sans text-xs text-gray-600 leading-relaxed">
-                        {m.bio}
+                      <h4 className="font-heading font-bold text-sm text-slate-900">
+                        {pt.title}
+                      </h4>
+                      <p className="text-xs text-slate-600 leading-relaxed font-sans">
+                        {pt.desc}
                       </p>
                     </div>
                   ))}
                 </div>
-              </div>
+              </section>
             )}
 
-            {/* SECTION F: Ground Photo Gallery */}
-            {program.images && program.images.length > 0 && (
-              <div id="gallery" className="space-y-6 pt-6">
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#CC444B]" />
-                    <span className="text-xs font-heading font-bold uppercase tracking-widest text-[#CC444B]">
-                      Visual Evidence
-                    </span>
+            {/* Special Focus (Refugees / Ambulances / Villages) */}
+            {program.specialFocus && (
+              <section className="p-6 sm:p-8 rounded-3xl bg-[#EBF7FC] border border-sky-200 text-slate-900 space-y-3">
+                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-sky-800">
+                  <ShieldCheck className="w-4 h-4 text-sky-600" />
+                  <span>Special Ground Focus</span>
+                </div>
+                <h3 className="font-heading font-black text-xl text-slate-900">
+                  {program.specialFocus.title}
+                </h3>
+                <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-sans">
+                  {program.specialFocus.desc}
+                </p>
+              </section>
+            )}
+
+            {/* 80G Tax-Exempt Sponsorship Tiers */}
+            <section className="space-y-6 pt-4">
+              <div className="border-b border-slate-200 pb-3">
+                <h2 className="font-heading font-black text-2xl sm:text-3xl text-slate-900 tracking-tight">
+                  Sponsor This Initiative (80G Tax-Exempted)
+                </h2>
+                <p className="text-xs sm:text-sm text-slate-600 mt-1">
+                  All donations are 80G eligible. Tax exemption receipts are issued immediately.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {program.sponsorshipTiers && program.sponsorshipTiers.map((tier, idx) => (
+                  <div 
+                    key={idx}
+                    className={`p-6 rounded-2xl border transition text-left flex flex-col justify-between space-y-4 ${
+                      tier.popular 
+                        ? 'border-[#D95D39] bg-orange-50/40 shadow-md ring-2 ring-[#D95D39]/20' 
+                        : 'border-slate-200 bg-white shadow-sm hover:shadow-md'
+                    }`}
+                  >
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between">
+                        <span className="font-heading font-black text-2xl sm:text-3xl text-[#D95D39]">
+                          {tier.amountLabel}
+                        </span>
+                        <span className="text-xs font-bold text-slate-500 uppercase tracking-wider bg-slate-100 px-2.5 py-1 rounded-full">
+                          {tier.usdLabel}
+                        </span>
+                      </div>
+                      
+                      <h3 className="font-heading font-bold text-base text-slate-900 leading-snug">
+                        {tier.title}
+                      </h3>
+                      
+                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans">
+                        {tier.desc}
+                      </p>
+                    </div>
+
+                    <a
+                      href={tier.rzpUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full py-3 px-4 rounded-xl bg-[#D95D39] hover:bg-[#c24f2d] text-white font-heading font-bold text-xs uppercase tracking-wide text-center transition flex items-center justify-center gap-1.5 shadow-sm group cursor-pointer"
+                    >
+                      <span>Sponsor Online</span>
+                      <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition" />
+                    </a>
                   </div>
-                  <h2 className="font-heading font-black text-3xl sm:text-4xl text-gray-900 tracking-tight">
-                    Glimpses from the Ground
+                ))}
+              </div>
+            </section>
+
+            {/* Direct Bank Transfer Box */}
+            {program.bankDetails && (
+              <section className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-4 text-left">
+                <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+                  <div className="flex items-center gap-2">
+                    <Building className="w-5 h-5 text-[#CC444B]" />
+                    <h3 className="font-heading font-bold text-base sm:text-lg text-slate-900">
+                      Direct Bank Transfer Details
+                    </h3>
+                  </div>
+                  <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-100">
+                    Official 80G Account
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm font-sans">
+                  <div className="p-3 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between">
+                    <div>
+                      <span className="text-slate-500 block text-[11px]">Account Name</span>
+                      <strong className="text-slate-900 font-semibold">{program.bankDetails.accountName}</strong>
+                    </div>
+                  </div>
+
+                  <div className="p-3 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between">
+                    <div>
+                      <span className="text-slate-500 block text-[11px]">Bank & Branch</span>
+                      <strong className="text-slate-900 font-semibold">{program.bankDetails.bankName}, {program.bankDetails.branch}</strong>
+                    </div>
+                  </div>
+
+                  <div className="p-3 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between">
+                    <div>
+                      <span className="text-slate-500 block text-[11px]">Savings Account Number</span>
+                      <strong className="text-slate-900 font-mono font-bold text-sm">{program.bankDetails.accountNumber}</strong>
+                    </div>
+                    <button
+                      onClick={() => copyToClipboard(program.bankDetails.accountNumber, 'acc')}
+                      className="px-2.5 py-1 text-xs rounded bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 font-semibold flex items-center gap-1 cursor-pointer"
+                    >
+                      {copiedField === 'acc' ? <Check className="w-3 h-3 text-emerald-600" /> : <Copy className="w-3 h-3 text-slate-500" />}
+                      <span>{copiedField === 'acc' ? 'Copied' : 'Copy'}</span>
+                    </button>
+                  </div>
+
+                  <div className="p-3 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between">
+                    <div>
+                      <span className="text-slate-500 block text-[11px]">IFSC Code</span>
+                      <strong className="text-slate-900 font-mono font-bold text-sm">{program.bankDetails.ifscCode}</strong>
+                    </div>
+                    <button
+                      onClick={() => copyToClipboard(program.bankDetails.ifscCode, 'ifsc')}
+                      className="px-2.5 py-1 text-xs rounded bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 font-semibold flex items-center gap-1 cursor-pointer"
+                    >
+                      {copiedField === 'ifsc' ? <Check className="w-3 h-3 text-emerald-600" /> : <Copy className="w-3 h-3 text-slate-500" />}
+                      <span>{copiedField === 'ifsc' ? 'Copied' : 'Copy'}</span>
+                    </button>
+                  </div>
+                </div>
+
+                <p className="text-xs text-slate-600 font-sans pt-1">
+                  After initiating a bank transfer, kindly email your transaction screenshot, PAN, and address to{' '}
+                  <a href={`mailto:${program.bankDetails.emailForPan}`} className="text-[#CC444B] font-semibold underline underline-offset-2">
+                    {program.bankDetails.emailForPan}
+                  </a>{' '}
+                  for your 80G tax exemption certificate.
+                </p>
+              </section>
+            )}
+
+            {/* Mentors & Patrons Showcase */}
+            {program.mentors && program.mentors.length > 0 && (
+              <section className="space-y-4 pt-4">
+                <div className="border-b border-slate-200 pb-2">
+                  <h2 className="font-heading font-black text-2xl text-slate-900 tracking-tight">
+                    Our Mentors & Advisors
                   </h2>
-                  <p className="font-sans text-sm sm:text-base text-gray-600">
-                    Real, unedited photos from our daily field operations, classrooms, and rescue centers.
-                  </p>
+                  <p className="text-xs text-slate-600">Guided by leaders from IITs, research institutions, and industry.</p>
                 </div>
 
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                  {program.images.slice(0, 9).map((img, idx) => (
-                    <div 
-                      key={idx} 
-                      onClick={() => setLightboxImage(img)}
-                      className="group rounded-2xl overflow-hidden shadow-sm aspect-video bg-gray-100 relative cursor-pointer"
-                    >
-                      <img 
-                        src={img} 
-                        alt={`${program.title} Field Seva ${idx + 1}`} 
-                        className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500"
-                        onError={(e) => { e.target.parentElement.style.display = 'none'; }}
-                      />
-                      <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-heading font-bold">
-                        <span>Click to Enlarge</span>
+                  {program.mentors.map((mentor, i) => (
+                    <div key={i} className="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col items-center text-center space-y-2">
+                      <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-[#D95D39] bg-slate-100 shadow-inner">
+                        <img 
+                          src={mentor.image} 
+                          alt={mentor.name} 
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            e.target.src = "/images/about/dr-vashi-sharma.png";
+                          }}
+                        />
+                      </div>
+                      <div>
+                        <h4 className="font-heading font-bold text-sm text-slate-900 leading-tight">
+                          {mentor.name}
+                        </h4>
+                        <span className="text-[11px] text-slate-600 font-sans leading-tight block mt-0.5">
+                          {mentor.role}
+                        </span>
                       </div>
                     </div>
                   ))}
                 </div>
-              </div>
+              </section>
             )}
 
-            {/* SECTION G: Direct Bank Transfer Details */}
-            <div id="bank" className="p-8 sm:p-10 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-900 text-white rounded-3xl shadow-xl space-y-6 relative overflow-hidden">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-2xl bg-amber-400/20 text-amber-300 flex items-center justify-center">
-                  <Building className="w-6 h-6" />
+            {/* Glimpses of Seva (Gallery) */}
+            {program.gallery && program.gallery.length > 0 && (
+              <section className="space-y-4 pt-4">
+                <div className="flex items-center justify-between border-b border-slate-200 pb-2">
+                  <h2 className="font-heading font-black text-2xl text-slate-900 tracking-tight">
+                    Glimpses of Seva
+                  </h2>
+                  <span className="text-xs text-slate-500">Click photo to zoom</span>
                 </div>
-                <div>
-                  <h3 className="font-heading font-black text-2xl text-white">
-                    Direct Bank Transfer Details
-                  </h3>
-                  <p className="text-xs text-slate-300">
-                    Instant NEFT / RTGS / IMPS bank transfer directly into registered society account.
-                  </p>
-                </div>
-              </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-1 font-sans">
-                <div className="p-4 bg-white/10 rounded-2xl border border-white/10 flex flex-col justify-between">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                  {program.gallery.map((img, i) => (
+                    <div 
+                      key={i}
+                      className="aspect-[4/3] rounded-xl overflow-hidden border border-slate-200 bg-slate-100 cursor-zoom-in group shadow-sm hover:shadow-md transition"
+                      onClick={() => setLightboxImage(img)}
+                    >
+                      <img 
+                        src={img} 
+                        alt={`${program.title} Photo ${i + 1}`} 
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        onError={(e) => {
+                          e.target.src = "/images/janswabhiman-hero.png";
+                        }}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {/* Related Stories & Field Chronicles (Links directly to blog/classrooms-of-hope etc.) */}
+            {program.relatedStories && program.relatedStories.length > 0 && (
+              <section className="space-y-4 pt-6 border-t border-slate-200">
+                <div className="flex items-center justify-between">
                   <div>
-                    <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Beneficiary Name</span>
-                    <strong className="text-white text-sm block mt-1">Jan Swabhiman Welfare Society</strong>
+                    <h2 className="font-heading font-black text-2xl text-slate-900 tracking-tight">
+                      Related Ground Stories
+                    </h2>
+                    <p className="text-xs text-slate-600">Chronicles of hope, transformation, and impact from our centers.</p>
                   </div>
-                  <button 
-                    onClick={() => copyToClipboard('Jan Swabhiman Welfare Society', 'name')}
-                    className="mt-3 text-xs text-amber-300 hover:text-amber-200 flex items-center gap-1 cursor-pointer font-heading font-bold"
+                  
+                  <button
+                    onClick={() => onNavigateTo ? onNavigateTo('stories') : window.location.href = '/blog'}
+                    className="text-xs font-bold text-[#CC444B] hover:text-red-700 transition flex items-center gap-1 cursor-pointer"
                   >
-                    {copiedField === 'name' ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-                    <span>{copiedField === 'name' ? 'Copied!' : 'Copy Name'}</span>
+                    <span>View All Stories</span>
+                    <ChevronRight className="w-3.5 h-3.5" />
                   </button>
                 </div>
 
-                <div className="p-4 bg-white/10 rounded-2xl border border-white/10 flex flex-col justify-between">
-                  <div>
-                    <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Account & Bank</span>
-                    <strong className="text-white text-sm block mt-1">IDFC FIRST Bank</strong>
-                    <span className="text-xs text-slate-300 block">Barakhamba Rd, New Delhi</span>
-                  </div>
-                  <button 
-                    onClick={() => copyToClipboard('IDFC FIRST Bank, Barakhamba Road', 'bank')}
-                    className="mt-3 text-xs text-amber-300 hover:text-amber-200 flex items-center gap-1 cursor-pointer font-heading font-bold"
-                  >
-                    {copiedField === 'bank' ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-                    <span>{copiedField === 'bank' ? 'Copied!' : 'Copy Bank'}</span>
-                  </button>
-                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  {program.relatedStories.map((st, i) => (
+                    <div 
+                      key={i}
+                      onClick={() => onNavigateTo ? onNavigateTo('story-detail', st.slug) : window.location.href = `/blog/${st.slug}`}
+                      className="group rounded-2xl bg-white border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between cursor-pointer text-left"
+                    >
+                      <div className="aspect-[16/10] bg-slate-100 overflow-hidden relative">
+                        <img 
+                          src={st.image} 
+                          alt={st.title} 
+                          className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                          onError={(e) => {
+                            e.target.src = "/images/janswabhiman-hero.png";
+                          }}
+                        />
+                      </div>
+                      
+                      <div className="p-4 space-y-2 flex-grow flex flex-col justify-between">
+                        <div className="space-y-1">
+                          <h4 className="font-heading font-bold text-sm text-slate-900 group-hover:text-[#CC444B] transition leading-snug line-clamp-2">
+                            {st.title}
+                          </h4>
+                          <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed font-sans">
+                            {st.subtitle}
+                          </p>
+                        </div>
 
-                <div className="p-4 bg-white/10 rounded-2xl border border-white/10 flex flex-col justify-between">
-                  <div>
-                    <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">IFSC Code</span>
-                    <strong className="text-amber-300 font-mono text-base block mt-1">IDFB0020101</strong>
-                  </div>
-                  <button 
-                    onClick={() => copyToClipboard('IDFB0020101', 'ifsc')}
-                    className="mt-3 text-xs text-amber-300 hover:text-amber-200 flex items-center gap-1 cursor-pointer font-heading font-bold"
-                  >
-                    {copiedField === 'ifsc' ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-                    <span>{copiedField === 'ifsc' ? 'Copied IFSC!' : 'Copy IFSC'}</span>
-                  </button>
+                        <span className="inline-flex items-center gap-1 text-xs font-bold text-[#CC444B] pt-2">
+                          <span>Read Field Story</span>
+                          <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition" />
+                        </span>
+                      </div>
+                    </div>
+                  ))}
                 </div>
+              </section>
+            )}
+
+          </main>
+
+          {/* Right Sidebar (4 cols) */}
+          <aside className="lg:col-span-4 space-y-6 text-left">
+            
+            {/* Quick Search */}
+            <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+              <h3 className="font-heading font-bold text-sm uppercase tracking-wider text-slate-800">
+                Search Initiatives & Stories
+              </h3>
+              <div className="relative">
+                <input 
+                  type="text" 
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search keywords..."
+                  className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#CC444B]/20 focus:border-[#CC444B]"
+                />
+                <Search className="w-4 h-4 text-slate-400 absolute left-3 top-3.5" />
               </div>
 
-              <div className="p-4 bg-white/5 rounded-2xl border border-white/10 flex items-center justify-between flex-wrap gap-3 text-xs text-slate-300">
-                <div className="flex items-center gap-2">
-                  <Mail className="w-4 h-4 text-amber-300 shrink-0" />
-                  <span>Email transaction receipt & PAN to <strong>mailus@janswabhiman.org</strong> for 80G receipt.</span>
+              {searchResults.length > 0 && (
+                <div className="pt-2 border-t border-slate-100 space-y-2">
+                  <span className="text-xs font-semibold text-slate-500">Matching Stories:</span>
+                  {searchResults.map(res => (
+                    <button
+                      key={res.slug}
+                      onClick={() => onNavigateTo ? onNavigateTo('story-detail', res.slug) : window.location.href = `/blog/${res.slug}`}
+                      className="w-full text-left p-2 rounded-lg hover:bg-slate-50 transition text-xs font-semibold text-slate-800 flex items-center justify-between group cursor-pointer"
+                    >
+                      <span className="truncate group-hover:text-[#CC444B]">{res.title}</span>
+                      <ChevronRight className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                    </button>
+                  ))}
                 </div>
-                <span className="text-emerald-400 font-bold">100% Tax Deductible under Sec 80G</span>
-              </div>
+              )}
             </div>
 
-          </div>
-
-          {/* Right Column (4 cols): Sticky Quick Donate & Navigation */}
-          <div className="lg:col-span-4 sticky top-36 space-y-6">
-            
-            {/* Quick Donation Card */}
-            <div className="bg-white rounded-3xl p-6 sm:p-8 text-left space-y-6 border border-gray-200 shadow-lg">
-              <div className="space-y-2">
-                <span className="bg-red-50 text-[#CC444B] text-[11px] font-heading font-extrabold uppercase px-3 py-1 rounded-full tracking-wider inline-block">
-                  Direct Field Impact
-                </span>
-                <h3 className="font-heading font-black text-2xl text-gray-900 leading-snug">
-                  Support {program.title}
+            {/* Quick Donate Card */}
+            <div className="bg-gradient-to-br from-[#800E13] to-[#CC444B] text-white p-6 rounded-2xl shadow-md space-y-4 text-left">
+              <div className="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                <Heart className="w-5 h-5 text-white" />
+              </div>
+              <div className="space-y-1">
+                <h3 className="font-heading font-black text-xl text-white">
+                  Support {program.navLabel}
                 </h3>
-                <p className="font-sans text-xs text-gray-600 leading-relaxed">
-                  Your direct contribution empowers our daily field operations with complete transparency and 80G tax exemption.
+                <p className="text-xs text-white/90 leading-relaxed font-sans">
+                  Join hundreds of patrons supporting this initiative. 100% of your tax-deductible contribution goes directly into ground work.
                 </p>
               </div>
 
-              <button
-                onClick={onOpenDonate}
-                className="w-full bg-[#CC444B] hover:bg-red-700 active:scale-98 text-white font-heading font-bold text-base py-3.5 px-6 rounded-2xl shadow-lg flex items-center justify-center gap-2 cursor-pointer transition-all"
-              >
-                <span>Donate to this Cause</span>
-                <Heart className="w-5 h-5 fill-white" />
-              </button>
+              <div className="pt-2 flex flex-col gap-2">
+                <button
+                  onClick={onOpenDonate}
+                  className="w-full py-3 px-4 rounded-xl bg-white text-[#800E13] font-heading font-black text-sm uppercase tracking-wide hover:bg-orange-50 transition shadow-sm text-center cursor-pointer"
+                >
+                  Donate Online Now
+                </button>
 
-              <div className="space-y-2.5 pt-4 border-t border-gray-100 text-xs text-gray-600 font-sans">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>80G Tax Exemption Certificate</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>Instant Razorpay Online Receipts</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>100% Ground Verification</span>
-                </div>
+                <button
+                  onClick={() => onNavigateTo ? onNavigateTo('csr') : window.location.href = '/csr-partnerships'}
+                  className="w-full py-2.5 px-4 rounded-xl bg-black/20 text-white font-heading font-bold text-xs uppercase tracking-wide hover:bg-black/30 transition text-center cursor-pointer"
+                >
+                  CSR Partnerships
+                </button>
               </div>
             </div>
 
             {/* Other 6 Initiatives Switcher */}
-            <div className="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm text-left space-y-4">
-              <div className="flex items-center justify-between border-b border-gray-100 pb-3">
-                <h4 className="font-heading font-bold text-sm text-gray-900 uppercase tracking-wider">
-                  Other 6 Initiatives
-                </h4>
-                <span className="text-xs text-gray-400 font-sans">Explore All</span>
-              </div>
-              <ul className="space-y-2">
-                {programsData.filter(p => p.slug !== slug).map((other) => (
-                  <li key={other.slug}>
-                    <button
-                      onClick={() => onNavigateTo ? onNavigateTo(`program-${other.slug}`) : null}
-                      className="w-full text-left text-xs sm:text-sm font-heading font-bold text-gray-700 hover:text-[#CC444B] hover:bg-red-50 p-2.5 rounded-xl flex items-center justify-between transition-all cursor-pointer group"
-                    >
-                      <span className="line-clamp-1">{other.title}</span>
-                      <ChevronRight className="w-4 h-4 text-gray-300 group-hover:text-[#CC444B] group-hover:translate-x-1 transition-transform shrink-0" />
-                    </button>
-                  </li>
+            <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+              <h3 className="font-heading font-bold text-sm uppercase tracking-wider text-slate-800 border-b border-slate-100 pb-2">
+                Other Seva Initiatives
+              </h3>
+              
+              <div className="space-y-2">
+                {otherPrograms.map(op => (
+                  <button
+                    key={op.id}
+                    onClick={() => onNavigateTo ? onNavigateTo(`program-${op.slug}`) : window.location.href = `/${op.slug}`}
+                    className="w-full text-left p-2.5 rounded-xl border border-slate-100 hover:border-[#CC444B]/40 hover:bg-slate-50 transition flex items-center justify-between group cursor-pointer"
+                  >
+                    <span className="font-heading font-bold text-xs sm:text-sm text-slate-800 group-hover:text-[#CC444B] transition truncate pr-2">
+                      {op.navLabel || op.title}
+                    </span>
+                    <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-[#CC444B] group-hover:translate-x-0.5 transition shrink-0" />
+                  </button>
                 ))}
-              </ul>
+              </div>
             </div>
 
-          </div>
+            {/* Contact / Ground Support */}
+            <div className="bg-slate-100 p-5 rounded-2xl border border-slate-200 space-y-2">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block">
+                Direct Field Support
+              </span>
+              <p className="text-xs text-slate-700 leading-relaxed font-sans">
+                Want to visit our centers in UP, Delhi NCR, or Rajasthan? Reach our volunteer coordinator:
+              </p>
+              <a 
+                href="mailto:mailus@janswabhiman.org" 
+                className="text-xs font-bold text-[#CC444B] flex items-center gap-1.5 hover:underline"
+              >
+                <Mail className="w-3.5 h-3.5" />
+                <span>mailus@janswabhiman.org</span>
+              </a>
+            </div>
+
+          </aside>
 
         </div>
       </div>
 
-      {/* Lightbox Modal for Photo Gallery */}
+      {/* 4. Fullscreen Lightbox Modal */}
       {lightboxImage && (
         <div 
+          className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 backdrop-blur-md"
           onClick={() => setLightboxImage(null)}
-          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 cursor-pointer animate-fadeIn"
         >
-          <button 
+          <button
             onClick={() => setLightboxImage(null)}
-            className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/20 hover:bg-white/40 text-white flex items-center justify-center cursor-pointer transition-colors"
+            className="absolute top-5 right-5 w-11 h-11 rounded-full bg-white/20 text-white flex items-center justify-center hover:bg-white/30 transition cursor-pointer"
+            aria-label="Close Preview"
           >
             <X className="w-6 h-6" />
           </button>
-          <img 
-            src={lightboxImage} 
-            alt="Ground Seva Preview" 
-            className="max-w-full max-h-[85vh] rounded-2xl shadow-2xl object-contain"
-            onClick={e => e.stopPropagation()}
-          />
+
+          <div 
+            className="max-w-4xl max-h-[85vh] flex flex-col items-center justify-center space-y-3"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img 
+              src={lightboxImage} 
+              alt="Enlarged Ground Preview" 
+              className="max-w-full max-h-[78vh] object-contain rounded-xl shadow-2xl"
+            />
+          </div>
         </div>
       )}
 
