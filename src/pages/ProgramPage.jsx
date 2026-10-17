@@ -105,8 +105,8 @@ export default function ProgramPage({ slug, onOpenDonate, onNavigateHome, onNavi
               
               {/* Sanskrit Devnagari Badge */}
               {program.sanskritTitle && (
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-50 border border-orange-200/60 text-[#D95D39] text-xs sm:text-sm font-semibold tracking-wide" lang="sa">
-                  <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-rose-50 border border-rose-200/60 text-[#CC444B] text-xs sm:text-sm font-semibold tracking-wide" lang="sa">
+                  <Sparkles className="w-3.5 h-3.5 text-[#CC444B]" />
                   <span>{program.sanskritTitle}</span>
                 </div>
               )}
@@ -150,7 +150,7 @@ export default function ProgramPage({ slug, onOpenDonate, onNavigateHome, onNavi
                       href={tier.rzpUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-between p-3 rounded-xl bg-[#D95D39] hover:bg-[#c24f2d] text-white font-heading font-bold text-xs uppercase tracking-wide transition shadow-sm hover:shadow hover:-translate-y-0.5 group cursor-pointer"
+                      className="inline-flex items-center justify-between p-3 rounded-xl bg-[#CC444B] hover:bg-red-700 text-white font-heading font-bold text-xs uppercase tracking-wide transition shadow-sm hover:shadow hover:-translate-y-0.5 group cursor-pointer"
                     >
                       <span className="truncate pr-2">{tier.title} – {tier.amountLabel}</span>
                       <ArrowUpRight className="w-4 h-4 shrink-0 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition" />
@@ -212,9 +212,9 @@ export default function ProgramPage({ slug, onOpenDonate, onNavigateHome, onNavi
             
             {/* Sacred Shloka & Inspiration Card */}
             {program.mantraBox && (
-              <section className="p-6 sm:p-8 rounded-3xl border border-amber-200/70 bg-gradient-to-br from-[#FFFDF8] to-[#FFF9EE] shadow-sm space-y-4">
-                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-800">
-                  <Sparkles className="w-4 h-4 text-amber-600" />
+              <section className="p-6 sm:p-8 rounded-3xl border border-rose-200/80 bg-gradient-to-br from-[#FFFDFC] to-[#FFF5F6] shadow-sm space-y-4">
+                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-rose-900">
+                  <Sparkles className="w-4 h-4 text-[#CC444B]" />
                   <span>Dharmic Inspiration · {program.mantraBox.source}</span>
                 </div>
 
@@ -222,12 +222,12 @@ export default function ProgramPage({ slug, onOpenDonate, onNavigateHome, onNavi
                   "{program.mantraBox.shloka}"
                 </p>
 
-                <p className="font-sans italic text-slate-700 text-sm sm:text-base leading-relaxed border-l-2 border-amber-400 pl-4">
+                <p className="font-sans italic text-slate-700 text-sm sm:text-base leading-relaxed border-l-2 border-[#CC444B] pl-4">
                   {program.mantraBox.translation}
                 </p>
 
                 {program.introParas && (
-                  <div className="space-y-3 pt-3 text-slate-700 font-sans text-sm sm:text-base leading-relaxed border-t border-amber-100">
+                  <div className="space-y-3 pt-3 text-slate-700 font-sans text-sm sm:text-base leading-relaxed border-t border-rose-100">
                     {program.introParas.map((p, i) => (
                       <p key={i}>{p}</p>
                     ))}
@@ -285,7 +285,7 @@ export default function ProgramPage({ slug, onOpenDonate, onNavigateHome, onNavi
                         key={idx}
                         className="p-5 rounded-2xl border border-slate-200 bg-white shadow-sm hover:shadow-md transition space-y-2.5 text-left"
                       >
-                        <div className="w-10 h-10 rounded-xl bg-orange-50 border border-orange-100 text-[#D95D39] flex items-center justify-center">
+                        <div className="w-10 h-10 rounded-xl bg-rose-50 border border-rose-100 text-[#CC444B] flex items-center justify-center">
                           <IconComp className="w-5 h-5" />
                         </div>
                         <h3 className="font-heading font-bold text-base text-slate-900">
@@ -359,13 +359,13 @@ export default function ProgramPage({ slug, onOpenDonate, onNavigateHome, onNavi
                     key={idx}
                     className={`p-6 rounded-2xl border transition text-left flex flex-col justify-between space-y-4 ${
                       tier.popular 
-                        ? 'border-[#D95D39] bg-orange-50/40 shadow-md ring-2 ring-[#D95D39]/20' 
+                        ? 'border-[#CC444B] bg-rose-50/40 shadow-md ring-2 ring-[#CC444B]/20' 
                         : 'border-slate-200 bg-white shadow-sm hover:shadow-md'
                     }`}
                   >
                     <div className="space-y-2">
                       <div className="flex items-center justify-between">
-                        <span className="font-heading font-black text-2xl sm:text-3xl text-[#D95D39]">
+                        <span className="font-heading font-black text-2xl sm:text-3xl text-[#CC444B]">
                           {tier.amountLabel}
                         </span>
                         <span className="text-xs font-bold text-slate-500 uppercase tracking-wider bg-slate-100 px-2.5 py-1 rounded-full">
@@ -386,7 +386,7 @@ export default function ProgramPage({ slug, onOpenDonate, onNavigateHome, onNavi
                       href={tier.rzpUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full py-3 px-4 rounded-xl bg-[#D95D39] hover:bg-[#c24f2d] text-white font-heading font-bold text-xs uppercase tracking-wide text-center transition flex items-center justify-center gap-1.5 shadow-sm group cursor-pointer"
+                      className="w-full py-3 px-4 rounded-xl bg-[#CC444B] hover:bg-red-700 text-white font-heading font-bold text-xs uppercase tracking-wide text-center transition flex items-center justify-center gap-1.5 shadow-sm group cursor-pointer"
                     >
                       <span>Sponsor Online</span>
                       <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition" />
@@ -478,7 +478,7 @@ export default function ProgramPage({ slug, onOpenDonate, onNavigateHome, onNavi
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                   {program.mentors.map((mentor, i) => (
                     <div key={i} className="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col items-center text-center space-y-2">
-                      <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-[#D95D39] bg-slate-100 shadow-inner">
+                      <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-[#CC444B] bg-slate-100 shadow-inner">
                         <img 
                           src={mentor.image} 
                           alt={mentor.name} 
@@ -647,7 +647,7 @@ export default function ProgramPage({ slug, onOpenDonate, onNavigateHome, onNavi
               <div className="pt-2 flex flex-col gap-2">
                 <button
                   onClick={onOpenDonate}
-                  className="w-full py-3 px-4 rounded-xl bg-white text-[#800E13] font-heading font-black text-sm uppercase tracking-wide hover:bg-orange-50 transition shadow-sm text-center cursor-pointer"
+                  className="w-full py-3 px-4 rounded-xl bg-white text-[#800E13] font-heading font-black text-sm uppercase tracking-wide hover:bg-rose-50 transition shadow-sm text-center cursor-pointer"
                 >
                   Donate Online Now
                 </button>
