@@ -81,44 +81,63 @@ export default function OurProjectsSection({ onSelectStory, onNavigateToProgram 
           </div>
         </div>
 
-        {/* 4 Active Cards Grid with Full Background Image */}
+        {/* 4 Active Cards Grid with Full Background Image & Figma Structure */}
         <div className="grid grid-cols-4 gap-6 items-stretch">
           {visibleDesktopProjects.map((project) => (
             <div
               key={project.slug}
               onClick={() => handleProjectClick(project)}
-              className="relative rounded-[26px] overflow-hidden p-4 text-white shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 text-left flex flex-col justify-between cursor-pointer border border-white/20 group min-h-[380px]"
+              className="relative rounded-[26px] overflow-hidden p-6 sm:p-7 text-white shadow-2xl hover:shadow-3xl hover:-translate-y-2 transition-all duration-300 text-left flex flex-col justify-between cursor-pointer border border-white/20 group min-h-[460px]"
             >
-              {/* Full-bleed Background Image */}
+              {/* Background Image across Whole Box */}
               <div className="absolute inset-0 z-0 overflow-hidden">
                 <img
                   src={project.cardImage || project.heroImage}
                   alt={project.title}
-                  className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-out"
+                  className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-700 ease-out"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/30 group-hover:via-black/25 transition-colors duration-500" />
-                <div className="absolute inset-0 bg-gradient-to-b from-[#8B1E24]/50 via-transparent to-black/80" />
+                {/* Contrast gradient overlays for superior readability */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/75 to-black/50 group-hover:via-black/70 transition-colors duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-b from-[#8B1E24]/60 via-transparent to-black/85" />
               </div>
 
-              {/* Floating Top Authentic Icon Badge */}
-              <div className="relative z-10 self-start">
-                <div className="w-13 h-13 rounded-2xl bg-white/20 backdrop-blur-md border border-white/35 flex items-center justify-center p-3 shadow-lg group-hover:scale-110 group-hover:bg-[#CC444B] transition-all duration-300">
+              {/* Upper Content Area matching Figma layout */}
+              <div className="relative z-10">
+                {/* Centered Icon (Figma Structure) */}
+                <div className="h-24 sm:h-28 flex items-center justify-center mb-2">
                   <img
                     src={project.icon}
                     alt={project.title}
-                    className="w-full h-full object-contain brightness-0 invert drop-shadow"
+                    className="max-h-18 sm:max-h-20 max-w-[100px] object-contain brightness-0 invert drop-shadow group-hover:scale-108 transition-transform duration-300"
                   />
+                </div>
+
+                {/* Subtle Divider Line (Figma Structure) */}
+                <div className="h-[1.5px] w-full bg-gradient-to-r from-transparent via-white/30 to-transparent my-3" />
+
+                {/* Text Hierarchy: Title, Sanskrit, Scope */}
+                <div className="space-y-2">
+                  <h3 className="font-heading font-black text-[20px] sm:text-[21px] text-white group-hover:text-red-200 leading-snug drop-shadow-md min-h-[52px] flex items-center transition-colors">
+                    {project.title}
+                  </h3>
+
+                  {/* Sanskrit Quote in Crimson Italic (Figma Structure) */}
+                  {project.sanskrit && (
+                    <p className="font-sans text-[12.5px] font-semibold text-[#FF858B] italic tracking-wide truncate">
+                      "{project.sanskrit}"
+                    </p>
+                  )}
+
+                  {/* Scope / Subtitle */}
+                  <p className="font-sans text-[12px] text-white/80 leading-relaxed line-clamp-2 min-h-[36px] drop-shadow-xs">
+                    {project.cardScope || project.subTitle || project.meaning || project.description}
+                  </p>
                 </div>
               </div>
 
-              {/* Semi-transparent Frosted Glass Panel */}
-              <div className="relative z-10 bg-black/45 backdrop-blur-xl border border-white/25 rounded-[20px] p-5 shadow-2xl space-y-4 group-hover:border-[#CC444B]/60 group-hover:bg-black/55 transition-all duration-300">
-                <h3 className="font-heading font-black text-xl lg:text-[22px] text-white text-center leading-snug tracking-tight drop-shadow-md group-hover:text-red-100 transition-colors min-h-[52px] flex items-center justify-center">
-                  {project.title}
-                </h3>
-
-                {/* Crimson Accent CTA */}
-                <div className="w-full bg-[#CC444B] group-hover:bg-red-600 text-white font-heading font-bold text-xs sm:text-sm px-4 py-2.5 rounded-full shadow-md flex items-center justify-between transition-all group-hover:shadow-lg">
+              {/* Red Explore Programme Pill Button (Figma Structure) */}
+              <div className="relative z-10 pt-5">
+                <div className="w-full bg-[#CC444B] hover:bg-[#b5333a] text-white font-heading font-bold text-xs sm:text-sm px-5 py-3 rounded-full shadow-lg transition-all flex items-center justify-between border border-white/20 group-hover:shadow-xl">
                   <span>Explore Programme</span>
                   <div className="w-6 h-6 rounded-full bg-white text-[#CC444B] flex items-center justify-center shadow-xs shrink-0 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">
                     <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
@@ -144,7 +163,7 @@ export default function OurProjectsSection({ onSelectStory, onNavigateToProgram 
 
       </div>
 
-      {/* MOBILE VIEW: Single Card with Full Background Image & Indicators */}
+      {/* MOBILE VIEW: Single Card with Full Background Image & Figma Structure */}
       <div className="block lg:hidden max-w-md mx-auto text-center space-y-6">
 
         <div className="flex items-center justify-center gap-3">
@@ -163,10 +182,10 @@ export default function OurProjectsSection({ onSelectStory, onNavigateToProgram 
           From education and empowerment to rehabilitation, animal welfare, and emergency relief, explore all seven domains of ground seva.
         </p>
 
-        {/* Mobile Project Card with Frosted Glass Overlay */}
+        {/* Mobile Project Card with Full Background Image & Figma Structure */}
         <div
           onClick={() => handleProjectClick(currentMobileProject)}
-          className="relative rounded-[26px] overflow-hidden p-4 text-white shadow-xl flex flex-col justify-between cursor-pointer min-h-[380px] border border-white/20 group"
+          className="relative rounded-[26px] overflow-hidden p-6 sm:p-7 text-white shadow-2xl text-left flex flex-col justify-between cursor-pointer min-h-[460px] border border-white/20 group"
         >
           {/* Background image across whole mobile box */}
           <div className="absolute inset-0 z-0">
@@ -175,29 +194,44 @@ export default function OurProjectsSection({ onSelectStory, onNavigateToProgram 
               alt={currentMobileProject.title}
               className="w-full h-full object-cover object-center"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/30" />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#8B1E24]/50 via-transparent to-black/80" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/75 to-black/50" />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#8B1E24]/60 via-transparent to-black/85" />
           </div>
 
-          {/* Floating Top Authentic Icon Badge */}
-          <div className="relative z-10 self-start">
-            <div className="w-13 h-13 rounded-2xl bg-white/20 backdrop-blur-md border border-white/35 flex items-center justify-center p-3 shadow-md">
+          <div className="relative z-10">
+            {/* Centered Icon like Figma */}
+            <div className="h-24 flex items-center justify-center mb-2">
               <img
                 src={currentMobileProject.icon}
                 alt={currentMobileProject.title}
-                className="w-full h-full object-contain brightness-0 invert drop-shadow"
+                className="max-h-18 max-w-[95px] object-contain brightness-0 invert drop-shadow"
               />
+            </div>
+
+            {/* Subtle Divider Line like Figma */}
+            <div className="h-[1.5px] w-full bg-gradient-to-r from-transparent via-white/30 to-transparent my-3" />
+
+            {/* Figma Content Hierarchy */}
+            <div className="space-y-2">
+              <h3 className="font-heading font-black text-[20px] text-white leading-snug drop-shadow-md min-h-[48px] flex items-center">
+                {currentMobileProject.title}
+              </h3>
+
+              {currentMobileProject.sanskrit && (
+                <p className="font-sans text-xs font-semibold text-[#FF858B] italic tracking-wide truncate">
+                  "{currentMobileProject.sanskrit}"
+                </p>
+              )}
+
+              <p className="font-sans text-xs text-white/80 leading-relaxed line-clamp-2 min-h-[34px] drop-shadow-xs">
+                {currentMobileProject.cardScope || currentMobileProject.subTitle || currentMobileProject.meaning || currentMobileProject.description}
+              </p>
             </div>
           </div>
 
-          {/* Semi-transparent Frosted Glass Panel */}
-          <div className="relative z-10 bg-black/45 backdrop-blur-xl border border-white/25 rounded-[20px] p-5 shadow-2xl space-y-4">
-            <h3 className="font-heading font-black text-xl text-white text-center leading-snug tracking-tight drop-shadow-md min-h-[50px] flex items-center justify-center">
-              {currentMobileProject.title}
-            </h3>
-
-            {/* Crimson Accent CTA */}
-            <div className="w-full bg-[#CC444B] text-white font-heading font-bold text-xs px-4 py-2.5 rounded-full shadow-md flex items-center justify-between">
+          {/* Red Explore Button */}
+          <div className="relative z-10 pt-5">
+            <div className="w-full bg-[#CC444B] text-white font-heading font-bold text-xs px-5 py-3 rounded-full shadow-lg flex items-center justify-between border border-white/20">
               <span>Explore Programme</span>
               <div className="w-6 h-6 rounded-full bg-white text-[#CC444B] flex items-center justify-center shadow-xs shrink-0">
                 <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
