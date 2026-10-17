@@ -217,7 +217,8 @@
     "meaning": "Education that pierces the darkness of ignorance.",
     "description": "Daily free primary schooling, Dharmic sanskars, digital literacy, and books for children in underserved slum clusters and refugee camps.",
     "icon": "/assets/read_5519429_1_141_9697.svg",
-    "cardScope": "Saraswati-Free Education for Slum Children"
+    "cardScope": "Saraswati-Free Education for Slum Children",
+    "cardImage": "/images/home/slider/saraswati-children.jpg"
   },
   {
     "id": "women-empowerment",
@@ -384,7 +385,8 @@
     "meaning": "Not to be rescued — power unto herself.",
     "description": "Vocational sewing training, Vedic Samuhik Vivahs, and self-defense for distressed tribal and rural women to earn with dignity.",
     "icon": "/assets/reward_4086326_1_141_9717.svg",
-    "cardScope": "मातृशक्ति – “या देवी सर्वभूतेषु मातृरूपेण संस्थिता।”"
+    "cardScope": "मातृशक्ति – “या देवी सर्वभूतेषु मातृरूपेण संस्थिता।”",
+    "cardImage": "/images/home/slider/women-empowerment.webp"
   },
   {
     "id": "pak-hindu-refugees-rehabilitation",
@@ -564,7 +566,8 @@
     "meaning": "Self-respect restored in one's own land.",
     "description": "Constructing sturdy weather-proof huts, micro-enterprise toolkits, clean water, and schooling for displaced refugee families.",
     "icon": "/assets/childcare_17983864_1_141_9727.svg",
-    "cardScope": "Pak Hindu Refugees Rehabilitation – Restoring Faith, Rebuilding Futures"
+    "cardScope": "Pak Hindu Refugees Rehabilitation – Restoring Faith, Rebuilding Futures",
+    "cardImage": "/images/home/slider/pak-hindu-rehabilitation-hero.webp"
   },
   {
     "id": "gauseva-gaushala-animal-welfare",
@@ -749,7 +752,8 @@
     "meaning": "Compassion itself is Gauseva.",
     "description": "24x7 emergency highway rescue ambulances, trauma hospital, surgery, and lifetime loving care for injured and distressed cattle.",
     "icon": "/assets/pet_care_2076220_1_141_9732.svg",
-    "cardScope": "Gauseva & Animal Welfare – पशून् पाहि · Protect the Voiceless"
+    "cardScope": "Gauseva & Animal Welfare – पशून् पाहि · Protect the Voiceless",
+    "cardImage": "/images/home/slider/gauseva.png"
   },
   {
     "id": "gaushala",
@@ -906,7 +910,8 @@
     "meaning": "The Gaushala itself is sanctuary.",
     "description": "A permanent sanctuary in Noida sheltering over 100 rescued cows with two daily meals of fresh green fodder, clean sheds, and Gau Pujan.",
     "icon": "/assets/cow_2396601_1_141_9754.svg",
-    "cardScope": "Gaushala – A Sanctuary Of Love, Service, And Dharma in Noida"
+    "cardScope": "Gaushala – A Sanctuary Of Love, Service, And Dharma in Noida",
+    "cardImage": "/images/home/slider/gaushala-hero.webp"
   },
   {
     "id": "tribal-welfare",
@@ -1096,7 +1101,8 @@
     "meaning": "Remembering one's roots is strength.",
     "description": "Rozgar self-employment, brand-new clothes distribution, hospital patient food, and grand Vedic Bhajan-Kirtan Yajnas in remote forest villages.",
     "icon": "/assets/growth_9477432_1_141_9766.svg",
-    "cardScope": "Tribal Welfare – वयं राष्ट्रे जागृयाम · Preserving Identity, Restoring Dignity"
+    "cardScope": "Tribal Welfare – वयं राष्ट्रे जागृयाम · Preserving Identity, Restoring Dignity",
+    "cardImage": "/images/home/slider/tribal-welfare.webp"
   },
   {
     "id": "relief-work",
@@ -1267,6 +1273,7 @@
     "meaning": "Service that stands firm in calamity.",
     "description": "Rapid disaster response teams delivering emergency food rations, boat rescue, and medical aid during devastating floods and droughts.",
     "icon": "/assets/people_6197491_1_141_9740.svg",
-    "cardScope": "Relief Work – सर्वे भवन्तु सुखिनः · Standing with Communities in Crisis"
+    "cardScope": "Relief Work – सर्वे भवन्तु सुखिनः · Standing with Communities in Crisis",
+    "cardImage": "/images/home/slider/relief-work.webp"
   }
 ]
