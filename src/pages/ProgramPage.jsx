@@ -111,10 +111,17 @@ export default function ProgramPage({ slug, onOpenDonate, onNavigateHome, onNavi
                 </div>
               )}
 
-              {/* Main Heading */}
+              {/* Main Heading (Mission Name) */}
               <h1 className="font-heading font-black text-3xl sm:text-4xl lg:text-[2.65rem] text-slate-900 tracking-tight leading-[1.18]">
                 {program.title}
               </h1>
+
+              {/* Mission Editorial Sub-headline */}
+              {program.headline && (
+                <p className="font-heading font-bold text-base sm:text-lg text-[#CC444B] tracking-tight">
+                  {program.headline}
+                </p>
+              )}
 
               {/* Lead Text */}
               <p className="text-base sm:text-lg text-slate-700 font-sans leading-relaxed">

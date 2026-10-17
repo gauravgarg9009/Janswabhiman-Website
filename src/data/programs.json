@@ -2,7 +2,7 @@
   {
     "id": "saraswati",
     "slug": "saraswati",
-    "title": "Free education, rooted in dignity",
+    "title": "Saraswati-Free Education for Slum Children",
     "sanskritTitle": "सरस्वती – तमसो मा ज्योतिर्गमय",
     "navLabel": "Saraswati (Education)",
     "leadText": "Jan Swabhiman Welfare Society's Saraswati initiative provides free, holistic education to children in slum communities and Pak Hindu refugee camps across Jodhpur, Jaisalmer, and Delhi NCR — so learning is never a luxury.",
@@ -209,12 +209,13 @@
         "subtitle": "Dharmic values and academic excellence bringing light to vulnerable children",
         "image": "/images/blog/saraswati-hope-education-dignity/hero.webp"
       }
-    ]
+    ],
+    "headline": "Free education, rooted in dignity"
   },
   {
     "id": "pak-hindu-refugees-rehabilitation",
     "slug": "pak-hindu-refugees-rehabilitation",
-    "title": "Pak Hindu Refugees Rehabilitation – Restoring Faith, Rebuilding Futures",
+    "title": "Pak Hindu Refugees Rehabilitation",
     "sanskritTitle": "शरणं प्रपन्नानाम् परित्राणाय",
     "navLabel": "Pak Hindu Refugees",
     "leadText": "Thousands of Hindu families in Pakistan live under constant persecution, abductions, and forced conversions. Leaving behind ancestral lands, they cross into Bharat seeking refuge and safety. We stand by these displaced families — providing Seva, shelter, education, and livelihood.",
@@ -381,12 +382,13 @@
         "subtitle": "Restoring shelter, safety, and belonging for families fleeing persecution",
         "image": "/images/blog/from-despair-to-dignity/hero.webp"
       }
-    ]
+    ],
+    "headline": "Restoring Faith, Rebuilding Futures"
   },
   {
     "id": "women-empowerment",
     "slug": "women-empowerment",
-    "title": "मातृशक्ति – “या देवी सर्वभूतेषु मातृरूपेण संस्थिता।”",
+    "title": "Women Empowerment",
     "sanskritTitle": "या देवी सर्वभूतेषु मातृरूपेण संस्थिता",
     "navLabel": "Women Empowerment",
     "leadText": "At Jan Swabhiman, we honor Matrishakti – the divine feminine force – as the cornerstone of our families, culture, and Dharma. We serve mothers, widows, and daughters across tribal and underprivileged regions through livelihood, education, and social dignity.",
@@ -540,14 +542,15 @@
         "subtitle": "Restoring modesty and dignity where severe poverty had stolen comfort",
         "image": "/images/blog/clothes-distribution/hero.webp"
       }
-    ]
+    ],
+    "headline": "मातृशक्ति – “या देवी सर्वभूतेषु मातृरूपेण संस्थिता।”"
   },
   {
     "id": "gauseva-gaushala-animal-welfare",
     "slug": "gauseva-gaushala-animal-welfare",
-    "title": "पशून् पाहि – निःस्वार्थ प्राणि-सेवा का यज्ञ",
+    "title": "Gauseva & Animal Welfare",
     "sanskritTitle": "पशून् पाहि – मा ते जीविषुः पशवः सन्तु",
-    "navLabel": "Gauseva & Gaushala",
+    "navLabel": "Gauseva & Animal Welfare",
     "leadText": "Protect the Voiceless – A Sacred Yajna of Selfless Service. At Jan Swabhiman, Dharma begins where compassion is practiced. Our emergency rescue network and dedicated Noida Gaushala shelter over 100 rescued cows and have treated more than 50,000 animals.",
     "stats": [
       {
@@ -717,14 +720,15 @@
         "subtitle": "Emergency night rescue of a crushed young bull turned into a story of miraculous recovery",
         "image": "/images/blog/the-roadside-battle-for-life/hero.webp"
       }
-    ]
+    ],
+    "headline": "पशून् पाहि – निःस्वार्थ प्राणि-सेवा का यज्ञ"
   },
   {
     "id": "gaushala",
     "slug": "gaushala",
-    "title": "Gaushala – A Sanctuary Of Love, Service, And Dharma",
+    "title": "Gaushala",
     "sanskritTitle": "धेनवः सर्वकामधुक् – गोसेवा परमोधर्मः",
-    "navLabel": "Gaushala Noida",
+    "navLabel": "Gaushala (Noida)",
     "leadText": "Located in Noida – home to over 100 rescued Gaumatas. At Jan Swabhiman, Gaumata is not just an animal — she is our cultural mother, our ecological guardian, and the living embodiment of Sanatan karuna.",
     "stats": [
       {
@@ -866,12 +870,13 @@
         "subtitle": "Restoring the sacred Sanatan bond between humanity and Gaumata",
         "image": "/images/blog/compassion-as-civilization-gaushala/hero.webp"
       }
-    ]
+    ],
+    "headline": "A Sanctuary Of Love, Service, And Dharma"
   },
   {
     "id": "tribal-welfare",
     "slug": "tribal-welfare",
-    "title": "Tribal Welfare – वयं राष्ट्रे जागृयाम।",
+    "title": "Tribal Welfare",
     "sanskritTitle": "वयं राष्ट्रे जागृयाम पुरोहिताः",
     "navLabel": "Tribal Welfare",
     "leadText": "Across remote forested regions and hilly terrains, tribal communities — rich in indigenous wisdom and cultural devotion — face isolation, predatory conversions, and deep poverty. Jan Swabhiman runs a comprehensive welfare and Sanskritic reclamation initiative.",
@@ -1048,12 +1053,13 @@
         "subtitle": "Vedic marriages restoring cultural pride and debt-free celebrations for tribal daughters",
         "image": "/images/blog/samuh-vivah-2019/hero.webp"
       }
-    ]
+    ],
+    "headline": "वयं राष्ट्रे जागृयाम – Preserving Identity, Restoring Dignity"
   },
   {
     "id": "relief-work",
     "slug": "relief-work",
-    "title": "Relief Work – सर्वे भवन्तु सुखिनः, सर्वे सन्तु निरामयाः",
+    "title": "Relief Work",
     "sanskritTitle": "सर्वे भवन्तु सुखिनः सर्वे सन्तु निरामयाः",
     "navLabel": "Relief Work",
     "leadText": "Standing with Communities in Crisis. At Jan Swabhiman, we stand with families and animals in times of devastating disaster — floods, droughts, and pandemics — delivering emergency food, rescue boats, and medical aid.",
@@ -1211,6 +1217,7 @@
         "subtitle": "Feeding 3,000+ people, medical triage, and mass cleanup after catastrophic rainfall",
         "image": "/images/blog/bhilad-valsad-floods-2026/hero.webp"
       }
-    ]
+    ],
+    "headline": "सर्वे भवन्तु सुखिनः – Standing with Communities in Crisis"
   }
 ]
