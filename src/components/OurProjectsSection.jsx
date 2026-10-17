@@ -121,14 +121,24 @@ export default function OurProjectsSection({ onSelectStory, onNavigateToProgram 
                   )}
                 </div>
 
-                {/* Title & Description */}
-                <div className="space-y-2 pt-2">
-                  <h3 className="font-heading font-black text-[21px] text-white leading-snug drop-shadow-md group-hover:text-amber-200 transition-colors line-clamp-2">
-                    {project.title}
-                  </h3>
+                {/* Mission Name + Subtitle Badge + Description */}
+                <div className="space-y-2.5 pt-2">
+                  <div className="space-y-1.5">
+                    <h3 className="font-heading font-black text-2xl lg:text-[25px] text-white leading-tight drop-shadow-md group-hover:text-amber-200 transition-colors">
+                      {project.shortTitle || project.title}
+                    </h3>
+
+                    {project.subTitle && (
+                      <div className="inline-flex">
+                        <span className="text-[11px] font-heading font-bold uppercase tracking-wider text-amber-200 bg-white/15 px-2.5 py-0.5 rounded-full border border-white/20 backdrop-blur-md shadow-xs">
+                          {project.subTitle}
+                        </span>
+                      </div>
+                    )}
+                  </div>
 
                   {project.meaning && (
-                    <p className="font-sans text-[11.5px] text-amber-100/90 italic line-clamp-1">
+                    <p className="font-sans text-[11.5px] text-white/80 italic line-clamp-1">
                       — {project.meaning}
                     </p>
                   )}
@@ -216,13 +226,23 @@ export default function OurProjectsSection({ onSelectStory, onNavigateToProgram 
               )}
             </div>
 
-            <div className="space-y-2 pt-2">
-              <h3 className="font-heading font-black text-2xl text-white leading-snug drop-shadow-md">
-                {currentMobileProject.title}
-              </h3>
+            <div className="space-y-2.5 pt-2">
+              <div className="space-y-1.5">
+                <h3 className="font-heading font-black text-2xl text-white leading-snug drop-shadow-md">
+                  {currentMobileProject.shortTitle || currentMobileProject.title}
+                </h3>
+
+                {currentMobileProject.subTitle && (
+                  <div className="inline-flex">
+                    <span className="text-[11px] font-heading font-bold uppercase tracking-wider text-amber-200 bg-white/15 px-2.5 py-0.5 rounded-full border border-white/20 backdrop-blur-md shadow-xs">
+                      {currentMobileProject.subTitle}
+                    </span>
+                  </div>
+                )}
+              </div>
 
               {currentMobileProject.meaning && (
-                <p className="font-sans text-xs text-amber-100/90 italic">
+                <p className="font-sans text-xs text-white/80 italic">
                   — {currentMobileProject.meaning}
                 </p>
               )}

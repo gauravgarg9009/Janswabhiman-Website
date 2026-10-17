@@ -210,7 +210,13 @@
         "image": "/images/blog/saraswati-hope-education-dignity/hero.webp"
       }
     ],
-    "headline": "Free education, rooted in dignity"
+    "headline": "Free education, rooted in dignity",
+    "shortTitle": "Saraswati",
+    "subTitle": "Free Education for Slum Children",
+    "sanskrit": "अविद्यातिमिरभेदिनी विद्या",
+    "meaning": "Education that pierces the darkness of ignorance.",
+    "description": "Daily free primary schooling, Dharmic sanskars, digital literacy, and books for children in underserved slum clusters and refugee camps.",
+    "icon": "/assets/read_5519429_1_141_9697.svg"
   },
   {
     "id": "pak-hindu-refugees-rehabilitation",
@@ -383,7 +389,13 @@
         "image": "/images/blog/from-despair-to-dignity/hero.webp"
       }
     ],
-    "headline": "Restoring Faith, Rebuilding Futures"
+    "headline": "Restoring Faith, Rebuilding Futures",
+    "shortTitle": "Pak Hindu Refugees",
+    "subTitle": "Rehabilitation & Sanctuary",
+    "sanskrit": "स्वदेशे पुनः स्वाभिमानः",
+    "meaning": "Self-respect restored in one's own land.",
+    "description": "Constructing sturdy weather-proof huts, micro-enterprise toolkits, clean water, and schooling for displaced refugee families.",
+    "icon": "/assets/childcare_17983864_1_141_9727.svg"
   },
   {
     "id": "women-empowerment",
@@ -543,7 +555,13 @@
         "image": "/images/blog/clothes-distribution/hero.webp"
       }
     ],
-    "headline": "मातृशक्ति – “या देवी सर्वभूतेषु मातृरूपेण संस्थिता।”"
+    "headline": "मातृशक्ति – “या देवी सर्वभूतेषु मातृरूपेण संस्थिता।”",
+    "shortTitle": "Women Empowerment",
+    "subTitle": "Matrishakti & Self-Reliance",
+    "sanskrit": "न उद्धार्या — स्वयमेव शक्तिः",
+    "meaning": "Not to be rescued — power unto herself.",
+    "description": "Vocational sewing training, Vedic Samuhik Vivahs, and self-defense for distressed tribal and rural women to earn with dignity.",
+    "icon": "/assets/reward_4086326_1_141_9717.svg"
   },
   {
     "id": "gauseva-gaushala-animal-welfare",
@@ -721,7 +739,13 @@
         "image": "/images/blog/the-roadside-battle-for-life/hero.webp"
       }
     ],
-    "headline": "पशून् पाहि – निःस्वार्थ प्राणि-सेवा का यज्ञ"
+    "headline": "पशून् पाहि – निःस्वार्थ प्राणि-सेवा का यज्ञ",
+    "shortTitle": "Gauseva & Animal Welfare",
+    "subTitle": "Rescue & Medical Seva",
+    "sanskrit": "करुणा एव गौसेवा",
+    "meaning": "Compassion itself is Gauseva.",
+    "description": "24x7 emergency highway rescue ambulances, trauma hospital, surgery, and lifetime loving care for injured and distressed cattle.",
+    "icon": "/assets/pet_care_2076220_1_141_9732.svg"
   },
   {
     "id": "gaushala",
@@ -871,7 +895,13 @@
         "image": "/images/blog/compassion-as-civilization-gaushala/hero.webp"
       }
     ],
-    "headline": "A Sanctuary Of Love, Service, And Dharma"
+    "headline": "A Sanctuary Of Love, Service, And Dharma",
+    "shortTitle": "Gaushala",
+    "subTitle": "Sanctuary in Noida",
+    "sanskrit": "गोशाला एव शरणम्",
+    "meaning": "The Gaushala itself is sanctuary.",
+    "description": "A permanent sanctuary in Noida sheltering over 100 rescued cows with two daily meals of fresh green fodder, clean sheds, and Gau Pujan.",
+    "icon": "/assets/cow_2396601_1_141_9754.svg"
   },
   {
     "id": "tribal-welfare",
@@ -1054,7 +1084,13 @@
         "image": "/images/blog/samuh-vivah-2019/hero.webp"
       }
     ],
-    "headline": "वयं राष्ट्रे जागृयाम – Preserving Identity, Restoring Dignity"
+    "headline": "वयं राष्ट्रे जागृयाम – Preserving Identity, Restoring Dignity",
+    "shortTitle": "Tribal Welfare",
+    "subTitle": "Identity, Livelihood & Dharma",
+    "sanskrit": "स्वमूलस्मरणं बलम्",
+    "meaning": "Remembering one's roots is strength.",
+    "description": "Rozgar self-employment, brand-new clothes distribution, hospital patient food, and grand Vedic Bhajan-Kirtan Yajnas in remote forest villages.",
+    "icon": "/assets/growth_9477432_1_141_9766.svg"
   },
   {
     "id": "relief-work",
@@ -1218,6 +1254,12 @@
         "image": "/images/blog/bhilad-valsad-floods-2026/hero.webp"
       }
     ],
-    "headline": "सर्वे भवन्तु सुखिनः – Standing with Communities in Crisis"
+    "headline": "सर्वे भवन्तु सुखिनः – Standing with Communities in Crisis",
+    "shortTitle": "Relief Work",
+    "subTitle": "Emergency Crisis Response",
+    "sanskrit": "आपदि स्थैर्यं सेवा",
+    "meaning": "Service that stands firm in calamity.",
+    "description": "Rapid disaster response teams delivering emergency food rations, boat rescue, and medical aid during devastating floods and droughts.",
+    "icon": "/assets/people_6197491_1_141_9740.svg"
   }
 ]
