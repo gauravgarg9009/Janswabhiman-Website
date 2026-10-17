@@ -39,7 +39,7 @@ export default function OurProjectsSection({ onSelectStory, onNavigateToProgram 
   return (
     <section id="projects" className="w-full bg-[#CC444B] text-white py-16 md:py-24 px-6 md:px-16 relative overflow-hidden">
       
-      {/* DESKTOP VIEW: 4-Cards Carousel matching exact Figma Node 141:9778 Structure */}
+      {/* DESKTOP VIEW: 4-Cards Carousel with Full Background Image */}
       <div className="hidden lg:block max-w-[1440px] mx-auto space-y-12">
         
         {/* Header */}
@@ -81,65 +81,68 @@ export default function OurProjectsSection({ onSelectStory, onNavigateToProgram 
           </div>
         </div>
 
-        {/* 4 Active Cards Grid */}
+        {/* 4 Active Cards Grid with Full Background Image */}
         <div className="grid grid-cols-4 gap-6 items-stretch">
           {visibleDesktopProjects.map((project) => (
             <div
               key={project.slug}
               onClick={() => handleProjectClick(project)}
-              className="bg-white rounded-[22px] overflow-hidden shadow-figma-card hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 text-left flex flex-col justify-between cursor-pointer border border-gray-100 group min-h-[460px]"
+              className="relative rounded-[26px] overflow-hidden p-6 sm:p-7 text-white shadow-2xl hover:shadow-3xl hover:-translate-y-2 transition-all duration-300 text-left flex flex-col justify-between cursor-pointer border border-white/20 group min-h-[470px]"
             >
-              <div>
-                {/* Figma Node 141:9819: Top Image Banner with Centered Icon & 3px Red Bottom Border */}
-                <div className="relative h-48 sm:h-52 w-full overflow-hidden border-b-[3px] border-[#CC444B]">
-                  {/* Mission Image */}
-                  <img
-                    src={project.cardImage || project.heroImage}
-                    alt={project.title}
-                    className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-700 ease-out"
-                  />
-                  
-                  {/* Figma Rectangle 2907: Subtle Crimson Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#CC444B]/40 via-black/20 to-black/35 group-hover:from-[#CC444B]/50 transition-colors duration-300" />
-                  
-                  {/* Centered Icon on top of the image (Figma Node 141:9821) */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center p-3 shadow-lg group-hover:scale-110 transition-transform">
-                      <img
-                        src={project.icon}
-                        alt={project.title}
-                        className="w-full h-full object-contain brightness-0 invert drop-shadow"
-                      />
-                    </div>
+              {/* Background Image across Whole Box */}
+              <div className="absolute inset-0 z-0 overflow-hidden">
+                <img
+                  src={project.cardImage || project.heroImage}
+                  alt={project.title}
+                  className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-700 ease-out"
+                />
+                {/* Contrast gradient overlays */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/65 to-black/35 group-hover:via-black/55 transition-colors duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-b from-[#8B1E24]/60 via-transparent to-black/85" />
+              </div>
+
+              {/* Card Header Content */}
+              <div className="relative z-10 space-y-4">
+                {/* Authentic Icon & Sanskrit Badge */}
+                <div className="flex items-center justify-between gap-2">
+                  <div className="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center p-3 shadow-lg group-hover:scale-110 group-hover:bg-[#CC444B] transition-all duration-300">
+                    <img
+                      src={project.icon}
+                      alt={project.title}
+                      className="w-full h-full object-contain brightness-0 invert drop-shadow"
+                    />
                   </div>
+
+                  {project.sanskrit && (
+                    <div className="inline-flex items-center bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/25 text-amber-200 text-[11px] font-heading font-bold shadow-xs truncate max-w-[190px]">
+                      <span className="truncate">"{project.sanskrit}"</span>
+                    </div>
+                  )}
                 </div>
 
-                {/* Figma Frame 3221: White Content Area */}
-                <div className="p-6 space-y-2.5">
-                  {/* Catchy Mission Title */}
-                  <h3 className="font-heading font-extrabold text-[20px] text-gray-900 group-hover:text-[#CC444B] leading-snug line-clamp-2 min-h-[50px] flex items-center transition-colors">
+                {/* Mission Title & Scope */}
+                <div className="space-y-2 pt-1">
+                  <h3 className="font-heading font-black text-2xl lg:text-[22px] text-white leading-snug drop-shadow-md group-hover:text-amber-200 transition-colors line-clamp-2 min-h-[54px] flex items-center">
                     {project.title}
                   </h3>
 
-                  {/* Sanskrit Shloka in Crimson Red */}
-                  {project.sanskrit && (
-                    <p className="font-sans text-[12.5px] font-semibold text-[#CC444B] italic tracking-wide truncate">
-                      "{project.sanskrit}"
+                  {project.cardScope && (
+                    <p className="font-sans text-[12px] text-amber-100/90 font-medium leading-relaxed line-clamp-2 drop-shadow-xs">
+                      {project.cardScope}
                     </p>
                   )}
 
-                  {/* Scope / Subtitle */}
-                  <p className="font-sans text-[12px] text-gray-500 leading-relaxed line-clamp-2">
-                    {project.cardScope || project.subTitle || project.meaning || project.description}
+                  <p className="font-sans text-[11.5px] text-white/80 line-clamp-2 leading-relaxed drop-shadow-xs">
+                    {project.description}
                   </p>
                 </div>
               </div>
 
-              {/* Figma CTA Button: Explore Programme */}
-              <div className="px-6 pb-6 pt-2">
-                <div className="w-full bg-[#CC444B] hover:bg-red-700 text-white font-heading font-bold text-xs sm:text-sm px-5 py-2.5 rounded-full shadow transition-all flex items-center justify-between group-hover:shadow-md cursor-pointer">
+              {/* Explore Programme Pill Button */}
+              <div className="relative z-10 pt-6">
+                <div className="w-full bg-white hover:bg-amber-300 text-[#1F2937] group-hover:bg-[#CC444B] group-hover:text-white font-heading font-bold text-xs sm:text-sm px-5 py-3 rounded-full shadow-lg transition-all flex items-center justify-between border border-white/30">
                   <span>Explore Programme</span>
-                  <div className="w-6 h-6 rounded-full bg-white text-[#CC444B] flex items-center justify-center transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shadow-xs shrink-0">
+                  <div className="w-6 h-6 rounded-full bg-[#CC444B] group-hover:bg-white text-white group-hover:text-[#CC444B] flex items-center justify-center transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shadow-xs shrink-0">
                     <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
                   </div>
                 </div>
@@ -164,7 +167,7 @@ export default function OurProjectsSection({ onSelectStory, onNavigateToProgram 
 
       </div>
 
-      {/* MOBILE VIEW: Single Card with Figma Image Banner Structure */}
+      {/* MOBILE VIEW: Single Card with Full Background Image & Indicators */}
       <div className="block lg:hidden max-w-md mx-auto text-center space-y-6">
         
         <div className="flex items-center justify-center gap-3">
@@ -183,54 +186,60 @@ export default function OurProjectsSection({ onSelectStory, onNavigateToProgram 
           From education and empowerment to rehabilitation, animal welfare, and emergency relief, explore all seven domains of ground seva.
         </p>
 
-        {/* Mobile Project Card */}
+        {/* Mobile Project Card with Full Background Image */}
         <div 
           onClick={() => handleProjectClick(currentMobileProject)}
-          className="bg-white rounded-[22px] overflow-hidden shadow-xl text-left flex flex-col justify-between cursor-pointer border border-gray-100 min-h-[440px]"
+          className="relative rounded-[28px] overflow-hidden p-7 text-white shadow-2xl text-left space-y-4 cursor-pointer min-h-[460px] flex flex-col justify-between border border-white/20"
         >
-          <div>
-            {/* Top Image Banner */}
-            <div className="relative h-44 w-full overflow-hidden border-b-[3px] border-[#CC444B]">
-              <img
-                src={currentMobileProject.cardImage || currentMobileProject.heroImage}
-                alt={currentMobileProject.title}
-                className="w-full h-full object-cover object-center"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#CC444B]/40 via-black/20 to-black/35" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center p-2.5 shadow-md">
-                  <img
-                    src={currentMobileProject.icon}
-                    alt={currentMobileProject.title}
-                    className="w-full h-full object-contain brightness-0 invert drop-shadow"
-                  />
-                </div>
+          {/* Background image across whole mobile box */}
+          <div className="absolute inset-0 z-0">
+            <img
+              src={currentMobileProject.cardImage || currentMobileProject.heroImage}
+              alt={currentMobileProject.title}
+              className="w-full h-full object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/65 to-black/35" />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#8B1E24]/60 via-transparent to-black/85" />
+          </div>
+
+          <div className="relative z-10 space-y-4">
+            <div className="flex items-center justify-between">
+              <div className="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center p-2.5 shadow-md">
+                <img
+                  src={currentMobileProject.icon}
+                  alt={currentMobileProject.title}
+                  className="w-full h-full object-contain brightness-0 invert drop-shadow"
+                />
               </div>
+
+              {currentMobileProject.sanskrit && (
+                <div className="inline-flex items-center bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/25 text-amber-200 text-[11px] font-heading font-bold shadow-xs">
+                  <span>"{currentMobileProject.sanskrit}"</span>
+                </div>
+              )}
             </div>
 
-            {/* White Body */}
-            <div className="p-6 space-y-2">
-              <h3 className="font-heading font-extrabold text-[20px] text-gray-900 leading-snug line-clamp-2 min-h-[48px] flex items-center">
+            <div className="space-y-2 pt-1">
+              <h3 className="font-heading font-black text-2xl text-white leading-snug drop-shadow-md min-h-[50px] flex items-center">
                 {currentMobileProject.title}
               </h3>
 
-              {currentMobileProject.sanskrit && (
-                <p className="font-sans text-xs font-semibold text-[#CC444B] italic tracking-wide truncate">
-                  "{currentMobileProject.sanskrit}"
+              {currentMobileProject.cardScope && (
+                <p className="font-sans text-xs text-amber-100/90 font-medium leading-relaxed line-clamp-2">
+                  {currentMobileProject.cardScope}
                 </p>
               )}
 
-              <p className="font-sans text-xs text-gray-500 leading-relaxed line-clamp-2">
-                {currentMobileProject.cardScope || currentMobileProject.subTitle || currentMobileProject.meaning || currentMobileProject.description}
+              <p className="font-sans text-xs sm:text-sm text-white/80 leading-relaxed line-clamp-2 drop-shadow-xs">
+                {currentMobileProject.description}
               </p>
             </div>
           </div>
 
-          {/* Explore Button */}
-          <div className="px-6 pb-6 pt-1">
-            <div className="w-full bg-[#CC444B] text-white font-heading font-bold text-xs px-5 py-2.5 rounded-full shadow flex items-center justify-between">
+          <div className="relative z-10 pt-4">
+            <div className="w-full bg-white text-[#1F2937] font-heading font-bold text-xs px-5 py-3 rounded-full shadow-lg flex items-center justify-between border border-white/30">
               <span>Explore Programme</span>
-              <div className="w-6 h-6 rounded-full bg-white text-[#CC444B] flex items-center justify-center shadow-xs shrink-0">
+              <div className="w-6 h-6 rounded-full bg-[#CC444B] text-white flex items-center justify-center shadow-xs shrink-0">
                 <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
               </div>
             </div>
