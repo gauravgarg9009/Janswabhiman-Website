@@ -101,9 +101,8 @@ export default function OurProjectsSection({ onSelectStory, onNavigateToProgram 
                 <div className="absolute inset-0 bg-gradient-to-b from-[#8B1E24]/60 via-transparent to-black/85" />
               </div>
 
-              {/* Card Header Content */}
-              <div className="relative z-10 space-y-5">
-                {/* Authentic Icon Badge */}
+              {/* Top: Authentic Icon Badge */}
+              <div className="relative z-10">
                 <div className="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center p-3 shadow-lg group-hover:scale-110 group-hover:bg-[#CC444B] transition-all duration-300">
                   <img
                     src={project.icon}
@@ -111,13 +110,13 @@ export default function OurProjectsSection({ onSelectStory, onNavigateToProgram 
                     className="w-full h-full object-contain brightness-0 invert drop-shadow"
                   />
                 </div>
+              </div>
 
-                {/* Big and Catchy Mission Title */}
-                <div>
-                  <h3 className="font-heading font-black text-2xl lg:text-[25px] text-white leading-tight tracking-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.85)] group-hover:text-red-100 transition-colors">
-                    {project.title}
-                  </h3>
-                </div>
+              {/* Middle: Big, Catchy Mission Title in the Centre */}
+              <div className="relative z-10 my-auto py-4 w-full flex items-center justify-center text-center">
+                <h3 className="font-heading font-black text-2xl lg:text-[25px] text-white text-center leading-tight tracking-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.85)] group-hover:text-red-100 transition-colors">
+                  {project.title}
+                </h3>
               </div>
 
               {/* Explore Programme Pill Button */}
@@ -170,7 +169,7 @@ export default function OurProjectsSection({ onSelectStory, onNavigateToProgram 
         {/* Mobile Project Card with Full Background Image */}
         <div
           onClick={() => handleProjectClick(currentMobileProject)}
-          className="relative rounded-[24px] overflow-hidden p-6 text-white shadow-xl text-left flex flex-col justify-between cursor-pointer min-h-[350px] border border-white/20 group"
+          className="relative rounded-[24px] overflow-hidden p-6 text-white shadow-xl flex flex-col justify-between cursor-pointer min-h-[350px] border border-white/20 group"
         >
           {/* Background image across whole mobile box */}
           <div className="absolute inset-0 z-0">
@@ -183,7 +182,8 @@ export default function OurProjectsSection({ onSelectStory, onNavigateToProgram 
             <div className="absolute inset-0 bg-gradient-to-b from-[#8B1E24]/60 via-transparent to-black/85" />
           </div>
 
-          <div className="relative z-10 space-y-5">
+          {/* Top: Icon */}
+          <div className="relative z-10">
             <div className="w-13 h-13 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center p-3 shadow-md">
               <img
                 src={currentMobileProject.icon}
@@ -191,12 +191,13 @@ export default function OurProjectsSection({ onSelectStory, onNavigateToProgram 
                 className="w-full h-full object-contain brightness-0 invert drop-shadow"
               />
             </div>
+          </div>
 
-            <div>
-              <h3 className="font-heading font-black text-2xl text-white leading-tight tracking-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.85)]">
-                {currentMobileProject.title}
-              </h3>
-            </div>
+          {/* Middle: Big, Catchy Mission Title in the Centre */}
+          <div className="relative z-10 my-auto py-4 w-full flex items-center justify-center text-center">
+            <h3 className="font-heading font-black text-2xl text-white text-center leading-tight tracking-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.85)]">
+              {currentMobileProject.title}
+            </h3>
           </div>
 
           <div className="relative z-10 pt-4">
