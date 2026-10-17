@@ -38,10 +38,10 @@ export default function OurProjectsSection({ onSelectStory, onNavigateToProgram 
 
   return (
     <section id="projects" className="w-full bg-[#CC444B] text-white py-16 md:py-24 px-6 md:px-16 relative overflow-hidden">
-      
+
       {/* DESKTOP VIEW: 4-Cards Carousel with Full Background Image */}
       <div className="hidden lg:block max-w-[1440px] mx-auto space-y-12">
-        
+
         {/* Header */}
         <div className="flex justify-between items-end gap-6">
           <div className="space-y-3 text-left max-w-2xl">
@@ -87,7 +87,7 @@ export default function OurProjectsSection({ onSelectStory, onNavigateToProgram 
             <div
               key={project.slug}
               onClick={() => handleProjectClick(project)}
-              className="relative rounded-[26px] overflow-hidden p-6 sm:p-7 text-white shadow-2xl hover:shadow-3xl hover:-translate-y-2 transition-all duration-300 text-left flex flex-col justify-between cursor-pointer border border-white/20 group min-h-[470px]"
+              className="relative rounded-[24px] overflow-hidden p-6 text-white shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 text-left flex flex-col justify-between cursor-pointer border border-white/20 group min-h-[350px]"
             >
               {/* Background Image across Whole Box */}
               <div className="absolute inset-0 z-0 overflow-hidden">
@@ -97,50 +97,32 @@ export default function OurProjectsSection({ onSelectStory, onNavigateToProgram 
                   className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-700 ease-out"
                 />
                 {/* Contrast gradient overlays */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/65 to-black/35 group-hover:via-black/55 transition-colors duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/30 group-hover:via-black/50 transition-colors duration-300" />
                 <div className="absolute inset-0 bg-gradient-to-b from-[#8B1E24]/60 via-transparent to-black/85" />
               </div>
 
               {/* Card Header Content */}
-              <div className="relative z-10 space-y-4">
-                {/* Authentic Icon & Sanskrit Badge */}
-                <div className="flex items-center justify-between gap-2">
-                  <div className="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center p-3 shadow-lg group-hover:scale-110 group-hover:bg-[#CC444B] transition-all duration-300">
-                    <img
-                      src={project.icon}
-                      alt={project.title}
-                      className="w-full h-full object-contain brightness-0 invert drop-shadow"
-                    />
-                  </div>
-
-                  {project.sanskrit && (
-                    <div className="inline-flex items-center bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/25 text-amber-200 text-[11px] font-heading font-bold shadow-xs truncate max-w-[190px]">
-                      <span className="truncate">"{project.sanskrit}"</span>
-                    </div>
-                  )}
+              <div className="relative z-10 space-y-5">
+                {/* Authentic Icon Badge */}
+                <div className="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center p-3 shadow-lg group-hover:scale-110 group-hover:bg-[#CC444B] transition-all duration-300">
+                  <img
+                    src={project.icon}
+                    alt={project.title}
+                    className="w-full h-full object-contain brightness-0 invert drop-shadow"
+                  />
                 </div>
 
-                {/* Mission Title & Scope */}
-                <div className="space-y-2 pt-1">
-                  <h3 className="font-heading font-black text-2xl lg:text-[22px] text-white leading-snug drop-shadow-md group-hover:text-amber-200 transition-colors line-clamp-2 min-h-[54px] flex items-center">
+                {/* Big and Catchy Mission Title */}
+                <div>
+                  <h3 className="font-heading font-black text-2xl lg:text-[25px] text-white leading-tight tracking-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.85)] group-hover:text-red-100 transition-colors">
                     {project.title}
                   </h3>
-
-                  {project.cardScope && (
-                    <p className="font-sans text-[12px] text-amber-100/90 font-medium leading-relaxed line-clamp-2 drop-shadow-xs">
-                      {project.cardScope}
-                    </p>
-                  )}
-
-                  <p className="font-sans text-[11.5px] text-white/80 line-clamp-2 leading-relaxed drop-shadow-xs">
-                    {project.description}
-                  </p>
                 </div>
               </div>
 
               {/* Explore Programme Pill Button */}
-              <div className="relative z-10 pt-6">
-                <div className="w-full bg-white hover:bg-amber-300 text-[#1F2937] group-hover:bg-[#CC444B] group-hover:text-white font-heading font-bold text-xs sm:text-sm px-5 py-3 rounded-full shadow-lg transition-all flex items-center justify-between border border-white/30">
+              <div className="relative z-10 pt-4">
+                <div className="w-full bg-white text-[#1F2937] group-hover:bg-[#CC444B] group-hover:text-white font-heading font-bold text-xs sm:text-sm px-5 py-3 rounded-full shadow-lg transition-all flex items-center justify-between border border-white/30">
                   <span>Explore Programme</span>
                   <div className="w-6 h-6 rounded-full bg-[#CC444B] group-hover:bg-white text-white group-hover:text-[#CC444B] flex items-center justify-center transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shadow-xs shrink-0">
                     <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
@@ -157,9 +139,8 @@ export default function OurProjectsSection({ onSelectStory, onNavigateToProgram 
             <button
               key={idx}
               onClick={() => setCurrentIndex(idx)}
-              className={`h-2.5 rounded-full transition-all cursor-pointer ${
-                currentIndex === idx ? 'w-8 bg-white' : 'w-2.5 bg-white/45 hover:bg-white/70'
-              }`}
+              className={`h-2.5 rounded-full transition-all cursor-pointer ${currentIndex === idx ? 'w-8 bg-white' : 'w-2.5 bg-white/45 hover:bg-white/70'
+                }`}
               aria-label={`Slide ${idx + 1}`}
             />
           ))}
@@ -169,7 +150,7 @@ export default function OurProjectsSection({ onSelectStory, onNavigateToProgram 
 
       {/* MOBILE VIEW: Single Card with Full Background Image & Indicators */}
       <div className="block lg:hidden max-w-md mx-auto text-center space-y-6">
-        
+
         <div className="flex items-center justify-center gap-3">
           <div className="h-[1.5px] w-12 bg-white/70"></div>
           <span className="font-heading font-medium text-white/90 text-sm">
@@ -187,9 +168,9 @@ export default function OurProjectsSection({ onSelectStory, onNavigateToProgram 
         </p>
 
         {/* Mobile Project Card with Full Background Image */}
-        <div 
+        <div
           onClick={() => handleProjectClick(currentMobileProject)}
-          className="relative rounded-[28px] overflow-hidden p-7 text-white shadow-2xl text-left space-y-4 cursor-pointer min-h-[460px] flex flex-col justify-between border border-white/20"
+          className="relative rounded-[24px] overflow-hidden p-6 text-white shadow-xl text-left flex flex-col justify-between cursor-pointer min-h-[350px] border border-white/20 group"
         >
           {/* Background image across whole mobile box */}
           <div className="absolute inset-0 z-0">
@@ -198,41 +179,23 @@ export default function OurProjectsSection({ onSelectStory, onNavigateToProgram 
               alt={currentMobileProject.title}
               className="w-full h-full object-cover object-center"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/65 to-black/35" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/30" />
             <div className="absolute inset-0 bg-gradient-to-b from-[#8B1E24]/60 via-transparent to-black/85" />
           </div>
 
-          <div className="relative z-10 space-y-4">
-            <div className="flex items-center justify-between">
-              <div className="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center p-2.5 shadow-md">
-                <img
-                  src={currentMobileProject.icon}
-                  alt={currentMobileProject.title}
-                  className="w-full h-full object-contain brightness-0 invert drop-shadow"
-                />
-              </div>
-
-              {currentMobileProject.sanskrit && (
-                <div className="inline-flex items-center bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/25 text-amber-200 text-[11px] font-heading font-bold shadow-xs">
-                  <span>"{currentMobileProject.sanskrit}"</span>
-                </div>
-              )}
+          <div className="relative z-10 space-y-5">
+            <div className="w-13 h-13 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center p-3 shadow-md">
+              <img
+                src={currentMobileProject.icon}
+                alt={currentMobileProject.title}
+                className="w-full h-full object-contain brightness-0 invert drop-shadow"
+              />
             </div>
 
-            <div className="space-y-2 pt-1">
-              <h3 className="font-heading font-black text-2xl text-white leading-snug drop-shadow-md min-h-[50px] flex items-center">
+            <div>
+              <h3 className="font-heading font-black text-2xl text-white leading-tight tracking-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.85)]">
                 {currentMobileProject.title}
               </h3>
-
-              {currentMobileProject.cardScope && (
-                <p className="font-sans text-xs text-amber-100/90 font-medium leading-relaxed line-clamp-2">
-                  {currentMobileProject.cardScope}
-                </p>
-              )}
-
-              <p className="font-sans text-xs sm:text-sm text-white/80 leading-relaxed line-clamp-2 drop-shadow-xs">
-                {currentMobileProject.description}
-              </p>
             </div>
           </div>
 
@@ -260,9 +223,8 @@ export default function OurProjectsSection({ onSelectStory, onNavigateToProgram 
             {programsData.map((_, idx) => (
               <span
                 key={idx}
-                className={`h-2 rounded-full transition-all ${
-                  currentIndex === idx ? 'w-6 bg-white' : 'w-2 bg-white/45'
-                }`}
+                className={`h-2 rounded-full transition-all ${currentIndex === idx ? 'w-6 bg-white' : 'w-2 bg-white/45'
+                  }`}
               />
             ))}
           </div>
