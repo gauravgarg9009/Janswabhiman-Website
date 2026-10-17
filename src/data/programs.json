@@ -216,7 +216,175 @@
     "sanskrit": "अविद्यातिमिरभेदिनी विद्या",
     "meaning": "Education that pierces the darkness of ignorance.",
     "description": "Daily free primary schooling, Dharmic sanskars, digital literacy, and books for children in underserved slum clusters and refugee camps.",
-    "icon": "/assets/read_5519429_1_141_9697.svg"
+    "icon": "/assets/read_5519429_1_141_9697.svg",
+    "cardScope": "Saraswati-Free Education for Slum Children"
+  },
+  {
+    "id": "women-empowerment",
+    "slug": "women-empowerment",
+    "title": "Women Empowerment",
+    "sanskritTitle": "या देवी सर्वभूतेषु मातृरूपेण संस्थिता",
+    "navLabel": "Women Empowerment",
+    "leadText": "At Jan Swabhiman, we honor Matrishakti – the divine feminine force – as the cornerstone of our families, culture, and Dharma. We serve mothers, widows, and daughters across tribal and underprivileged regions through livelihood, education, and social dignity.",
+    "stats": [
+      {
+        "label": "Women Empowered",
+        "value": "20,000+"
+      },
+      {
+        "label": "Samuhik Vivahs Facilitated",
+        "value": "150+"
+      },
+      {
+        "label": "Girl Scholarships Awarded",
+        "value": "1,200+"
+      },
+      {
+        "label": "Self-Defense Trainees",
+        "value": "3,500+"
+      }
+    ],
+    "heroImage": "/images/women-and-child-empowerment/hero-collage.jpg",
+    "secondaryImage": "/images/women-and-child-empowerment/initiatives-collage.webp",
+    "thirdImage": "/images/women-and-child-empowerment/programs-collage.jpg",
+    "mantraBox": {
+      "shloka": "स्तुता मया वरदा वेदमाता प्रचोदयन्ता पावमानी द्विजानाम् । आयुः प्राण प्रजा पशु कीर्ति द्रविण ब्रह्मवर्चसम् ॥",
+      "source": "अथर्ववेद 19/71/1",
+      "translation": "O Divine Mother of Knowledge, You are Varadā – fulfiller of noble desires, eternal source of wisdom. You grant us life, vital energy, noble progeny, prosperity, and spiritual brilliance."
+    },
+    "taglineHeading": "When She Rises, the Nation Awakens",
+    "introParas": [
+      "At Jan Swabhiman, we honor Matrishakti not merely as a symbol of care, but as the supreme architect of civilization. When a woman is respected, empowered, and safe, an entire society prospers.",
+      "We serve the silent pillars of our people — mothers, widows, young daughters, and abandoned girls — especially across neglected tribal and rural belts where poverty and isolation make them vulnerable to exploitation."
+    ],
+    "whyUnique": {
+      "title": "Our Holistic Focus on Matrishakti",
+      "text": "Rather than superficial charity, we build deep self-reliance through economic independence, cultural honour, self-defense empowerment, and family security."
+    },
+    "pillars": [
+      {
+        "title": "Kanyadaan of Poor & Tribal Daughters",
+        "desc": "Organizing sacred Vedic Samuhik Vivahs in tribal areas of Tapi, Dang, and Valsad, freeing poor families from predatory debt and restoring celebration with respect.",
+        "icon": "Heart"
+      },
+      {
+        "title": "AtmaNirbhar Matrishakti – Livelihood",
+        "desc": "Equipping women with sewing machines, tailoring workshops, and handicraft cooperatives so mothers earn regular, independent incomes from home.",
+        "icon": "Briefcase"
+      },
+      {
+        "title": "Education of Poor & Orphan Girls",
+        "desc": "Ensuring no young girl drops out due to lack of school fees, providing textbooks, bicycles for travel to school, and personalized tutoring.",
+        "icon": "GraduationCap"
+      },
+      {
+        "title": "Supporting Families of Deceased Wage Workers",
+        "desc": "Extending direct sustenance pensions, ration supplies, and children's schooling to destitute widows of sewage and daily-wage laborers.",
+        "icon": "Users"
+      },
+      {
+        "title": "Self-Defense & Safety Awareness",
+        "desc": "Conducting martial arts, physical conditioning, and safety awareness workshops so girls grow up courageous, alert, and capable of protecting themselves.",
+        "icon": "Shield"
+      }
+    ],
+    "transformation": {
+      "title": "Join the Yajna of Matrishakti Jagran",
+      "points": [
+        {
+          "title": "Freedom from Debt",
+          "desc": "Tribal fathers no longer have to mortgage ancestral lands to afford their daughters' weddings."
+        },
+        {
+          "title": "Economic Self-Sufficiency",
+          "desc": "Over 20,000 women now manage household budgets, educate their children, and contribute to local economies."
+        },
+        {
+          "title": "Cultural Pride Restored",
+          "desc": "Tribal girls celebrated as Shakti during Kanya Poojan and Navratri festivals, dissolving caste barriers through shared Mahaprasad."
+        }
+      ]
+    },
+    "specialFocus": {
+      "title": "Kanya Poojan & Cultural Reclamation",
+      "desc": "Our ongoing Kanya Poojan campaigns honor young tribal and slum daughters as living embodiments of Devi, shattering historic divides and reconnecting communities with Sanatan reverence."
+    },
+    "sponsorshipTiers": [
+      {
+        "amount": 5100,
+        "amountLabel": "₹5,100",
+        "usdLabel": "$61",
+        "title": "Welfare & Education of an Orphan/Poor Girl (1 Month)",
+        "desc": "Covers complete schooling, stationery, clothing, nutrition, and healthcare for a vulnerable girl child.",
+        "rzpUrl": "https://rzp.io/rzp/u1GDxgY2",
+        "popular": true
+      },
+      {
+        "amount": 51000,
+        "amountLabel": "₹51,000",
+        "usdLabel": "$610",
+        "title": "Welfare & Education of an Orphan/Poor Girl (1 Year)",
+        "desc": "Funds full-year academic fees, coaching, mentorship, living care, and safety support for an underprivileged girl.",
+        "rzpUrl": "https://rzp.io/rzp/gNYigYWj",
+        "popular": false
+      }
+    ],
+    "bankDetails": {
+      "accountName": "Jan Swabhiman Welfare Society",
+      "bankName": "IDFC First Bank",
+      "accountNumber": "10094356373",
+      "ifscCode": "IDFB0020101",
+      "branch": "Barakhamba Road, New Delhi",
+      "emailForPan": "mailus@janswabhiman.org"
+    },
+    "mentors": [
+      {
+        "name": "Dr. Parul Agarwal",
+        "role": "Jamia Hamdard University",
+        "image": "/images/saraswati/mentors/dr-parul-agarwal.png"
+      },
+      {
+        "name": "Smt. Anantha Ellathur",
+        "role": "Intel, Agastya Foundation",
+        "image": "/images/saraswati/mentors/smt-anantha-ellathur.png"
+      }
+    ],
+    "gallery": [
+      "/images/women-and-child-empowerment/hero-collage.jpg",
+      "/images/women-and-child-empowerment/initiatives-collage.webp",
+      "/images/women-and-child-empowerment/programs-collage.jpg",
+      "/images/blog/samuh-vivah-2019/gallery-1.webp",
+      "/images/blog/kanya-poojan-tribal/gallery-2.webp",
+      "/images/blog/clothes-distribution/gallery-3.webp"
+    ],
+    "relatedStories": [
+      {
+        "slug": "samuh-vivah-2019",
+        "title": "Samuhik Vivah in Tapi",
+        "subtitle": "Vedic marriages restoring cultural pride and debt-free celebrations for tribal daughters",
+        "image": "/images/blog/samuh-vivah-2019/hero.webp"
+      },
+      {
+        "slug": "kanya-poojan-tribal",
+        "title": "Kanya Poojan Celebrations",
+        "subtitle": "Honoring tribal girls as living Shakti and dissolving exclusion with shared Mahaprasad",
+        "image": "/images/blog/kanya-poojan-tribal/hero.webp"
+      },
+      {
+        "slug": "clothes-distribution",
+        "title": "Clothes Distribution Initiative",
+        "subtitle": "Restoring modesty and dignity where severe poverty had stolen comfort",
+        "image": "/images/blog/clothes-distribution/hero.webp"
+      }
+    ],
+    "headline": "मातृशक्ति – “या देवी सर्वभूतेषु मातृरूपेण संस्थिता।”",
+    "shortTitle": "Women Empowerment",
+    "subTitle": "Matrishakti & Self-Reliance",
+    "sanskrit": "न उद्धार्या — स्वयमेव शक्तिः",
+    "meaning": "Not to be rescued — power unto herself.",
+    "description": "Vocational sewing training, Vedic Samuhik Vivahs, and self-defense for distressed tribal and rural women to earn with dignity.",
+    "icon": "/assets/reward_4086326_1_141_9717.svg",
+    "cardScope": "मातृशक्ति – “या देवी सर्वभूतेषु मातृरूपेण संस्थिता।”"
   },
   {
     "id": "pak-hindu-refugees-rehabilitation",
@@ -395,173 +563,8 @@
     "sanskrit": "स्वदेशे पुनः स्वाभिमानः",
     "meaning": "Self-respect restored in one's own land.",
     "description": "Constructing sturdy weather-proof huts, micro-enterprise toolkits, clean water, and schooling for displaced refugee families.",
-    "icon": "/assets/childcare_17983864_1_141_9727.svg"
-  },
-  {
-    "id": "women-empowerment",
-    "slug": "women-empowerment",
-    "title": "Women Empowerment",
-    "sanskritTitle": "या देवी सर्वभूतेषु मातृरूपेण संस्थिता",
-    "navLabel": "Women Empowerment",
-    "leadText": "At Jan Swabhiman, we honor Matrishakti – the divine feminine force – as the cornerstone of our families, culture, and Dharma. We serve mothers, widows, and daughters across tribal and underprivileged regions through livelihood, education, and social dignity.",
-    "stats": [
-      {
-        "label": "Women Empowered",
-        "value": "20,000+"
-      },
-      {
-        "label": "Samuhik Vivahs Facilitated",
-        "value": "150+"
-      },
-      {
-        "label": "Girl Scholarships Awarded",
-        "value": "1,200+"
-      },
-      {
-        "label": "Self-Defense Trainees",
-        "value": "3,500+"
-      }
-    ],
-    "heroImage": "/images/women-and-child-empowerment/hero-collage.jpg",
-    "secondaryImage": "/images/women-and-child-empowerment/initiatives-collage.webp",
-    "thirdImage": "/images/women-and-child-empowerment/programs-collage.jpg",
-    "mantraBox": {
-      "shloka": "स्तुता मया वरदा वेदमाता प्रचोदयन्ता पावमानी द्विजानाम् । आयुः प्राण प्रजा पशु कीर्ति द्रविण ब्रह्मवर्चसम् ॥",
-      "source": "अथर्ववेद 19/71/1",
-      "translation": "O Divine Mother of Knowledge, You are Varadā – fulfiller of noble desires, eternal source of wisdom. You grant us life, vital energy, noble progeny, prosperity, and spiritual brilliance."
-    },
-    "taglineHeading": "When She Rises, the Nation Awakens",
-    "introParas": [
-      "At Jan Swabhiman, we honor Matrishakti not merely as a symbol of care, but as the supreme architect of civilization. When a woman is respected, empowered, and safe, an entire society prospers.",
-      "We serve the silent pillars of our people — mothers, widows, young daughters, and abandoned girls — especially across neglected tribal and rural belts where poverty and isolation make them vulnerable to exploitation."
-    ],
-    "whyUnique": {
-      "title": "Our Holistic Focus on Matrishakti",
-      "text": "Rather than superficial charity, we build deep self-reliance through economic independence, cultural honour, self-defense empowerment, and family security."
-    },
-    "pillars": [
-      {
-        "title": "Kanyadaan of Poor & Tribal Daughters",
-        "desc": "Organizing sacred Vedic Samuhik Vivahs in tribal areas of Tapi, Dang, and Valsad, freeing poor families from predatory debt and restoring celebration with respect.",
-        "icon": "Heart"
-      },
-      {
-        "title": "AtmaNirbhar Matrishakti – Livelihood",
-        "desc": "Equipping women with sewing machines, tailoring workshops, and handicraft cooperatives so mothers earn regular, independent incomes from home.",
-        "icon": "Briefcase"
-      },
-      {
-        "title": "Education of Poor & Orphan Girls",
-        "desc": "Ensuring no young girl drops out due to lack of school fees, providing textbooks, bicycles for travel to school, and personalized tutoring.",
-        "icon": "GraduationCap"
-      },
-      {
-        "title": "Supporting Families of Deceased Wage Workers",
-        "desc": "Extending direct sustenance pensions, ration supplies, and children's schooling to destitute widows of sewage and daily-wage laborers.",
-        "icon": "Users"
-      },
-      {
-        "title": "Self-Defense & Safety Awareness",
-        "desc": "Conducting martial arts, physical conditioning, and safety awareness workshops so girls grow up courageous, alert, and capable of protecting themselves.",
-        "icon": "Shield"
-      }
-    ],
-    "transformation": {
-      "title": "Join the Yajna of Matrishakti Jagran",
-      "points": [
-        {
-          "title": "Freedom from Debt",
-          "desc": "Tribal fathers no longer have to mortgage ancestral lands to afford their daughters' weddings."
-        },
-        {
-          "title": "Economic Self-Sufficiency",
-          "desc": "Over 20,000 women now manage household budgets, educate their children, and contribute to local economies."
-        },
-        {
-          "title": "Cultural Pride Restored",
-          "desc": "Tribal girls celebrated as Shakti during Kanya Poojan and Navratri festivals, dissolving caste barriers through shared Mahaprasad."
-        }
-      ]
-    },
-    "specialFocus": {
-      "title": "Kanya Poojan & Cultural Reclamation",
-      "desc": "Our ongoing Kanya Poojan campaigns honor young tribal and slum daughters as living embodiments of Devi, shattering historic divides and reconnecting communities with Sanatan reverence."
-    },
-    "sponsorshipTiers": [
-      {
-        "amount": 5100,
-        "amountLabel": "₹5,100",
-        "usdLabel": "$61",
-        "title": "Welfare & Education of an Orphan/Poor Girl (1 Month)",
-        "desc": "Covers complete schooling, stationery, clothing, nutrition, and healthcare for a vulnerable girl child.",
-        "rzpUrl": "https://rzp.io/rzp/u1GDxgY2",
-        "popular": true
-      },
-      {
-        "amount": 51000,
-        "amountLabel": "₹51,000",
-        "usdLabel": "$610",
-        "title": "Welfare & Education of an Orphan/Poor Girl (1 Year)",
-        "desc": "Funds full-year academic fees, coaching, mentorship, living care, and safety support for an underprivileged girl.",
-        "rzpUrl": "https://rzp.io/rzp/gNYigYWj",
-        "popular": false
-      }
-    ],
-    "bankDetails": {
-      "accountName": "Jan Swabhiman Welfare Society",
-      "bankName": "IDFC First Bank",
-      "accountNumber": "10094356373",
-      "ifscCode": "IDFB0020101",
-      "branch": "Barakhamba Road, New Delhi",
-      "emailForPan": "mailus@janswabhiman.org"
-    },
-    "mentors": [
-      {
-        "name": "Dr. Parul Agarwal",
-        "role": "Jamia Hamdard University",
-        "image": "/images/saraswati/mentors/dr-parul-agarwal.png"
-      },
-      {
-        "name": "Smt. Anantha Ellathur",
-        "role": "Intel, Agastya Foundation",
-        "image": "/images/saraswati/mentors/smt-anantha-ellathur.png"
-      }
-    ],
-    "gallery": [
-      "/images/women-and-child-empowerment/hero-collage.jpg",
-      "/images/women-and-child-empowerment/initiatives-collage.webp",
-      "/images/women-and-child-empowerment/programs-collage.jpg",
-      "/images/blog/samuh-vivah-2019/gallery-1.webp",
-      "/images/blog/kanya-poojan-tribal/gallery-2.webp",
-      "/images/blog/clothes-distribution/gallery-3.webp"
-    ],
-    "relatedStories": [
-      {
-        "slug": "samuh-vivah-2019",
-        "title": "Samuhik Vivah in Tapi",
-        "subtitle": "Vedic marriages restoring cultural pride and debt-free celebrations for tribal daughters",
-        "image": "/images/blog/samuh-vivah-2019/hero.webp"
-      },
-      {
-        "slug": "kanya-poojan-tribal",
-        "title": "Kanya Poojan Celebrations",
-        "subtitle": "Honoring tribal girls as living Shakti and dissolving exclusion with shared Mahaprasad",
-        "image": "/images/blog/kanya-poojan-tribal/hero.webp"
-      },
-      {
-        "slug": "clothes-distribution",
-        "title": "Clothes Distribution Initiative",
-        "subtitle": "Restoring modesty and dignity where severe poverty had stolen comfort",
-        "image": "/images/blog/clothes-distribution/hero.webp"
-      }
-    ],
-    "headline": "मातृशक्ति – “या देवी सर्वभूतेषु मातृरूपेण संस्थिता।”",
-    "shortTitle": "Women Empowerment",
-    "subTitle": "Matrishakti & Self-Reliance",
-    "sanskrit": "न उद्धार्या — स्वयमेव शक्तिः",
-    "meaning": "Not to be rescued — power unto herself.",
-    "description": "Vocational sewing training, Vedic Samuhik Vivahs, and self-defense for distressed tribal and rural women to earn with dignity.",
-    "icon": "/assets/reward_4086326_1_141_9717.svg"
+    "icon": "/assets/childcare_17983864_1_141_9727.svg",
+    "cardScope": "Pak Hindu Refugees Rehabilitation – Restoring Faith, Rebuilding Futures"
   },
   {
     "id": "gauseva-gaushala-animal-welfare",
@@ -745,7 +748,8 @@
     "sanskrit": "करुणा एव गौसेवा",
     "meaning": "Compassion itself is Gauseva.",
     "description": "24x7 emergency highway rescue ambulances, trauma hospital, surgery, and lifetime loving care for injured and distressed cattle.",
-    "icon": "/assets/pet_care_2076220_1_141_9732.svg"
+    "icon": "/assets/pet_care_2076220_1_141_9732.svg",
+    "cardScope": "Gauseva & Animal Welfare – पशून् पाहि · Protect the Voiceless"
   },
   {
     "id": "gaushala",
@@ -901,7 +905,8 @@
     "sanskrit": "गोशाला एव शरणम्",
     "meaning": "The Gaushala itself is sanctuary.",
     "description": "A permanent sanctuary in Noida sheltering over 100 rescued cows with two daily meals of fresh green fodder, clean sheds, and Gau Pujan.",
-    "icon": "/assets/cow_2396601_1_141_9754.svg"
+    "icon": "/assets/cow_2396601_1_141_9754.svg",
+    "cardScope": "Gaushala – A Sanctuary Of Love, Service, And Dharma in Noida"
   },
   {
     "id": "tribal-welfare",
@@ -1090,7 +1095,8 @@
     "sanskrit": "स्वमूलस्मरणं बलम्",
     "meaning": "Remembering one's roots is strength.",
     "description": "Rozgar self-employment, brand-new clothes distribution, hospital patient food, and grand Vedic Bhajan-Kirtan Yajnas in remote forest villages.",
-    "icon": "/assets/growth_9477432_1_141_9766.svg"
+    "icon": "/assets/growth_9477432_1_141_9766.svg",
+    "cardScope": "Tribal Welfare – वयं राष्ट्रे जागृयाम · Preserving Identity, Restoring Dignity"
   },
   {
     "id": "relief-work",
@@ -1260,6 +1266,7 @@
     "sanskrit": "आपदि स्थैर्यं सेवा",
     "meaning": "Service that stands firm in calamity.",
     "description": "Rapid disaster response teams delivering emergency food rations, boat rescue, and medical aid during devastating floods and droughts.",
-    "icon": "/assets/people_6197491_1_141_9740.svg"
+    "icon": "/assets/people_6197491_1_141_9740.svg",
+    "cardScope": "Relief Work – सर्वे भवन्तु सुखिनः · Standing with Communities in Crisis"
   }
 ]
