@@ -29,7 +29,7 @@ export default function OurProjectsSection({ onSelectStory, onNavigateToProgram 
       onSelectStory({
         title: proj.title,
         category: "Program",
-        image: proj.cardImage || proj.heroImage,
+        image: proj.heroImage,
         desc: proj.description,
         content: proj.fullText
       });
@@ -38,10 +38,10 @@ export default function OurProjectsSection({ onSelectStory, onNavigateToProgram 
 
   return (
     <section id="projects" className="w-full bg-[#CC444B] text-white py-16 md:py-24 px-6 md:px-16 relative overflow-hidden">
-      
-      {/* DESKTOP VIEW: 4-Cards Carousel with Mission Image in Background */}
+
+      {/* DESKTOP VIEW: 4-Cards Carousel with All 7 Programs */}
       <div className="hidden lg:block max-w-[1440px] mx-auto space-y-12">
-        
+
         {/* Header */}
         <div className="flex justify-between items-end gap-6">
           <div className="space-y-3 text-left max-w-2xl">
@@ -66,14 +66,14 @@ export default function OurProjectsSection({ onSelectStory, onNavigateToProgram 
           <div className="flex items-center gap-3">
             <button
               onClick={handlePrev}
-              className="w-11 h-11 rounded-full bg-black/25 hover:bg-black/45 text-white flex items-center justify-center transition-all shadow-md cursor-pointer active:scale-95"
+              className="w-12 h-12 rounded-full bg-black/20 hover:bg-black/40 text-white flex items-center justify-center transition-all shadow-md cursor-pointer"
               aria-label="Previous Project"
             >
               <ChevronLeft className="w-6 h-6 stroke-[2.5]" />
             </button>
             <button
               onClick={handleNext}
-              className="w-11 h-11 rounded-full bg-black/25 hover:bg-black/45 text-white flex items-center justify-center transition-all shadow-md cursor-pointer active:scale-95"
+              className="w-12 h-12 rounded-full bg-black/20 hover:bg-black/40 text-white flex items-center justify-center transition-all shadow-md cursor-pointer"
               aria-label="Next Project"
             >
               <ChevronRight className="w-6 h-6 stroke-[2.5]" />
@@ -87,54 +87,63 @@ export default function OurProjectsSection({ onSelectStory, onNavigateToProgram 
             <div
               key={project.slug}
               onClick={() => handleProjectClick(project)}
-              className="relative rounded-[26px] overflow-hidden p-7 md:p-8 text-white shadow-xl flex flex-col justify-between text-left group hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 cursor-pointer min-h-[460px] border border-white/15"
+              className="relative rounded-[28px] overflow-hidden p-7 text-white shadow-2xl flex flex-col justify-between text-left group hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.5)] transition-all duration-300 cursor-pointer min-h-[480px] border border-white/20"
             >
-              {/* Mission Image in Background with Gradient Overlay */}
+              {/* Background Image with Rich Red-to-Dark Gradient matching Dedicated Page */}
               <div className="absolute inset-0 z-0">
                 <img
-                  src={project.cardImage || project.heroImage}
+                  src={project.heroImage}
                   alt={project.title}
-                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-700 ease-out"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/35" />
+                {/* Dark gradient for crisp text legibility */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/35 group-hover:via-black/50 transition-colors duration-300" />
+                {/* Brand crimson gradient tint matching dedicated page */}
+                <div className="absolute inset-0 bg-gradient-to-b from-red-950/70 via-transparent to-black/85" />
               </div>
 
-              <div className="relative z-10">
-                {/* Centered White Icon */}
-                <div className="h-28 sm:h-32 flex items-center justify-center mb-5">
-                  <img
-                    src={project.icon}
-                    alt={project.title}
-                    className="max-h-20 sm:max-h-24 max-w-[110px] object-contain brightness-0 invert drop-shadow group-hover:scale-105 transition-transform duration-300"
-                  />
+              {/* Card Top & Body Content */}
+              <div className="relative z-10 space-y-4">
+                {/* Top Row: Translucent glass icon badge + Sanskrit quote badge */}
+                <div className="flex items-center justify-between gap-2">
+                  <div className="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center p-2.5 shadow-md group-hover:bg-white/30 group-hover:scale-105 transition-all">
+                    <img
+                      src={project.icon}
+                      alt={project.title}
+                      className="w-full h-full object-contain brightness-0 invert drop-shadow"
+                    />
+                  </div>
+
+                  {project.sanskrit && (
+                    <div className="inline-flex items-center bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/25 text-amber-200 text-[11px] font-heading font-bold shadow-xs truncate max-w-[190px]">
+                      <span className="truncate">"{project.sanskrit}"</span>
+                    </div>
+                  )}
                 </div>
 
-                {/* Subtle Red Gradient Divider Line */}
-                <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-[#CC444B] to-transparent mb-5" />
+                {/* Title & Description */}
+                <div className="space-y-2 pt-2">
+                  <h3 className="font-heading font-black text-[21px] text-white leading-snug drop-shadow-md group-hover:text-amber-200 transition-colors line-clamp-2">
+                    {project.title}
+                  </h3>
 
-                {/* Mission Title */}
-                <h3 className="font-heading font-extrabold text-[20px] sm:text-[21px] text-white leading-snug mb-2 min-h-[52px] flex items-center">
-                  {project.title}
-                </h3>
+                  {project.meaning && (
+                    <p className="font-sans text-[11.5px] text-amber-100/90 italic line-clamp-1">
+                      — {project.meaning}
+                    </p>
+                  )}
 
-                {/* Sanskrit Shloka in Red */}
-                {project.sanskrit && (
-                  <p className="font-sans text-[12.5px] font-semibold text-rose-300 italic mb-2 tracking-wide truncate">
-                    "{project.sanskrit}"
+                  <p className="font-sans text-xs text-white/90 line-clamp-3 leading-relaxed drop-shadow-xs">
+                    {project.description}
                   </p>
-                )}
-
-                {/* Scope / Subtitle */}
-                <p className="font-sans text-[12px] text-white/80 leading-relaxed line-clamp-2 min-h-[36px]">
-                  {project.cardScope || project.subTitle || project.meaning || project.description}
-                </p>
+                </div>
               </div>
 
-              {/* Red Explore Programme Pill Button */}
+              {/* Read More Pill Button with Circular Arrow */}
               <div className="relative z-10 pt-6">
-                <div className="w-full bg-[#CC444B] hover:bg-red-700 text-white font-heading font-bold text-xs sm:text-sm px-5 py-3 rounded-full shadow-md transition-all flex items-center justify-between">
+                <div className="inline-flex items-center gap-2.5 bg-white hover:bg-gray-100 text-[#243C4B] group-hover:bg-amber-400 group-hover:text-gray-950 font-heading font-bold text-xs sm:text-sm px-5 py-2.5 rounded-full shadow-lg transition-all">
                   <span>Explore Programme</span>
-                  <div className="w-6 h-6 rounded-full bg-white text-[#CC444B] flex items-center justify-center transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shadow-xs shrink-0">
+                  <div className="w-6 h-6 rounded-full bg-[#CC444B] group-hover:bg-gray-950 text-white flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all">
                     <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
                   </div>
                 </div>
@@ -149,9 +158,8 @@ export default function OurProjectsSection({ onSelectStory, onNavigateToProgram 
             <button
               key={idx}
               onClick={() => setCurrentIndex(idx)}
-              className={`h-2.5 rounded-full transition-all cursor-pointer ${
-                currentIndex === idx ? 'w-8 bg-white' : 'w-2.5 bg-white/45 hover:bg-white/70'
-              }`}
+              className={`h-2 rounded-full transition-all ${currentIndex === idx ? 'w-8 bg-white' : 'w-2 bg-white/40 hover:bg-white/70'
+                }`}
               aria-label={`Slide ${idx + 1}`}
             />
           ))}
@@ -159,9 +167,9 @@ export default function OurProjectsSection({ onSelectStory, onNavigateToProgram 
 
       </div>
 
-      {/* MOBILE VIEW: Single Card with Mission Image in Background */}
+      {/* MOBILE VIEW: Single Card with Indicators */}
       <div className="block lg:hidden max-w-md mx-auto text-center space-y-6">
-        
+
         <div className="flex items-center justify-center gap-3">
           <div className="h-[1.5px] w-12 bg-white/70"></div>
           <span className="font-heading font-medium text-white/90 text-sm">
@@ -174,62 +182,61 @@ export default function OurProjectsSection({ onSelectStory, onNavigateToProgram 
           Our Projects
         </h2>
 
-        <p className="font-sans text-white/90 text-xs sm:text-sm leading-relaxed max-w-xs mx-auto">
-          From education and empowerment to rehabilitation, animal welfare, and emergency relief, explore all seven domains of ground seva.
-        </p>
-
         {/* Mobile Project Card */}
-        <div 
+        <div
           onClick={() => handleProjectClick(currentMobileProject)}
-          className="relative rounded-[24px] overflow-hidden p-7 text-white shadow-xl text-left flex flex-col justify-between cursor-pointer min-h-[440px] border border-white/15"
+          className="relative rounded-[28px] overflow-hidden p-7 text-white shadow-2xl text-left space-y-4 cursor-pointer min-h-[460px] flex flex-col justify-between border border-white/20"
         >
           {/* Background image & gradient */}
           <div className="absolute inset-0 z-0">
             <img
-              src={currentMobileProject.cardImage || currentMobileProject.heroImage}
+              src={currentMobileProject.heroImage}
               alt={currentMobileProject.title}
               className="w-full h-full object-cover object-center"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/35" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/65 to-black/35" />
+            <div className="absolute inset-0 bg-gradient-to-b from-red-950/70 via-transparent to-black/85" />
           </div>
 
-          <div className="relative z-10">
-            {/* Centered White Icon */}
-            <div className="h-28 flex items-center justify-center mb-5">
-              <img
-                src={currentMobileProject.icon}
-                alt={currentMobileProject.title}
-                className="max-h-20 max-w-[100px] object-contain brightness-0 invert drop-shadow"
-              />
+          <div className="relative z-10 space-y-4">
+            <div className="flex items-center justify-between">
+              <div className="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center p-2.5 shadow-md">
+                <img
+                  src={currentMobileProject.icon}
+                  alt={currentMobileProject.title}
+                  className="w-full h-full object-contain brightness-0 invert drop-shadow"
+                />
+              </div>
+
+              {currentMobileProject.sanskrit && (
+                <div className="inline-flex items-center bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/25 text-amber-200 text-[11px] font-heading font-bold shadow-xs">
+                  <span>"{currentMobileProject.sanskrit}"</span>
+                </div>
+              )}
             </div>
 
-            {/* Red Gradient Divider */}
-            <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-[#CC444B] to-transparent mb-5" />
+            <div className="space-y-2 pt-2">
+              <h3 className="font-heading font-black text-2xl text-white leading-snug drop-shadow-md">
+                {currentMobileProject.title}
+              </h3>
 
-            {/* Title */}
-            <h3 className="font-heading font-extrabold text-[20px] text-white leading-snug mb-2 min-h-[50px] flex items-center">
-              {currentMobileProject.title}
-            </h3>
+              {currentMobileProject.meaning && (
+                <p className="font-sans text-xs text-amber-100/90 italic">
+                  — {currentMobileProject.meaning}
+                </p>
+              )}
 
-            {/* Sanskrit */}
-            {currentMobileProject.sanskrit && (
-              <p className="font-sans text-xs font-semibold text-rose-300 italic mb-2 tracking-wide truncate">
-                "{currentMobileProject.sanskrit}"
+              <p className="font-sans text-xs sm:text-sm text-white/90 leading-relaxed line-clamp-3 drop-shadow-xs">
+                {currentMobileProject.description}
               </p>
-            )}
-
-            {/* Scope */}
-            <p className="font-sans text-xs text-white/80 leading-relaxed line-clamp-2 min-h-[34px]">
-              {currentMobileProject.cardScope || currentMobileProject.subTitle || currentMobileProject.meaning || currentMobileProject.description}
-            </p>
+            </div>
           </div>
 
-          {/* Explore Button */}
-          <div className="relative z-10 pt-5">
-            <div className="w-full bg-[#CC444B] text-white font-heading font-bold text-xs px-5 py-3 rounded-full shadow-md flex items-center justify-between">
+          <div className="relative z-10 pt-4">
+            <div className="inline-flex items-center gap-2 bg-white text-[#243C4B] font-heading font-bold text-xs px-5 py-2.5 rounded-full shadow-lg">
               <span>Explore Programme</span>
-              <div className="w-6 h-6 rounded-full bg-white text-[#CC444B] flex items-center justify-center shadow-xs shrink-0">
-                <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
+              <div className="w-5 h-5 rounded-full bg-[#CC444B] text-white flex items-center justify-center">
+                <ArrowUpRight className="w-3 h-3 stroke-[2.5]" />
               </div>
             </div>
           </div>
@@ -239,11 +246,42 @@ export default function OurProjectsSection({ onSelectStory, onNavigateToProgram 
         <div className="flex items-center justify-between pt-2 px-4">
           <button
             onClick={handlePrev}
-            className="w-10 h-10 rounded-full bg-black/25 text-white flex items-center justify-center cursor-pointer shadow-sm hover:bg-black/40 transition-colors"
+            className="w-10 h-10 rounded-full bg-black/20 text-white flex items-center justify-center"
             aria-label="Previous"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
+
+          <div className="flex gap-1.5">
+            {programsData.map((_, idx) => (
+              <span
+                key={idx}
+                className={`h-1.5 rounded-full transition-all ${currentIndex === idx ? 'w-6 bg-white' : 'w-1.5 bg-white/40'
+                  }`}
+              />
+            ))}
+          </div>
+
+          <button
+            onClick={handleNext}
+            className="w-10 h-10 rounded-full bg-black/20 text-white flex items-center justify-center"
+            aria-label="Next"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        </div>
+
+      </div>
+
+    </section>
+  );
+}
+onClick = { handlePrev }
+className = "w-10 h-10 rounded-full bg-black/25 text-white flex items-center justify-center cursor-pointer shadow-sm hover:bg-black/40 transition-colors"
+aria - label="Previous"
+  >
+  <ChevronLeft className="w-5 h-5" />
+          </button >
 
           <div className="flex items-center gap-1.5">
             {programsData.map((_, idx) => (
@@ -263,10 +301,10 @@ export default function OurProjectsSection({ onSelectStory, onNavigateToProgram 
           >
             <ChevronRight className="w-5 h-5" />
           </button>
-        </div>
+        </div >
 
-      </div>
+      </div >
 
-    </section>
+    </section >
   );
 }
